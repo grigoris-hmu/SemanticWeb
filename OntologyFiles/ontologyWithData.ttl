@@ -1,0 +1,2026 @@
+@prefix : <http://www.semanticweb.org/team1/ontologies/semantic-web-project/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@base <http://www.semanticweb.org/team1/ontologies/semantic-web-project/> .
+
+<http://www.semanticweb.org/team1/ontologies/semantic-web-project> rdf:type owl:Ontology .
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.w3.org/2001/XMLSchema#date
+xsd:date rdf:type rdfs:Datatype .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#hasSample
+:hasSample rdf:type owl:ObjectProperty ;
+           rdfs:domain :Survey ;
+           rdfs:range :Sample ;
+           rdfs:label "hasSample"@en ,
+                      "διαθέτει δείγμα"@el .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#hasSpacetime
+:hasSpacetime rdf:type owl:ObjectProperty ;
+              rdfs:domain :Survey ;
+              rdfs:range :Spacetime ;
+              rdfs:label "hasSpacetime"@en ,
+                         "ορίζεται σε χώρο και χρόνο"@el .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#hasSurvey
+:hasSurvey rdf:type owl:ObjectProperty ;
+           rdfs:domain :Dissertation ;
+           rdfs:range :Survey ;
+           rdfs:label "hasSurvey"@en ,
+                      "περιλαμβάνει έρευνα"@el .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#hasWriter
+:hasWriter rdf:type owl:ObjectProperty ;
+           rdfs:domain :Dissertation ;
+           rdfs:range :Writer ;
+           rdfs:label "hasWriter"@en ,
+                      "έχει συγγραφέα"@el .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#abstract
+:abstract rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Dissertation ;
+          rdfs:range xsd:string ;
+          rdfs:label "abstract"@en ,
+                     "Περίληψη"@el ;
+          rdfs:seeAlso "http://purl.org/dc/terms/abstract"^^xsd:anyURI ,
+                       "https://schema.org/abstract"^^xsd:anyURI .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#altTitle
+:altTitle rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Dissertation ;
+          rdfs:range xsd:string ;
+          rdfs:label "alternativeHeadline"@en ,
+                     "Εναλλακτικός Τίτλος"@el ;
+          rdfs:seeAlso "http://purl.org/dc/terms/alternative"^^xsd:anyURI ,
+                       "https://schema.org/alternativeHeadline"^^xsd:anyURI .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#analysisTools
+:analysisTools rdf:type owl:DatatypeProperty ;
+               rdfs:range xsd:string ;
+               rdfs:label "analysisTools"@en ,
+                          "Εργαλεία Ανάλυσης"@el ;
+               rdfs:seeAlso "https://schema.org/softwareHelp"^^xsd:anyURI .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#basicUnit
+:basicUnit rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Sample ;
+           rdfs:range xsd:string ;
+           rdfs:label "basicUnit"@en ,
+                      "Βασική Μονάδα"@el .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#collectionMethod
+:collectionMethod rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :Sample ;
+                  rdfs:range xsd:string ;
+                  rdfs:label "collectionMethod"@en ,
+                             "Μέθοδος Συλλογής"@el ;
+                  rdfs:seeAlso "https://schema.org/measurementTechnique"^^xsd:anyURI .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#dateOfSupport
+:dateOfSupport rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Dissertation ;
+               rdfs:range xsd:date ;
+               rdfs:label "dateOfSupport"@en ,
+                          "Ημερομηνία Παρουσίασης"@el .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#department
+:department rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Dissertation ;
+            rdfs:range xsd:string ;
+            rdfs:label "department"@en ,
+                       "Τμήμα"@el ;
+            rdfs:seeAlso "https://schema.org/department"^^xsd:anyURI .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#fathersName
+:fathersName rdf:type owl:DatatypeProperty ,
+                      owl:FunctionalProperty ;
+             rdfs:domain :Writer ;
+             rdfs:range xsd:string ;
+             rdfs:label "fathersName"@en ,
+                        "Πατρώνυμο"@el .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#firstName
+:firstName rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf owl:topDataProperty ;
+           rdfs:domain :Writer ;
+           rdfs:range xsd:string ;
+           rdfs:label "firstName"@en ,
+                      "Όνομα"@el ;
+           rdfs:seeAlso "https://schema.org/givenName"^^xsd:anyURI .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#gender
+:gender rdf:type owl:DatatypeProperty ,
+                 owl:FunctionalProperty ;
+        rdfs:domain :Writer ;
+        rdfs:range [ rdf:type rdfs:Datatype ;
+                     owl:oneOf [ rdf:type rdf:List ;
+                                 rdf:first "Άνδρας" ;
+                                 rdf:rest [ rdf:type rdf:List ;
+                                            rdf:first "Γυναίκα" ;
+                                            rdf:rest rdf:nil
+                                          ]
+                               ]
+                   ] ;
+        rdfs:label "gender"@en ,
+                   "Φύλο"@el ;
+        rdfs:seeAlso "https://schema.org/gender"^^xsd:anyURI .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#geographicalUnit
+:geographicalUnit rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :Sample ;
+                  rdfs:range xsd:string ;
+                  rdfs:label "geographicalUnit"@en ,
+                             "Γεωγραφική Μονάδα"@el .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#institution
+:institution rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Dissertation ;
+             rdfs:range xsd:string ;
+             rdfs:label "institution"@en ,
+                        "Ίδρυμα"@el ;
+             rdfs:seeAlso "http://purl.org/dc/terms/publisher"^^xsd:anyURI ,
+                          "https://schema.org/sourceOrganization"^^xsd:anyURI .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#keyWords
+:keyWords rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Dissertation ;
+          rdfs:range xsd:string ;
+          rdfs:label "keyWords"@en ,
+                     "Λέξεις Κλειδιά"@el ;
+          rdfs:seeAlso "http://purl.org/dc/terms/subject"^^xsd:anyURI ,
+                       "https://schema.org/keywords"^^xsd:anyURI .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#language
+:language rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Dissertation ;
+          rdfs:range xsd:string ;
+          rdfs:label "language"@en ,
+                     "Γλώσσα"@el ;
+          rdfs:seeAlso "http://purl.org/dc/terms/language"^^xsd:anyURI ,
+                       "https://schema.org/inLanguage"^^xsd:anyURI .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#libraryLink
+:libraryLink rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Dissertation ;
+             rdfs:range xsd:string ;
+             rdfs:label "libraryLink"@en ,
+                        "Σύνδεσμος Βιβλιοθήκης"@el ;
+             rdfs:seeAlso "http://purl.org/dc/terms/identifier"^^xsd:anyURI ,
+                          "https://schema.org/url"^^xsd:anyURI .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#methodOfAnalysis
+:methodOfAnalysis rdf:type owl:DatatypeProperty ;
+                  rdfs:range xsd:string ;
+                  rdfs:label "methodOfAnalysis"@en ,
+                             "Μέθοδος Ανάλυσης"@el ;
+                  rdfs:seeAlso "https://schema.org/measurementTechnique"^^xsd:anyURI .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#methodOfRecording
+:methodOfRecording rdf:type owl:DatatypeProperty ;
+                   rdfs:domain :Sample ;
+                   rdfs:range xsd:string ;
+                   rdfs:label "methodOfRecording"@en ,
+                              "Μέθοδος Καταγραφής"@el .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#nameOfCom1
+:nameOfCom1 rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Dissertation ;
+            rdfs:range xsd:string ;
+            rdfs:label "nameOfCom1"@en ,
+                       "Όνομα Μέλους Επιτροπής 1"@el ;
+            rdfs:seeAlso "http://purl.org/dc/terms/contributor"^^xsd:anyURI ,
+                         "https://schema.org/contributor"^^xsd:anyURI .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#nameOfCom2
+:nameOfCom2 rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Dissertation ;
+            rdfs:range xsd:string ;
+            rdfs:label "nameOfCom2"@en ,
+                       "Όνομα Μέλους Επιτροπής 2"@el ;
+            rdfs:seeAlso "http://purl.org/dc/terms/contributor"^^xsd:anyURI ,
+                         "https://schema.org/contributor"^^xsd:anyURI .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#nameOfSupervisor
+:nameOfSupervisor rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :Dissertation ;
+                  rdfs:range xsd:string ;
+                  rdfs:label "nameOfSupervisor"@en ,
+                             "Όνομα Επιβλέποντα"@el ;
+                  rdfs:seeAlso "http://purl.org/dc/terms/contributor"^^xsd:anyURI ,
+                               "https://schema.org/contributor"^^xsd:anyURI .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#numberOfPages
+:numberOfPages rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Dissertation ;
+               rdfs:range xsd:string ;
+               rdfs:label "numberOfPages"@en ,
+                          "Αριθμός Σελίδων"@el ;
+               rdfs:seeAlso "http://purl.org/dc/terms/extent"^^xsd:anyURI ,
+                            "https://schema.org/numberOfPages"^^xsd:anyURI .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#otherNotes
+:otherNotes rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Dissertation ;
+            rdfs:range xsd:string ;
+            rdfs:label "otherNotes"@en ,
+                       "Άλλες Σημειώσεις"@el ;
+            rdfs:seeAlso "http://purl.org/dc/terms/description"^^xsd:anyURI ,
+                         "https://schema.org/description"^^xsd:anyURI .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#population
+:population rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Survey ;
+            rdfs:range xsd:string ;
+            rdfs:label "population"@en ,
+                       "Πληθυσμός"@el ;
+            rdfs:seeAlso "http://purl.org/dc/terms/coverage"^^xsd:anyURI ,
+                         "https://schema.org/populationType"^^xsd:anyURI .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#program
+:program rdf:type owl:DatatypeProperty ;
+         rdfs:domain :Dissertation ;
+         rdfs:range xsd:string ;
+         rdfs:label "program"@en ,
+                    "Πρόγραμμα Σπουδών"@el .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#recordingTools
+:recordingTools rdf:type owl:DatatypeProperty ;
+                rdfs:range xsd:string ;
+                rdfs:label "recordingTools"@en ,
+                           "Εργαλεία Καταγραφής"@el .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#sampleCollectionReference
+:sampleCollectionReference rdf:type owl:DatatypeProperty ;
+                           rdfs:domain :Sample ;
+                           rdfs:range xsd:string ;
+                           rdfs:label "sampleCollectionReference"@en ,
+                                      "Χρονική Αναφορά Συλλογής"@el .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#sampleDescription
+:sampleDescription rdf:type owl:DatatypeProperty ;
+                   rdfs:domain :Sample ;
+                   rdfs:range xsd:string ;
+                   rdfs:label "sampleDescription"@en ,
+                              "Περιγραφή Δείγματος"@el ;
+                   rdfs:seeAlso "http://purl.org/dc/terms/description"^^xsd:anyURI ,
+                                "https://schema.org/description"^^xsd:anyURI .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#sampleProd
+:sampleProd rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Survey ;
+            rdfs:range xsd:string ;
+            rdfs:label "sampleProd"@en ,
+                       "Παραγωγή Δείγματος"@el .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#sampleSize
+:sampleSize rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Sample ;
+            rdfs:range xsd:string ;
+            rdfs:label "sampleSize"@en ,
+                       "Μέγεθος Δείγματος"@el .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#sampleTimeReference
+:sampleTimeReference rdf:type owl:DatatypeProperty ;
+                     rdfs:domain :Sample ;
+                     rdfs:range xsd:string ;
+                     rdfs:label "sampleTimeReference"@en ,
+                                "Χρονική Αναφορά Δείγματος"@el .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#spaceAnalysis
+:spaceAnalysis rdf:type owl:DatatypeProperty ;
+               rdfs:range xsd:string ;
+               rdfs:label "spaceAnalysis"@en ,
+                          "Χωρική Ανάλυση"@el .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#spatialCoverage
+:spatialCoverage rdf:type owl:DatatypeProperty ;
+                 rdfs:domain :Sample ;
+                 rdfs:range xsd:string ;
+                 rdfs:label "spatialCoverage"@en ,
+                            "Χωρική Κάλυψη"@el ;
+                 rdfs:seeAlso "http://purl.org/dc/terms/spatial"^^xsd:anyURI ,
+                              "https://schema.org/spatialCoverage"^^xsd:anyURI .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#statesOfReference
+:statesOfReference rdf:type owl:DatatypeProperty ;
+                   rdfs:domain :Sample ;
+                   rdfs:range xsd:string ;
+                   rdfs:label "statesOfReference"@en ,
+                              "Κράτη Αναφοράς"@el .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#strategy
+:strategy rdf:type owl:DatatypeProperty ;
+          rdfs:range xsd:string ;
+          rdfs:label "strategy"@en ,
+                     "Στρατηγική"@el .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#studyAssumptions
+:studyAssumptions rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :Survey ;
+                  rdfs:range xsd:string ;
+                  rdfs:label "studyAssumptions"@en ,
+                             "Υποθέσεις Μελέτης"@el .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#studyQuestions
+:studyQuestions rdf:type owl:DatatypeProperty ;
+                rdfs:domain :Survey ;
+                rdfs:range xsd:string ;
+                rdfs:label "studyQuestions"@en ,
+                           "Ερευνητικά Ερωτήματα"@el .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#surName
+:surName rdf:type owl:DatatypeProperty ;
+         rdfs:domain :Writer ;
+         rdfs:range xsd:string ;
+         rdfs:label "surName"@en ,
+                    "Επώνυμο"@el ;
+         rdfs:seeAlso "http://purl.org/dc/terms/creator"^^xsd:anyURI ,
+                      "https://schema.org/familyName"^^xsd:anyURI .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#target
+:target rdf:type owl:DatatypeProperty ;
+        rdfs:domain :Survey ;
+        rdfs:range xsd:string ;
+        rdfs:label "target"@en ,
+                   "Στόχος"@el .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#timeAnalysis
+:timeAnalysis rdf:type owl:DatatypeProperty ;
+              rdfs:range xsd:string ;
+              rdfs:label "timeAnalysis"@en ,
+                         "Χρονική Ανάλυση"@el .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#title
+:title rdf:type owl:DatatypeProperty ;
+       rdfs:domain :Dissertation ;
+       rdfs:range xsd:string ;
+       rdfs:label "title"@en ,
+                  "Τίτλος"@el ;
+       rdfs:seeAlso "http://purl.org/dc/terms/title"^^xsd:anyURI ,
+                    "https://schema.org/headline"^^xsd:anyURI ,
+                    "https://schema.org/name"^^xsd:anyURI .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#typeOfDissertation
+:typeOfDissertation rdf:type owl:DatatypeProperty ;
+                    rdfs:domain :Dissertation ;
+                    rdfs:range xsd:string ;
+                    rdfs:label "typeOfDissertation"@en ,
+                               "Τύπος Διατριβής"@el .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#workAssumptions
+:workAssumptions rdf:type owl:DatatypeProperty ;
+                 rdfs:domain :Survey ;
+                 rdfs:range xsd:string ;
+                 rdfs:label "workAssumptions"@en ,
+                            "Υποθέσεις Εργασίας"@el .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#BachelorsThesis
+:BachelorsThesis rdf:type owl:Class ;
+                 rdfs:subClassOf :Dissertation ;
+                 rdfs:label "Bachelors Thesis"@en ,
+                            "Πτυχιακή Εργασία"@el .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#Dissertation
+:Dissertation rdf:type owl:Class ;
+              rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasWriter ;
+                                owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onClass :Writer
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :abstract ;
+                                owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onDataRange xsd:string
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :title ;
+                                owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onDataRange xsd:string
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :dateOfSupport ;
+                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onDataRange xsd:date
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :institution ;
+                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onDataRange xsd:string
+                              ] ;
+              rdfs:isDefinedBy "https://schema.org/Thesis" ;
+              rdfs:label "Dissertation"@en ,
+                         "Διατριβή"@el .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#DoctoralDissertation
+:DoctoralDissertation rdf:type owl:Class ;
+                      rdfs:subClassOf :Dissertation ;
+                      rdfs:label "Doctoral Dissertation"@en ,
+                                 "Διδακτορική Διατριβή"@el .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#MasterThesis
+:MasterThesis rdf:type owl:Class ;
+              rdfs:subClassOf :Dissertation ;
+              rdfs:label "Master Thesis"@en ,
+                         "Μεταπτυχιακή Διπλωματική Εργασία"@el .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#Mixed
+:Mixed rdf:type owl:Class ;
+       rdfs:subClassOf :Survey .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#Qualitative
+:Qualitative rdf:type owl:Class ;
+             rdfs:subClassOf :Survey ;
+             rdfs:label "Qualitative Survey"@en ,
+                        "Ποιοτική Έρευνα"@el .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#Quantitative
+:Quantitative rdf:type owl:Class ;
+              rdfs:subClassOf :Survey ;
+              rdfs:label "Quantitative Survey"@en ,
+                         "Ποσοτική Έρευνα"@el .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#Sample
+:Sample rdf:type owl:Class ;
+        rdfs:label "Sample"@en ,
+                   "Δείγμα"@el .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#Spacetime
+:Spacetime rdf:type owl:Class ;
+           rdfs:label "Spacetime"@en ,
+                      "Χωροχρονικό Πλαίσιο"@el .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#Survey
+:Survey rdf:type owl:Class ;
+        rdfs:label "Survey"@en ,
+                   "Έρευνα"@el .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#Writer
+:Writer rdf:type owl:Class ;
+        rdfs:subClassOf [ rdf:type owl:Restriction ;
+                          owl:onProperty :firstName ;
+                          owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                          owl:onDataRange xsd:string
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :surName ;
+                          owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                          owl:onDataRange xsd:string
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :fathersName ;
+                          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                          owl:onDataRange xsd:string
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :gender ;
+                          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                          owl:onDataRange xsd:string
+                        ] ;
+        rdfs:isDefinedBy "https://schema.org/author"^^xsd:anyURI ;
+        rdfs:label "Writer"@en ,
+                   "Συγγραφέας"@el ;
+        rdfs:seeAlso "http://purl.org/dc/terms/creator"^^xsd:anyURI ,
+                     "https://schema.org/Person"^^xsd:anyURI .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project/SampleID_1
+:SampleID_1 rdf:type owl:NamedIndividual ,
+                   :Sample ;
+          :basicUnit "μηνιαίες Εκθέσεις Ελέγχου" ;
+          :collectionMethod "Σκόπιμη δειγματοληψία" ;
+          :geographicalUnit "Νήσος Λέρος" ;
+          :methodOfAnalysis "περιγραφική ανάλυση, επανέλεγχος" ;
+          :methodOfRecording "επισκόπηση των μηνιαίων Εκθέσεων Ελέγχου, συνεντεύξεις" ;
+          :recordingTools "Εκθέσεις Ελέγχου" ;
+          :sampleDescription "Διοίκηση και Εσωτερικοί Ελεγκτές του Γενικού Νοσοκομείου Λέρου" ;
+          :sampleSize "18" ;
+          :sampleTimeReference "από τον Ιανουάριο του 2013 έως τον Δεκέμβριο του έτους 2018" ;
+          :spatialCoverage "Λέρος" ;
+          :statesOfReference "Ελλάδα" .
+:SurveyID_1 rdf:type owl:NamedIndividual ,
+                   :Survey ;
+          :hasSample :SampleID_1 ;
+          :sampleProd "Mixed (Πρωτογενή και Δευτερογενή)" ;
+          :spaceAnalysis "Μη Ιστορική" ;
+          :strategy "Mixed" ;
+          :studyQuestions "αν ο Εσωτερικός έλεγχος αποτελεί χρήσιμο εργαλείο στα χέρια της Διοίκησης, προκειμένου η τελευταία να πετύχει τους στόχους της, οικονομικούς και μη. Επίσης διερευνάται κατά πόσο η Διοίκηση μεριμνά ώστε να αξιοποιήσει στο έπακρο τις δυνατότητες που της παρέχει η εν λόγω συνεργασία." ;
+          :target "να διερευνηθεί αν ο Εσωτερικός έλεγχος αποτελεί χρήσιμο εργαλείο στα χέρια της Διοίκησης, προκειμένου η τελευταία να πετύχει τους στόχους της, οικονομικούς και μη." ;
+          :timeAnalysis "Ιστορική" .
+:WriterID_1 rdf:type owl:NamedIndividual ,
+                   :Writer ;
+          :firstName "Λεωνίδας" ;
+          :gender "Άνδρας" ;
+          :surName "Χατζηδάκης" .
+:ThesisID_1 rdf:type owl:NamedIndividual ,
+                   :MasterThesis ;
+          :hasSurvey :SurveyID_1 ;
+          :hasWriter :WriterID_1 ;
+          :abstract "Η συγκεκριμένη μελέτη περίπτωσης ασχολείται με την καταγραφή των κυριότερων αποτελεσμάτων, που προέκυψαν μέσω της συνεργασίας ανάμεσα στη Διοίκηση του Κρατικού Θεραπευτηρίου- Γενικού Νοσοκομείου- Κ.Υ Λέρου (Κ.Θ-Κ.Υ ΛΕΡΟΥ) και των συνολικά δύο Εσωτερικών Ελεγκτών του Νοσοκομείου, από τον Ιανουάριο του 2013 έως τον Δεκέμβριο του έτους 2018. Σκοπός της εργασίας είναι να διερευνηθεί αν ο Εσωτερικός έλεγχος αποτελεί χρήσιμο εργαλείο στα χέρια της Διοίκησης, προκειμένου η τελευταία να πετύχει τους στόχους της, οικονομικούς και μη. Επίσης διερευνάται κατά πόσο η Διοίκηση μεριμνά ώστε να αξιοποιήσει στο έπακρο τις δυνατότητες που της παρέχει η εν λόγω συνεργασία. Η εστίαση της έρευνάς αφορά τον αντίκτυπο που είχαν οι υπηρεσίες του εσωτερικού ελέγχου και η υλοποίηση των σχετικών εισηγήσεων του από τη Διοίκηση." ;
+          :alternativeHeadline "leros_hospital_system_of_internal_controls" ;
+          :dateOfSupport "2020-04-01"^^xsd:date ;
+          :department "Τμημα Διοίκησης Επιχειρήσεων" ;
+          :institution "Πανεπιστήμιο Αιγαίου" ;
+          :keyWords "Κρατικό θεραπευτήριο-Γενικό Νοσοκομείο-Κ.Υ. Λέρου, Εσωτερικός Έλεγχος, Εκθέσεις Ελέγχου, Επιτροπή Ελέγχου" ;
+          :language "Greek" ;
+          :libraryLink "http://hdl.handle.net/11610/22107" ;
+          :nameOfSupervisor "ΚΟΥΤΟΥΠΗΣ ΑΝΔΡΕΑΣ" ;
+          :numberOfPages "126" ;
+          :program "ΜΕΤΑΠΤΥΧΙΑΚΟ ΠΡΟΓΡΑΜΜΑ ΣΠΟΥΔΩΝ ΓΙΑ ΣΤΕΛΕΧΗ Executive MBA" ;
+          :title "«ΤΟ ΣΥΣΤΗΜΑ ΕΣΩΤΕΡΙΚΟΥ ΕΛΕΓΧΟΥ ΤΟΥ ΚΡΑΤΙΚΟΥ ΘΕΡΑΠΕΥΤΗΡΙΟΥ -ΓΕΝΙΚΟΥ ΝΟΣΟΚΟΜΕΙΟΥ – ΚΕΝΤΡΟΥ ΥΓΕΙΑΣ ΛΕΡΟΥ, Ο ΡΟΛΟΣ ΤΟΥ ΕΣΩΤΕΡΙΚΟΥ ΕΛΕΓΧΟΥ ΣΤΗΝ ΕΝΔΥΝΑΜΩΣΗ ΤΗΣ ΔΙΑΧΕΙΡΙΣΗΣ ΚΙΝΔΥΝΟΥ»" ;
+          :typeOfDissertation "MasterThesis" .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project/SampleID_2
+:SampleID_2 rdf:type owl:NamedIndividual ,
+                   :Sample ;
+          :analysisTools "SPSS V.25" ;
+          :basicUnit "εργαζόμενοι" ;
+          :collectionMethod "δειγματοληψία ευκολίας" ;
+          :methodOfAnalysis "συσχετίσεων/παλινδρομήσεων" ;
+          :methodOfRecording "ηλεκτρονικό ερωτηματολόγιο" ;
+          :recordingTools "Google Forms" ;
+          :sampleCollectionReference "2020-10-15" ;
+          :sampleDescription "Εργαζόμενοι εταιρείας καφεστίασης με δίκτυο 450 καταστημάτων" ;
+          :sampleSize "83" ;
+          :sampleTimeReference "2020" ;
+          :statesOfReference "Ελλάδα" .
+:SurveyID_2 rdf:type owl:NamedIndividual ,
+                   :Survey ;
+          :hasSample :SampleID_2 ;
+          :sampleProd "Primary" ;
+          :spaceAnalysis "Μη Ιστορική" ;
+          :strategy "Quantitative" ;
+          :studyAssumptions "Η1: Το Εσωτερικό Μάρκετινγκ σχετίζεται θετικά με την Ποιότητα Εργασιακής Ζωής., Η2: Η Ποιότητα Εργασιακής Ζωής σχετίζεται θετικά με την Εργασιακή Ικανοποίηση., Η3: Η Ποιότητα Εργασιακής Ζωής σχετίζεται θετικά με την Οργανωσιακή Δέσμευση., Η4: Η Εργασιακή Ικανοποίηση σχετίζεται θετικά με την Πρόθεση ενός εργαζομένου να παραμείνει στην επιχείρηση., Η5: Η Οργανωσιακή Δέσμευση σχετίζεται θετικά με την Πρόθεση ενός εργαζομένου να παραμείνει στην επιχείρηση." ;
+          :target "να διερευνηθεί ο βαθμός στον οποίο οι επιχειρήσεις στον κλάδο της καφεστίασης εφαρμόζουν πρακτικές ΕΜ και κατά πόσο αυτές επηρεάζουν την ποιότητα εργασιακής ζωής και τις στάσεις των εργαζομένων" ;
+          :timeAnalysis "Μη Ιστορική" ;
+          :workAssumptions "Yes" .
+:WriterID_2 rdf:type owl:NamedIndividual ,
+                   :Writer ;
+          :firstName "Δέσποινα" ;
+          :gender "Γυναίκα" ;
+          :surName "Καπογιαννάτου" .
+:ThesisID_2 rdf:type owl:NamedIndividual ,
+                   :MasterThesis ;
+          :hasSurvey :SurveyID_2 ;
+          :hasWriter :WriterID_2 ;
+          :abstract "Έχουν περάσει πάνω από 30 χρόνια από τότε που πρωτοεμφανίσθηκε η έννοια του Εσωτερικού Μάρκετινγκ (ΕΜ). Μαζί με την πολυδιάστατη αυτή έννοια, αναλύονται επιπλέον, τέσσερις στενά συνδεδεμένες έννοιες, αυτή της Ποιότητας Εργασιακής Ζωής (ΠΕΖ), της Εργασιακής Ικανοποίησης, της Οργανωσιακής Δέσμευσης και της Πρόθεσης Παραμονής στην Επιχείρηση. Συγκεκριμένα, στόχος της παρούσας εργασίας είναι να διερευνηθεί ο βαθμός στον οποίο οι επιχειρήσεις στον κλάδο της καφεστίασης εφαρμόζουν πρακτικές ΕΜ, δηλαδή το αν υιοθετούν τη φιλοσοφία του εσωτερικού πελάτη, και κατά πόσο η εφαρμογή τους επηρεάζει σημαντικές μεταβλητές της εργασιακής ζωής." ;
+          :alternativeHeadline "Internal Marketing" ;
+          :dateOfSupport "2020-10-01"^^xsd:date ;
+          :department "Τμήμα Διοίκησης Επιχειρήσεων" ;
+          :institution "Πανεπιστήμιο Αιγαίου" ;
+          :keyWords "εσωτερικό μάρκετινγκ, ποιότητα εργασιακής ζωής, εργασιακή ικανοποίηση, οργανωσιακή δέσμευση, πρόθεση παραμονής, εργασιακές στάσεις" ;
+          :language "Ελληνικά" ;
+          :libraryLink "http://hdl.handle.net/11610/22103" ;
+          :nameOfSupervisor "Νίκη Γλαβέλη" ;
+          :numberOfPages "141" ;
+          :program "Πρόγραμμα Μεταπτυχιακών Σπουδών στη Διοίκηση Επιχειρήσεων για Στελέχη - Executive ΜΒΑ" ;
+          :title "Eσωτερικό Μάρκετινγκ (Internal Μarketing), ποιότητα εργασιακής ζωής και στάσεις των εργαζομένων: Μία διερευνητική μελέτη στον κλάδο της καφεστίασης." ;
+          :typeOfDissertation "MasterThesis" .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project/SampleID_3
+:SampleID_3 rdf:type owl:NamedIndividual ,
+                   :Sample ;
+          :analysisTools "SAP Forecasting and Replenishment" ;
+          :basicUnit "διαδικασίες παραγγελιοδοσίας και logistics" ;
+          :methodOfAnalysis "μελέτη περίπτωσης" ;
+          :methodOfRecording "βιβλιογραφική έρευνα, πρακτικά συναντήσεων, πρακτικά εκπαιδεύσεων, manual παρουσίασης, προσωπική καθημερινή ενασχόληση" ;
+          :sampleCollectionReference "2019-2020" ;
+          :sampleDescription "ΑΒ Βασιλόπουλος" ;
+          :sampleTimeReference "2019-2021" ;
+          :spatialCoverage "Ελλάδα" ;
+          :statesOfReference "Ελλάδα" .
+:SurveyID_3 rdf:type owl:NamedIndividual ,
+                   :Survey ;
+          :hasSample :SampleID_3 ;
+          :sampleProd "Primary and Secondary" ;
+          :spaceAnalysis "Μη Ιστορική" ;
+          :strategy "Qualitative" ;
+          :target "η παρουσίαση ενός νέου τρόπου παραγγελιοδοσίας που στηρίζεται στην αυτοματοποίηση της ζήτησης μέσω του SAPFnR" ;
+          :timeAnalysis "Μη Ιστορική" .
+:WriterID_3 rdf:type owl:NamedIndividual ,
+                   :Writer ;
+          :firstName "Ανδρέας" ;
+          :gender "Άνδρας" ;
+          :surName "Μήτσουλας" .
+:ThesisID_3 rdf:type owl:NamedIndividual ,
+                   :MasterThesis ;
+          :hasSurvey :SurveyID_3 ;
+          :hasWriter :WriterID_3 ;
+          :abstract "Ο κύριος σκοπός της παρούσας διπλωματικής εργασίας είναι η παρουσίαση ενός νέου τρόπου παραγγελιοδοσίας που στηρίζεται στην αυτοματοποίηση της ζήτησης μέσω του SAPFnR η οποία αντικαθιστά τον παραδοσιακό τρόπο που παραγγελιοδοσίας που χρησιμοποιείται έως και σήμερα κατά κύριο λόγο στο Ελληνικό λιανεμπόριο." ;
+          :alternativeHeadline "Automation of stock demand through SAP Forecasting and Replenishment" ;
+          :dateOfSupport "2020-11-06"^^xsd:date ;
+          :department "Τμήμα Διοίκησης Επιχειρήσεων" ;
+          :institution "Πανεπιστήμιο Αιγαίου" ;
+          :language "Ελληνικά" ;
+          :libraryLink "http://hdl.handle.net/11610/22102" ;
+          :nameOfSupervisor "Κακούρης Ανδρέας" ;
+          :numberOfPages "74" ;
+          :program "Πρόγραμμα Μεταπτυχιακών Σπουδών στη Διοίκηση Επιχειρήσεων για Στελέχη - Executive MBA" ;
+          :title "Αυτοματοποίηση ζήτησης αποθεμάτων μέσω του SAP Forecasting and Replenishment" ;
+          :typeOfDissertation "MasterThesis" .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project/SampleID_4
+:SampleID_4 rdf:type owl:NamedIndividual ,
+                   :Sample ;
+          :analysisTools "S.P.S.S. version 26, PROCESS 3.5" ;
+          :basicUnit "Μόνιμοι και προσωρινοί (αναπληρωτές) εκπαιδευτικοί" ;
+          :collectionMethod "Απλή τυχαία δειγματοληψία" ;
+          :geographicalUnit "Περιφερειακή ενότητα" ;
+          :methodOfAnalysis "Συσχέτιση (Pearson correlation), έλεγχος για δυο ανεξάρτητα δείγματα (t-test, Mann-Whitney), ανάλυση της διαμεσολάβησης (mediation analysis), παραγοντική ανάλυση (factor analysis)" ;
+          :methodOfRecording "Έρευνα (survey) με χρήση ερωτηματολογίου" ;
+          :recordingTools "Ερωτηματολόγιο (Google forms)" ;
+          :sampleCollectionReference "2020-10-29 έως 2020-11-29" ;
+          :sampleDescription "Μόνιμοι και αναπληρωτές εκπαιδευτικοί πρωτοβάθμιας εκπαίδευσης στην Ελλάδα" ;
+          :sampleSize "320" ;
+          :sampleTimeReference "2020-2021" ;
+          :spatialCoverage "σε όλη την Ελλάδα (αστικές, ημι-αστικές και αγροτικές περιοχές)" ;
+          :statesOfReference "Ελλάδα" .
+:SurveyID_4 rdf:type owl:NamedIndividual ,
+                   :Survey ;
+          :hasSample :SampleID_4 ;
+          :sampleProd "Primary (Πρωτογενή)" ;
+          :spaceAnalysis "Μη Ιστορική" ;
+          :strategy "Quantitative" ;
+          :studyAssumptions "Η1ai, Η1aii, H1bi, H1bii, Η2ai, Η2aii, H2bi, H2bii, H3a, H3b, H4, H5, H5a, H5b, H5c, H5d, H5e" ;
+          :studyQuestions "Yes" ;
+          :target "Ο σκοπός της έρευνας ήταν τριπλός: α) να εξεταστεί η σχέση μεταξύ του στυλ ηγεσίας και των εργασιακών στάσεων και συμπεριφορών των μόνιμων και των προσωρινών εκπαιδευτικών, β) να διερευνηθεί αν η επαγγελματική ικανοποίηση αποτελεί διαμεσολαβητή και γ) να εξεταστούν οι διαφορές στο επίπεδο επαγγελματικής ικανοποίησης και αφοσίωσης μεταξύ μόνιμων και αναπληρωτών εκπαιδευτικών." ;
+          :timeAnalysis "Μη Ιστορική" ;
+          :workAssumptions "Yes" .
+:WriterID_4 rdf:type owl:NamedIndividual ,
+                   :Writer ;
+          :firstName "Ευτυχία" ;
+          :gender "Γυναίκα" ;
+          :surName "Τσούρου" .
+:ThesisID_4 rdf:type owl:NamedIndividual ,
+                   :MasterThesis ;
+          :hasSurvey :SurveyID_4 ;
+          :hasWriter :WriterID_4 ;
+          :abstract "Το στυλ ηγεσίας που εφαρμόζει ένας/μια διευθυντής/τρια μιας σχολικής μονάδας, η οργανωσιακή αφοσίωση των εκπαιδευτικών και η επαγγελματική τους ικανοποίηση είναι καθοριστικοί παράγοντες για την αποτελεσματική λειτουργία του σχολικού οργανισμού. Λαμβάνοντας υπ’ όψιν τα παραπάνω, ο σκοπός της έρευνας είναι τριπλός. Συγκεκριμένα, επιδιώκεται να διερευνηθούν: α) η σχέση μεταξύ του στυλ ηγεσίας (μετασχηματιστική και συναλλακτική ηγεσία) που υιοθετούν οι διευθυντές/τριες των δημόσιων δημοτικών σχολείων στην Ελλάδα και των εργασιακών στάσεων και συμπεριφορών (οργανωσιακή αφοσίωση και επαγγελματική/εργασιακή ικανοποίηση) των μόνιμων και των προσωρινών (αναπληρωτών) εκπαιδευτικών, β) αν η επαγγελματική ικανοποίηση αποτελεί διαμεσολαβητή (mediator) στη σχέση μεταξύ μετασχηματιστικής και συναλλακτικής ηγεσίας και της οργανωσιακής (συναισθηματικής) αφοσίωσης και γ) οι διαφορές στο επίπεδο επαγγελματικής ικανοποίησης και αφοσίωσης (συναισθηματικής) μεταξύ μόνιμων και αναπληρωτών εκπαιδευτικών." ;
+          :alternativeHeadline "The leadership style of school principle" ;
+          :dateOfSupport "2021-02-26"^^xsd:date ;
+          :department "Σχολή Επιστημών Διοίκησης" ;
+          :institution "Πανεπιστήμιο Αιγαίου" ;
+          :keyWords "Μετασχηματιστική ηγεσία στα σχολεία, Συναλλακτική ηγεσία στα σχολεία, Επαγγελματική ικανοποίηση εκπαιδευτικών, Οργανωσιακή (συναισθηματική) αφοσίωση, Μόνιμοι και προσωρινοί (αναπληρωτές) εκπαιδευτικοί." ;
+          :language "Ελληνικά" ;
+          :libraryLink "http://hdl.handle.net/11610/22130" ;
+          :nameOfSupervisor "Νίκη Γλαβέλη" ;
+          :numberOfPages "184" ;
+          :program "ΠΡΟΓΡΑΜΜΑ ΜΕΤΑΠΤΥΧΙΑΚΩΝ ΣΠΟΥΔΩΝ ΣΤΗ ΔΙΟΙΚΗΣΗ ΕΠΙΧΕΙΡΗΣΕΩΝ" ;
+          :title "Η επίδραση των στυλ ηγεσίας στις εργασιακές στάσεις/συμπεριφορές: μια διερευνητική μελέτη στα δημόσια σχολεία της Πρωτοβάθμιας εκπαίδευσης στην Ελλάδα" ;
+          :typeOfDissertation "MasterThesis" .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project/SampleID_5
+:SampleID_5 rdf:type owl:NamedIndividual ,
+                   :Sample ;
+          :basicUnit "Στελέχη Διοίκησης Ανθρωπίνων Πόρων" ;
+          :collectionMethod "κατευθυνόμενης δειγματοληψίας" ;
+          :methodOfAnalysis "θεματική ανάλυση" ;
+          :methodOfRecording "ημι-δομημένες συνεντεύξεις" ;
+          :recordingTools "οδηγός συνέντευξης" ;
+          :sampleCollectionReference "μεταξύ Νοεμβρίου & Δεκεμβρίου του 2020" ;
+          :sampleDescription "οκτώ (8) Στελέχη Διοίκησης Ανθρωπίνων Πόρων από επιχειρήσεις διαφορετικού μεγέθους και κλάδων" ;
+          :sampleSize "8" ;
+          :sampleTimeReference "εποχή COVID-19" ;
+          :spatialCoverage "Ελλάδα" ;
+          :statesOfReference "Ελλάδα" .
+:SurveyID_5 rdf:type owl:NamedIndividual ,
+                   :Survey ;
+          :hasSample :SampleID_5 ;
+          :sampleProd "Primary" ;
+          :spaceAnalysis "Μη Ιστορική" ;
+          :strategy "Qualitative" ;
+          :studyQuestions "Yes" ;
+          :target "να διερευνηθούν περαιτέρω οι συνθήκες κάτω από τις οποίες εφαρμόστηκε η Τηλεργασία από την σκοπιά των Στελεχών της Διοίκησης Ανθρωπίνων Πόρων" ;
+          :timeAnalysis "Μη Ιστορική" .
+:WriterID_5 rdf:type owl:NamedIndividual ,
+                   :Writer ;
+          :firstName "Κωνσταντίνα" ;
+          :gender "Γυναίκα" ;
+          :surName "Βασιλακοπούλου" .
+:ThesisID_5 rdf:type owl:NamedIndividual ,
+                   :MasterThesis ;
+          :hasSurvey :SurveyID_5 ;
+          :hasWriter :WriterID_5 ;
+          :abstract "Η επιβολή των ολικών ή μερικών lockdown λόγω της καταστροφικής πανδημίας του COVID-19 είχε και εξακολουθεί να έχει μεγάλο αντίκτυπο στην κοινωνία και στην οικονομία και οι επιχειρήσεις σε παγκόσμιο επίπεδο καλούνται να ανταποκριθούν στις νέες συνθήκες με μεγάλη ευελιξία. Η εφαρμογή της Τηλεργασίας αποτέλεσε το κύριο «εργαλείο» προκειμένου να διασφαλιστεί η επιχειρησιακή συνέχεια, η βιωσιμότητά αλλά συνάμα και η υγεία των εργαζομένων και να περιοριστεί κατά το δυνατό η διασπορά του ιού. Η Τηλεργασία, που έως τώρα αποτελούσε μια μορφή ευέλικτης εργασίας με περιορισμένη εφαρμογή στις επιχειρήσεις, πλέον εφαρμόζεται «βίαια» και αναγκαστικά σε πληθώρα εργαζομένων με τα ποσοστά εφαρμογής της να αυξάνονται ραγδαία. Η αναγκαστική αυτή επιβολή της Τηλεργασίας δεν ακολούθησε τη ροή της επιχειρησιακής αλλαγής, παρόλα αυτά η αποδοχή της από τους εργαζόμενους φαίνεται να είναι σε ικανοποιητικά επίπεδα εξαιτίας της αναγκαιότητας της και της καθολικής επικρατούσας άποψης ότι πρόκειται για το «κοινό καλό». Λόγω του μικρού χρονικού διαστήματος από το ξέσπασμα της πανδημίας οι επιστημονικές έρευνες που έχουν προκύψει είναι περιορισμένες και εστιάζουν κυρίως στο πως οι εργαζόμενοι βιώνουν την Τηλεργασία, τις επιπτώσεις της, θετικές ή αρνητικές στην επαγγελματική αλλά και στην προσωπική τους ζωή και στην εργασιακή ικανοποίηση αλλά όχι σε θέματα που αφορούν την αποτελεσματική της εφαρμογή μέσα από την οπτική της επιχείρησης. Για να καλυφθεί αυτό το κενό στόχος της συγκεκριμένης έρευνας είναι να διερευνηθούν περαιτέρω οι συνθήκες κάτω από τις οποίες εφαρμόστηκε η Τηλεργασία από την σκοπιά των Στελεχών της Διοίκησης Ανθρωπίνων Πόρων. Συγκεκριμένα, επιδιώκεται να μελετηθεί σε τι βαθμό υιοθετήθηκε η πρακτική της τηλεργασίας, η ετοιμότητα των επιχειρήσεων κατά την «αναγκαστική» εφαρμογή της, ο βαθμός αποδοχής της από τα Στελέχη αλλά και τους εργαζόμενους των επιχειρήσεων, οι ενέργειες που έγιναν από τις επιχειρήσεις για την αποτελεσματική της εφαρμογής προκειμένου να ενισχύσουν συγκεκριμένες δεξιότητες του προσωπικού, οι επιπτώσεις για τους εργαζόμενους και την επιχείρηση, καθώς και η στάση των επιχειρήσεων στην προοπτική της υιοθέτησής της και στο μέλλον. Για τη συλλογή των δεδομένων υιοθετήθηκε ως ερευνητική στρατηγική η ποιοτική έρευνα. Συγκεκριμένα, με τη χρήση οδηγού συνέντευξης πραγματοποιήθηκαν ημι-δομημένες συνεντεύξεις με οκτώ (8) Στελέχη Διοίκησης Ανθρωπίνων Πόρων από επιχειρήσεις διαφορετικού μεγέθους και κλάδων. Η ανάλυση των δεδομένων πραγματοποιήθηκε με την θεματική ανάλυση. Μέσω της ανάλυσης αυτής προκύπτουν η άμεση & ευρεία αποδοχή της «Τηλεργασίας», λόγω των έκτακτων συνθηκών που οδηγούν στην επιβολή της (όπου βέβαια είναι εφικτό), o θετικός αντίκτυπος από την εφαρμογή της για τις επιχειρήσεις και τους εργαζόμενους, έντονοι προβληματισμοί πάνω σε ζητήματα ισορροπίας μεταξύ επαγγελματικής & προσωπικής ζωής καθώς και μία θετική στάση όσον αφορά την υιοθέτησή της υπό κανονικές συνθήκες. Ολοκληρώνοντας τη μελέτη παρουσιάζονται η συμβολή και οι περιορισμοί της έρευνας, καθώς και προτάσεις για μελλοντική έρευνα." ;
+          :dateOfSupport "2021-03-01"^^xsd:date ;
+          :department "Τμήμα Διοίκησης Επιχειρήσεων" ;
+          :institution "Πανεπιστήμιο Αιγαίου" ;
+          :language "Ελληνικά" ;
+          :libraryLink "http://hdl.handle.net/11610/22101" ;
+          :nameOfSupervisor "Δρ. Νίκη Γλαβέλη" ;
+          :numberOfPages "87" ;
+          :program "Πρόγραμμα Μεταπτυχιακών Σπουδών στη Διοίκηση Επιχειρήσεων για Στελέχη – Executive ΜΒΑ" ;
+          :title "H Τηλεργασία στην εποχή CΟVID-19: Απόψεις των Στελεχών Διοίκησης Ανθρωπίνων Πόρων" ;
+          :typeOfDissertation "MasterThesis" .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project/SampleID_6
+:SampleID_6 rdf:type owl:NamedIndividual ,
+                   :Sample ;
+          :basicUnit "Άτομα" ;
+          :collectionMethod "Δειγματοληψία χιονοστιβάδας (snowball sampling)" ;
+          :geographicalUnit "Σκουριές, Ιερισσός, Μεγάλη Παναγιά" ;
+          :methodOfAnalysis "Ποιοτική ανάλυση περιεχομένου" ;
+          :methodOfRecording "Ημιδομημένες συνεντεύξεις" ;
+          :recordingTools "Οδηγός συνέντευξης" ;
+          :sampleCollectionReference "Νοέμβριος – Δεκέμβριος 2022" ;
+          :sampleDescription "9 δρώντα υποκείμενα επί των γεγονότων στις Σκουριές (επιστήμονες, πολιτειακοί παράγοντες, εργαζόμενοι, κάτοικοι, μέλη κινήματος)" ;
+          :sampleSize "9" ;
+          :sampleTimeReference "2006 - 2022" ;
+          :spatialCoverage "Βορειοανατολική Χαλκιδική" ;
+          :statesOfReference "Ελλάδα" .
+:SurveyID_6 rdf:type owl:NamedIndividual ,
+                   :Survey ;
+          :hasSample :SampleID_6 ;
+          :sampleProd "Πρωτογενή" ;
+          :spaceAnalysis "Μη ιστορική" ;
+          :strategy "Qualitative" ;
+          :studyAssumptions "- Τα χαρακτηριστικά μίας βιομηχανικής επένδυσης η οποία δύναται να προωθήσει το οικονομικό επίπεδο των πολιτών, πρέπει να διέπονται από την οπτική της τοπικής ή της εθνικής αναπτυξιακής πολιτικής. - Η συλλογική οικονομική και κοινωνική ανάπτυξη που μπορεί να προκύψει από την επιλογή μίας επένδυσης, προϋποθέτει και την προστασία του περιβάλλοντος της επιλεχθείσας περιοχής." ;
+          :studyQuestions "Ναι" ;
+          :target "Η κοινωνιολογική αιτιολόγηση των συγκρούσεων στην Χαλκιδική" ;
+          :timeAnalysis "Μη ιστορική" ;
+          :workAssumptions "Ναι" .
+:WriterID_6 rdf:type owl:NamedIndividual ,
+                   :Writer ;
+          :firstName "Νικόλαος" ;
+          :gender "Άνδρας" ;
+          :surName "Αλεξανδρίδης" .
+:ThesisID_6 rdf:type owl:NamedIndividual ,
+                   :MasterThesis ;
+          :hasSurvey :SurveyID_6 ;
+          :hasWriter :WriterID_6 ;
+          :abstract "Η παρούσα έρευνα έχει ως επιδίωξη την κοινωνιολογική αιτιολόγηση των συγκρούσεων στην Χαλκιδική, μέσα από την ανάλυση των θεωρητικών θέσεων για την οικονομικό-κοινωνική ανάπτυξη στην συγκεκριμένη περιοχή που εκφράζουν οι συμμετέχοντες, ως σχετιζόμενα με την επένδυση υποκείμενα που έδρασαν και πήραν θέση αρνητική ή θετική στην επένδυση." ;
+          :alternativeHeadline "The Case in Skouries, Halkidiki: Environmental crime or Social and Economic development" ;
+          :dateOfSupport "2023-02-11"^^xsd:date ;
+          :department "Τμήμα Κοινωνιολογίας" ;
+          :institution "Πανεπιστήμιο Αιγαίου" ;
+          :keyWords "Σκουριές, Χαλκιδική, περιβαλλοντικό έγκλημα, κοινωνική ανάπτυξη, οικονομική ανάπτυξη, κοινωνικό κίνημα" ;
+          :language "Ελληνικά" ;
+          :libraryLink "http://hdl.handle.net/11610/27005" ;
+          :nameOfSupervisor "ΓΕΩΡΓΟΥΛΑΣ ΣΤΡΑΤΟΣ" ;
+          :numberOfPages "173" ;
+          :program "«ΕΡΕΥΝΑ ΓΙΑ ΤΗΝ ΤΟΠΙΚΗ ΚΟΙΝΩΝΙΚΗ ΑΝΑΠΤΥΞΗ ΚΑΙ ΣΥΝΟΧΗ»" ;
+          :title "Η Περίπτωση στις Σκουριές Χαλκιδικής: Περιβαλλοντικό έγκλημα ή Κοινωνική και Οικονομική ανάπτυξη" ;
+          :typeOfDissertation "MasterThesis" .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project/SampleID_7
+:SampleID_7 rdf:type owl:NamedIndividual ,
+                   :Sample ;
+          :basicUnit "πρόσφυγες-μετανάστες" ;
+          :collectionMethod "σκόπιμης δειγματοληψίας και της δειγματοληψίας της χιονοστιβάδας" ;
+          :geographicalUnit "Μυτιλήνη" ;
+          :methodOfAnalysis "θεματική ανάλυση περιεχομένου" ;
+          :methodOfRecording "ατομικών συνεντεύξεων, ηχογράφησης" ;
+          :recordingTools "Οδηγός συνέντευξης" ;
+          :sampleDescription "δέκα συνεντεύξεις εκ των οποίων δέκα είναι άντρες και δέκα γυναίκες" ;
+          :sampleSize "10" ;
+          :sampleTimeReference "2023" ;
+          :spatialCoverage "Λέσβος" ;
+          :statesOfReference "Ελλάδα" .
+:SurveyID_7 rdf:type owl:NamedIndividual ,
+                   :Survey ;
+          :hasSample :SampleID_7 ;
+          :sampleProd "Primary" ;
+          :spaceAnalysis "Μη Ιστορική" ;
+          :strategy "Qualitative" ;
+          :studyQuestions "Ποια είναι τα εμπόδια που αντιμετωπίζουν για την ένταξη τους στην αγορά εργασίας; Ποιος είναι ο ρόλος των κοινωνικών δικτύων στην ένταξη τους στην αγορά εργασίας; Ποια είναι τα εμπόδια που αντιμετωπίζουν για την ένταξη τους στην εκπαίδευση; Έχουν συμμετάσχει σε κάποια εκπαιδευτική δράση/ πρόγραμμα και γενικότερα έχουν θέληση να εκπαιδευτούν στην Ελλάδα; Τα εμπόδια που έχουν στην εκπαίδευση επηρεάζουν την ένταξη τους στην αγορά εργασίας; Τι ρόλο διαδραματίζει για εκείνους η εκπαίδευση στην ζωή τους, τους βοηθά στην εύρεση μιας θέσης στην αγορά εργασίας; Οι υφιστάμενες πολιτικές εργασιακής ένταξης επιδιώκουν την εργασιακή και κοινωνική ένταξη των προσφύγων- μεταναστών ή υπάρχουν πιθανότητες βελτίωσης τους;" ;
+          :target "να ακουστεί η φωνή των προσφύγων- μεταναστών, να ακουστούν οι απόψεις τους σχετικά με την ένταξη τους στην αγορά εργασίας και στον χώρο της εκπαίδευσης." ;
+          :timeAnalysis "Μη Ιστορική" .
+:WriterID_7 rdf:type owl:NamedIndividual ,
+                   :Writer ;
+          :firstName "Ουρανία" ;
+          :gender "Γυναίκα" ;
+          :surName "Βλαστού" .
+:ThesisID_7 rdf:type owl:NamedIndividual ,
+                   :MasterThesis ;
+          :hasSurvey :SurveyID_7 ;
+          :hasWriter :WriterID_7 ;
+          :abstract "Στην εργασία αυτή εξετάζεται το ζήτημα του προσφυγικού – μεταναστευτικού εστιάζοντας στην αγορά εργασίας και στην ένταξη τους σε αυτήν. Οι διαδικασίες ένταξης και ενσωμάτωσης των προσφύγων-μεταναστών στις κοινωνίες υποδοχής είναι αντικείμενο μελέτης από αρκετούς ερευνητές όπου κάθε ερευνητής ανάλογα με το αντικείμενο της έρευνας του δίνει έναν διαφορετικό ορισμό στις έννοιες αυτές." ;
+          :dateOfSupport "2023-06-01"^^xsd:date ;
+          :department "Τμήμα Κοινωνιολογίας" ;
+          :institution "Πανεπιστήμιο Αιγαίου" ;
+          :language "Ελληνική" ;
+          :libraryLink "https://hdl.handle.net/11610/28104" ;
+          :nameOfSupervisor "Ναγόπουλος Νικόλαος" ;
+          :numberOfPages "180" ;
+          :program "Έρευνα για την Τοπική Κοινωνική Ανάπτυξη και Συνοχή" ;
+          :title "Η ένταξη των προσφύγων- μεταναστών στην αγορά εργασίας: Πολιτικές ένταξης και μελέτη περίπτωσης εργασιακής ένταξης και επιχειρηματικότητας στην Λέσβο." ;
+          :typeOfDissertation "MasterThesis" .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project/SampleID_8
+:SampleID_8 rdf:type owl:NamedIndividual ,
+                   :Sample ;
+          :analysisTools "Microsoft Excel" ;
+          :basicUnit "ωφελούμενοι – διαμένοντες στο Κέντρο Υποδοχής και Ταυτοποίησης Χίου" ;
+          :collectionMethod "απλή τυχαία δειγματοληψία" ;
+          :geographicalUnit "Κέντρο Υποδοχής και Ταυτοποίησης (ΚΥΤ) Χίου" ;
+          :methodOfAnalysis "στατιστική επεξεργασία και ανάλυση των αποτελεσμάτων (διαγράμματα, υπολογισμοί ποσοστών)" ;
+          :methodOfRecording "Συλλογή στοιχείων μέσω δομημένου ερωτηματολογίου" ;
+          :recordingTools "δομημένο ερωτηματολόγιο" ;
+          :sampleCollectionReference "Αύγουστο του 2020" ;
+          :sampleDescription "υπήκοοι τρίτων χωρών (πρόσφυγες και μετανάστες) που διαμένουν στο Κέντρο Υποδοχής και Ταυτοποίησης Χίου" ;
+          :sampleSize "150" ;
+          :sampleTimeReference "2015-2020" ;
+          :spatialCoverage "Χίος" ;
+          :statesOfReference "Ελλάδα" .
+:SurveyID_8 rdf:type owl:NamedIndividual ,
+                   :Survey ;
+          :hasSample :SampleID_8 ;
+          :sampleProd "Primary (πρωτογενής έρευνα) και Secondary (δευτερογενή στοιχεία)" ;
+          :spaceAnalysis "Ιστορική" ;
+          :strategy "Mixed" ;
+          :studyQuestions "Yes (ΕΡΕΥΝΗΤΙΚΟ ΕΡΩΤΗΜΑ 1 έως 4)" ;
+          :target "να αναδείξει τη χρησιμότητα της επιστήμης των ανθρωπιστικών logistics ως νεότευκτου κλάδου στο μεταναστευτικό - προσφυγικό ζήτημα αλλά και τους κρίσιμους παράγοντες επιτυχίας για την αντιμετώπιση της έκτακτης αυτής ανάγκης μαζικής και αθρόας μετακίνησης πληθυσμών" ;
+          :timeAnalysis "Ιστορική" .
+:WriterID_8 rdf:type owl:NamedIndividual ,
+                   :Writer ;
+          :firstName "Βασιλική" ;
+          :gender "Γυναίκα" ;
+          :surName "Δανού" .
+:ThesisID_8 rdf:type owl:NamedIndividual ,
+                   :MasterThesis ;
+          :hasSurvey :SurveyID_8 ;
+          :hasWriter :WriterID_8 ;
+          :abstract "Η συγκεκριμένη εργασία έχει σαν σκοπό να αναδείξει ακριβώς το σύστημα διαχείρισης των αναγκών σε τέτοιου είδους δομές από κρατικούς και άλλους φορείς και στη συνέχεια μέσα από την έρευνα να εξετάσει πιθανές προκλήσεις που αντιμετωπίζουμε στο «πεδίο», καθώς και τον τρόπο προετοιμασίας και ανταπόκρισης σε έκτακτες καταστάσεις. Η παρούσα εργασία αποτελείται από τρία κύρια κεφάλαια. Το κεφάλαιο Α’ περιλαμβάνει το θεωρητικό υπόβαθρο των logistics με εστίαση στα humanitarian logistics, δηλαδή στα ανθρωπιστικά logistics. Στο δεύτερο κεφάλαιο γίνεται μία εκτεταμένη αναφορά στο προσφυγικό ζήτημα και ειδικότερα στο πώς αυτό αντιμετωπίστηκε διαχρονικά τόσο από τα οργανωμένα κράτη μέλη της ευρωπαϊκής Ένωσης όσο και σε κρατικό επίπεδο. Αρχικά σε επίπεδο νομοθεσίας και θεσμικής προετοιμασίας και μεταγενέστερα σε επιχειρησιακό επίπεδο με την εκπόνηση εθνικών σχεδίων δράσης για την αντιμετώπιση του, το μεταναστευτικό προσφυγικό πέρασε από ένα πρώιμο στάδιο εθελοντικής πρωτοβουλίας και ad hoc αντιμετώπισης σε πιο ώριμες και οργανωμένες στρατηγικές διαχείρισης. Στο τρίτο κεφάλαιο της εργασίας γίνεται η προσέγγιση από την πλευρά της έρευνας στο Κέντρο Υποδοχής και Ταυτοποίησης Χίου, στο οποίο και διετέλεσα ως διοικήτρια. Σκοπός να μελετηθούν αφενός οι κρίσιμοι παράγοντες επιτυχίας καθώς και η στρατηγική τακτική ή επιχειρησιακή τους προσέγγιση- σχεδίαση και αφετέρου από την πλευρά των αποδεκτών ωφελούμενών η ικανοποίηση των βασικών αναγκών τους μέσα από τις παροχές τις οποίες έλαβαν κατά τη διαμονή τους με σκοπό να καταλήξουμε στο συμπέρασμα σε προτάσεις για τη βελτίωση του όλου τοπικού άλλα και εθνικού συστήματος." ;
+          :alternativeHeadline "MasterThesis_Danou" ;
+          :dateOfSupport "2021-03-22"^^xsd:date ;
+          :department "Τμήμα Διοίκησης Επιχειρήσεων" ;
+          :institution "Πανεπιστήμιο Αιγαίου" ;
+          :language "Ελληνικά" ;
+          :libraryLink "http://hdl.handle.net/11610/22121" ;
+          :nameOfSupervisor "Ανδρέας Κακούρης" ;
+          :numberOfPages "132" ;
+          :program "ΠΡΟΓΡΑΜΜΑ ΜΕΤΑΠΤΥΧΙΑΚΩΝ ΣΠΟΥΔΩΝ ΣΤΗ ΔΙΟΙΚΗΣΗ ΕΠΙΧΕΙΡΗΣΕΩΝ" ;
+          :title "HUMANITARIAN LOGISTICS – H ΠΕΡΙΠΤΩΣΗ ΤΗΣ ΒΙΑΛ ΣΤΗ ΧΙΟ" ;
+          :typeOfDissertation "MasterThesis" .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project/SampleID_9
+:SampleID_9 rdf:type owl:NamedIndividual ,
+                   :Sample ;
+          :basicUnit "Task Force 714" ;
+          :methodOfAnalysis "Ποιοτική ανάλυση, Μελέτη Περίπτωσης (Case Study)" ;
+          :methodOfRecording "σειρά σε βάθος συνεντεύξεις" ;
+          :sampleDescription "Δυνάμεις Ειδικών Επιχειρήσεων (Special Operations Forces - SOF) των ΗΠΑ στο Ιράκ, σειρά πρώην επαγγελματιών και ειδικών που υπηρετούσαν στο TF 714" ;
+          :sampleTimeReference "2001 - 2008" ;
+          :spatialCoverage "Ιράκ" ;
+          :statesOfReference "Ιράκ, ΗΠΑ" .
+:SurveyID_9 rdf:type owl:NamedIndividual ,
+                   :Survey ;
+          :hasSample :SampleID_9 ;
+          :sampleProd "Πρωτογενή και Δευτερογενή" ;
+          :strategy "Qualitative" ;
+          :studyQuestions "πως και γιατί η TF 714 ήταν σε θέση να μάθει και να καινοτομήσει, αλλάζοντας τον εαυτό του στη μέση του πολέμου; σε ποιο βαθμό οι οργανωτικές, οργανωσιακές και επιχειρησιακές αλλαγές που εφάρμοσε η JSOC στο Ιράκ, μπορούν να εξηγηθούν ως αποτέλεσμα της ομάδας εργασίας που εξομοιώνει αυτά τα επιτυχημένα οργανωτικά χαρακτηριστικά;" ;
+          :target "η ανάδειξη σημαντικών ευρημάτων – διαπιστώσεων σχετικά με τον τρόπο με τον οποίο οι οργανωτικές και οργανωσιακές αλλαγές που εφαρμόστηκαν από τις Δυνάμεις Ειδικών Επιχειρήσεων (Special Operations Forces - SOF) των ΗΠΑ... συνέβαλαν καθορίστηκα στην επιτυχία της αποστολής της" ;
+          :timeAnalysis "Ιστορική" .
+:WriterID_9 rdf:type owl:NamedIndividual ,
+                   :Writer ;
+          :firstName "Χρήστος" ;
+          :gender "Άνδρας" ;
+          :surName "Δημητρέλλος" .
+:ThesisID_9 rdf:type owl:NamedIndividual ,
+                   :MasterThesis ;
+          :hasSurvey :SurveyID_9 ;
+          :hasWriter :WriterID_9 ;
+          :abstract "Η εργασία ξεκινάει με την θεωρητική προσέγγιση των διαδικασιών που αφορούν έναν οργανισμό. Συνεχίζει με τις επιρροές που δέχεται και καλείται να αντιμετωπίσει – και πάνω στις οποίες να προσαρμοστεί, οι οποίες έχουν καταγωγή από το εξωτερικό και το εσωτερικό περιβάλλον. Έπειτα αναφερόμαστε στην ανάγκη για αλλαγή και καινοτομία τόσο στην δομή της επιχείρησης, όσο και στον τρόπο λειτουργίας της, μέσα από μηχανισμούς μάθησης, και ανατροφοδότησης, προκειμένου να μπορέσει να παραμένει επιτυχημένος και αποδοτικός, και ανταγωνιστικός στην πάροδο του χρόνου. Σε όλα αυτά βέβαια η διαδικασία λήψης αποφάσεων παίζει καθοριστικό ρόλο. Δύο μέρη δομούν την παρούσα εργασία. Το πρώτο μέρος, αρχίζει με ένα κεφάλαιο το οποίο αναφέρεται στην διοίκηση, καθώς και τα μοντέλα που συναντάμε σε έναν οργανισμό. Στο δεύτερο κεφάλαιο, συνεχίζουμε με την στρατηγική των επιχειρήσεων, το πώς διαμορφώνεται και ποιες προσεγγίσεις υπάρχουν. Στο επόμενο κεφάλαιο αναλύουμε την διαδικασία λήψης αποφάσεων σε έναν οργανισμό καθώς και τα βήματα αυτής. Στο τέταρτο κεφάλαιο επισημαίνουμε την σημαντικότητα της δημιουργίας καινοτομίας σε έναν οργανισμό και των διαδικασιών μάθησης. Στο πέμπτο κεφάλαιο, το πρώτο μέρος της εργασίας ολοκληρώνεται με την επεξήγηση της διοίκησης αλλαγών και την εφαρμογή αυτών. Το δεύτερο μέρος της εργασίας ασχολείται με την δράση μιας στρατιωτικής δύναμης ειδικών επιχειρήσεων στο Ιράκ την περίοδο 2003 – 2006. Στο έκτο κεφάλαιο παραθέτουμε το υπόβαθρο της μελέτης περίπτωσης μέσα από μια ιστορική αναδρομή καθώς και τα ερευνητικά ερωτήματα τα οποία θα μας απασχολήσουν. Στο επόμενο κεφάλαιο αναλύουμε την μελέτη περίπτωσης προκειμένου να μπορέσουμε να ερμηνεύσουμε το περιβάλλον και να καταφέρουμε να προσεγγίσουμε τα ερευνητικά ερωτήματα. Στο τελευταίο κεφάλαιο καταγράφουμε τα αποτελέσματα που προέκυψαν από την εκπόνηση της διπλωματικής εργασίας τα οποία αφορούν την μελέτη περίπτωσης ξεχωριστά αλλά και σε σύγκριση με την θεωρία του Α μέρους. Σκοπός λοιπόν αυτής της μελέτης είναι η ανάδειξη σημαντικών ευρημάτων – διαπιστώσεων σχετικά με τον τρόπο με τον οποίο οι οργανωτικές και οργανωσιακές αλλαγές που εφαρμόστηκαν από τις Δυνάμεις Ειδικών Επιχειρήσεων (Special Operations Forces - SOF) των ΗΠΑ, κατά την περίοδο που ξεκίνησαν τη δράση τους στο Ιράκ το 2003, με την Task Force 714 (Τακτική Δύναμη 714 - TF 714), συνέβαλαν καθορίστηκα στην επιτυχία της αποστολής της, η οποία ήταν η διάλυση του μυστικά δικτυωμένου οργανισμού της Al Qaida Iraq - Αλ Κάιντα του Ιράκ (AQI)." ;
+          :alternativeHeadline "MasterThesis_Dimitrellos" ;
+          :dateOfSupport "2020-11-01"^^xsd:date ;
+          :department "Τμήμα Διοίκησης Επιχειρήσεων" ;
+          :institution "Πανεπιστήμιο Αιγαίου" ;
+          :keyWords "Διοίκηση, Στρατηγική, Λήψη Απόφασης, Καινοτομία, Διοίκηση Αλλαγών, Task Force 714, Ιράκ, Al Qaida Iraq" ;
+          :language "Ελληνικά" ;
+          :libraryLink "http://hdl.handle.net/11610/22135" ;
+          :nameOfSupervisor "Δρ. Μιχαήλ Μπεκιάρης" ;
+          :numberOfPages "99" ;
+          :program "Μεταπτυχιακό Πρόγραμμα Σπουδών στη Διοίκηση επιχειρήσεων" ;
+          :title "Διοίκηση Έργου και Αλλαγών στις Στρατιωτικές Ειδικές Επιχειρήσεις" ;
+          :typeOfDissertation "MasterThesis" .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project/SampleID_10
+:SampleID_10 rdf:type owl:NamedIndividual ,
+                   :Sample ;
+          :basicUnit "Νομοθεσία" ;
+          :methodOfAnalysis "Συγκριτική και ποιοτική ανάλυση" ;
+          :methodOfRecording "Βιβλιογραφική έρευνα και μελέτη νομοθεσίας" ;
+          :sampleCollectionReference "2020-10-01" ;
+          :sampleDescription "Ανώνυμες Εταιρείες (ΑΕ) και Εταιρείες Περιορισμένης Ευθύνης (ΕΠΕ)" ;
+          :sampleTimeReference "2007-2020" ;
+          :statesOfReference "Ελλάδα" .
+:SurveyID_10 rdf:type owl:NamedIndividual ,
+                   :Survey ;
+          :hasSample :SampleID_10 ;
+          :sampleProd "Secondary" ;
+          :spaceAnalysis "Μη Ιστορική" ;
+          :strategy "Qualitative" ;
+          :target "μελέτη του νέου κώδικα ανωνύμων εταιρειών ο οποίος προέκυψε από το νόμο 4548 / 2018" ;
+          :timeAnalysis "Ιστορική" .
+:WriterID_10 rdf:type owl:NamedIndividual ,
+                   :Writer ;
+          :firstName "ΠΑΝΑΓΙΩΤΗΣ" ;
+          :gender "Άνδρας" ;
+          :surName "ΔΟΥΛΑΜΗΣ" .
+:ThesisID_10 rdf:type owl:NamedIndividual ,
+                   :MasterThesis ;
+          :hasSurvey :SurveyID_10 ;
+          :hasWriter :WriterID_10 ;
+          :abstract "Δίχως αμφιβολία το ζήτημα της αντιμετώπισης των ανωνύμων εταιρειών και της φορολόγησης αυτών είναι ένα φλέγον θέμα διαχρονικά για το κράτος. Όπως υποστηρίζουν οι οικονομολόγοι της φιλελεύθερης σχολής σκέψης «όσο μεγαλύτερη είναι η φορολογία τόσο περισσότερο αυτό πιέζει τις επιχειρήσεις και μειώνεται η δυνατότητα να επιβιώσουν και να αναπτυχθούν καθώς αναγκάζονται να δίνουν ολοένα και μεγαλύτερο τμήμα από τα κέρδη τους για την αποπληρωμή των φορολογικών τους υποχρεώσεων». Στη παρούσα πτυχιακή εργασία θα μελετηθεί ο νέος κώδικας ανωνύμων εταιρειών ο οποίος προέκυψε από το νόμο 4548 / 2018. Έτσι θα μπορέσουμε να δούμε τις διαφορές ανάμεσα στη καινούργια και στις παλαιότερες νομοθεσίες σχετικά με την ύπαρξη των ανωνύμων εταιρειών. Τέλος, ο νόμος 4548 / 2018 εκτός από τις τροποποιήσεις και τις βελτιώσεις που παρέχει στη μελέτη των ανωνύμων εταιρειών στη χώρα μας εισάγει και ορισμένες καινοτομίες οι οποίες έχουν ως στόχο να κάνουν τις ΑΕ πιο σύγχρονες και πιο λειτουργικές προς όφελος των μετόχων αυτών." ;
+          :alternativeHeadline "MasterThesis_Doulamis" ;
+          :dateOfSupport "2020-10-28"^^xsd:date ;
+          :institution "Πανεπιστήμιο Αιγαίου" ;
+          :keyWords "Ανώνυμη Εταιρία, ΕΠΕ, Νόμος 4548 / 2018, νέος κώδικας, αλλαγές, νομοθεσία" ;
+          :language "Ελληνικά" ;
+          :libraryLink "http://hdl.handle.net/11610/22106" ;
+          :nameOfSupervisor "Χαρακτινιώτης Στέφανος" ;
+          :numberOfPages "72" ;
+          :program "ΠΡΟΓΡΑΜΜΑ ΜΕΤΑΠΤΥΧΙΑΚΩΝ ΣΠΟΥΔΩΝ ΣΤΗ ΔΙΟΙΚΗΣΗ ΕΠΙΧΕΙΡΗΣΕΩΝ – ΜΒΑ" ;
+          :title "ΖΗΤΗΜΑΤΑ ΔΙΟΙΚΗΣΗΣ ΚΑΙ ΕΛΕΓΧΟΥ ΥΠΟ ΤΟ ΠΡΙΣΜΑ ΤΩΝ ΠΡΟΣΦΑΤΩΝ ΑΛΛΑΓΩΝ ΣΤΗ ΝΟΜΟΘΕΣΙΑ ΠΟΥ ΔΙΕΠΕΙ ΤΗ ΛΕΙΤΟΥΡΓΙΑ ΤΩΝ ΑΕ ΚΑΙ ΕΠΕ: ΑΛΛΑΓΕΣ ΚΑΙ ΠΡΟΚΛΗΣΕΙΣ" ;
+          :typeOfDissertation "MasterThesis" .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project/SampleID_11
+:SampleID_11 rdf:type owl:NamedIndividual ,
+                   :Sample ;
+          :basicUnit "εργαζόμενοι σε Μ.Κ.Ο. στον χώρο της εκπαίδευσης" ;
+          :collectionMethod "τεχνική της δειγματοληψίας χιονοστιβάδας (snowball sampling)" ;
+          :geographicalUnit "Μυτιλήνη" ;
+          :methodOfAnalysis "φαινομενολογία" ;
+          :methodOfRecording "ημι – δομημένων συνεντεύξεων" ;
+          :recordingTools "Οδηγός συνέντευξης" ;
+          :sampleCollectionReference "2021-05-19 έως 2021-07-07" ;
+          :sampleDescription "εκπαιδευτικοί και εργαζόμενοι των οργανώσεων στον χώρο της εκπαίδευσης" ;
+          :sampleSize "10" ;
+          :sampleTimeReference "2015-2021" ;
+          :spatialCoverage "Λέσβος" ;
+          :statesOfReference "Ελλάδα" .
+:SurveyID_11 rdf:type owl:NamedIndividual ,
+                   :Survey ;
+          :hasSample :SampleID_11 ;
+          :sampleProd "Πρωτογενής" ;
+          :spaceAnalysis "Μη Ιστορική" ;
+          :strategy "Qualitative" ;
+          :studyQuestions "Ναι" ;
+          :target "διερεύνηση του τρόπου που οι Μ.Κ.Ο. συμβάλλουν στην εκπαίδευση παιδιών μεταναστών, προσφύγων και αιτούντων άσυλο και των επιπτώσεων του στην κοινωνική ένταξη και συνοχή" ;
+          :timeAnalysis "Μη Ιστορική" ;
+          :workAssumptions "Ναι" .
+:WriterID_11 rdf:type owl:NamedIndividual ,
+                   :Writer ;
+          :firstName "Χρυσούλα" ;
+          :gender "Γυναίκα" ;
+          :surName "Δρόκαλου" .
+:ThesisID_11 rdf:type owl:NamedIndividual ,
+                   :MasterThesis ;
+          :hasSurvey :SurveyID_11 ;
+          :hasWriter :WriterID_11 ;
+          :abstract "Στην παρούσα εργασία εξετάζονται οι λόγοι και οι τρόποι μέσω των οποίων οι Μη Κυβερνητικές Οργανώσεις, οι Διεθνείς Οργανισμοί και η Ευρωπαϊκή Ένωση συμβάλλουν στην εκπαίδευση των παιδιών μεταναστών, προσφύγων και αιτούντων άσυλο. Επιχειρείται μία εκ βαθέως διερεύνηση του μεταναστευτικού ζητήματος και των πολιτικών αντιμετώπισής του από εθνικούς φορείς και φορείς της Ε.Ε. που επιτρέπουν στις Μ.Κ.Ο. να αναλάβουν δράση στον χώρο της εκπαίδευσης. Επίσης, παρουσιάζονται οι λειτουργίες του σχολείου και τα μοντέλα προσέγγισης της διαπολιτισμικότητας ώστε να αναδειχθεί ο τρόπος που οι Μ.Κ.Ο. προσεγγίζουν την όλη εκπαιδευτική διαδικασία και τελικά ο σκοπός των δράσεων τους." ;
+          :alternativeHeadline "The contribution of International Organizations, the European Union and Non-Governmental Organizations to the education of refugees and migrants in Lesvos" ;
+          :dateOfSupport "2021-09-21"^^xsd:date ;
+          :department "Τμήμα Κοινωνιολογίας" ;
+          :institution "Πανεπιστήμιο Αιγαίου" ;
+          :keyWords "μεταναστευτικό, εκπαίδευση, διαπολιτισμικότητα, κοινωνική ένταξη, Μ.Κ.Ο." ;
+          :language "Ελληνική" ;
+          :libraryLink "https://hdl.handle.net/11610/30308" ;
+          :nameOfSupervisor "Μαρκαντωνάτου Μαρία" ;
+          :numberOfPages "125" ;
+          :program "ΕΡΕΥΝΑ ΓΙΑ ΤΗΝ ΤΟΠΙΚΗ ΚΟΙΝΩΝΙΚΗ ΑΝΑΠΤΥΞΗ ΚΑΙ ΣΥΝΟΧΗ" ;
+          :title "Η συμβολή των Διεθνών Οργανισμών, της Ευρωπαϊκής Ένωσης και των Μη Κυβερνητικών Οργανώσεων στην εκπαίδευση προσφύγων και μεταναστών στη Λέσβο" ;
+          :typeOfDissertation "MasterThesis" .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project/SampleID_12
+:SampleID_12 rdf:type owl:NamedIndividual ,
+                   :Sample ;
+          :analysisTools "SPSS Version 26" ;
+          :basicUnit "εργαζόμενοι" ;
+          :collectionMethod "τυχαίο τρόπο μέσω του Facebook" ;
+          :methodOfAnalysis "ANOVA, T-Test, Chi-Square, Pearson Correlation" ;
+          :methodOfRecording "ερωτηματολόγιο" ;
+          :recordingTools "ερωτηματολόγιο" ;
+          :sampleCollectionReference "2021-01-15 - 2021-03-15" ;
+          :sampleDescription "Έλληνες εργαζόμενοι" ;
+          :sampleSize "143" ;
+          :sampleTimeReference "περίοδο της πανδημίας" ;
+          :statesOfReference "Ελλάδα" .
+:SurveyID_12 rdf:type owl:NamedIndividual ,
+                   :Survey ;
+          :hasSample :SampleID_12 ;
+          :sampleProd "Πρωτογενής και δευτερογενής" ;
+          :spaceAnalysis "Μη Ιστορική" ;
+          :strategy "Quantitative" ;
+          :studyAssumptions "Ναι" ;
+          :studyQuestions "Ναι" ;
+          :target "παρουσίαση και ανάλυση του ζητήματος της εναρμόνισης μεταξύ της επαγγελματικής και της προσωπικής ζωής των εργαζομένων" ;
+          :timeAnalysis "Μη Ιστορική" ;
+          :workAssumptions "Ναι" .
+:WriterID_12 rdf:type owl:NamedIndividual ,
+                   :Writer ;
+          :firstName "Βασιλική-Χριστίνα" ;
+          :gender "Γυναίκα" ;
+          :surName "Μπαλή" .
+:ThesisID_12 rdf:type owl:NamedIndividual ,
+                   :MasterThesis ;
+          :hasSurvey :SurveyID_12 ;
+          :hasWriter :WriterID_12 ;
+          :abstract "The term Work-life balance, i.e. the absence of conflict between the professional and personal life of an employee, is significantly influenced by factors related to both work and family status. The term is mainly used to describe the situation in the relationship / balance between a person's responsibilities in professional life (public) and private life (family) and, therefore, it is impossible to have the same meaning for everyone. The purpose of this paper is to present and analyze the issue of Work-life balance of employees, especially during the financial crisis." ;
+          :alternativeHeadline "THE WORK-LIFE BALANCE OF EMPLOYEES DURING THE FINANCIAL CRISIS" ;
+          :dateOfSupport "2021-04-19"^^xsd:date ;
+          :department "Σχολή Επιστημών Διοίκησης" ;
+          :institution "Πανεπιστήμιο Αιγαίου" ;
+          :language "Ελληνικά" ;
+          :libraryLink "http://hdl.handle.net/11610/22133" ;
+          :nameOfSupervisor "ΑΝΔΡΕΑΣ ΚΟΥΤΟΥΠΗΣ" ;
+          :numberOfPages "114" ;
+          :program "ΜΕΤΑΠΤΥΧΙΑΚΟ ΠΡΟΓΡΑΜΜΑ ΣΠΟΥΔΩΝ ΣΤΗ ΔΙΟΙΚΗΣΗ ΕΠΙΧΕΙΡΗΣΕΩΝ (ΜΒΑ)" ;
+          :title "Η ΕΝΑΡΜΟΝΙΣΗ ΠΡΟΣΩΠΙΚΗΣ ΚΑΙ ΕΠΑΓΓΕΛΜΑΤΙΚΗΣ ΖΩΗΣ ΤΩΝ ΕΡΓΑΖΟΜΕΝΩΝ ΣΕ ΠΕΡΙΟΔΟ ΚΡΙΣΗΣ" ;
+          :typeOfDissertation "MasterThesis" .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project/SampleID_13
+:SampleID_13 rdf:type owl:NamedIndividual ,
+                   :Sample ;
+          :analysisTools "Excel, MATLAB" ;
+          :basicUnit "Daily and weekly closing prices of shipping indices (BDI, BPI, BCI, BSI, BHSI, BDTI, BCTI) and commodity indices/prices (GOLD, AlUMINA, IRON ORE, BRENT, NG, WTI, LPG, SOYBEANS, Wheat, COT)" ;
+          :geographicalUnit "Commodity and Freight markets" ;
+          :methodOfAnalysis "Dynamic Conditional Correlation (DCC) GARCH model" ;
+          :methodOfRecording "Database extraction from Thomson Reuters Eikon" ;
+          :sampleDescription "Econometric analysis of shipping indices and commodity price returns, Daily and weekly data from 2000 to 2019" ;
+          :sampleTimeReference "2000 to 2019" ;
+          :spatialCoverage "Global" ;
+          :statesOfReference "Global" .
+:SurveyID_13 rdf:type owl:NamedIndividual ,
+                   :Survey ;
+          :hasSample :SampleID_13 ;
+          :sampleProd "Secondary" ;
+          :spaceAnalysis "Μη Ιστορική" ;
+          :strategy "Quantitative" ;
+          :studyQuestions "Presence of clear questions" ;
+          :target "The purpose of this research is to study how freight markets and commodities interact and what kind of correlation is there between them and it aims also to examine volatility spillovers between commodities’ prices and freight rates." ;
+          :timeAnalysis "Μη Ιστορική" .
+:WriterID_13 rdf:type owl:NamedIndividual ,
+                   :Writer ;
+          :firstName "Γεώργιος" ;
+          :gender "Άνδρας" ;
+          :surName "Χριστάκης" .
+:ThesisID_13 rdf:type owl:NamedIndividual ,
+                   :MasterThesis ;
+          :hasSurvey :SurveyID_13 ;
+          :hasWriter :WriterID_13 ;
+          :abstract "This research investigates the correlations between freight rates and commodities' markets during the last decade. We employ the Dynamic Conditional Correlation (DCC) model to examine dynamics in the correlation of returns between shipping indices and commodities markets such as agricultural products, oil and energy indices. Empirical findings indicate significant correlation dynamics among commodities' price returns and freight rates during both the pre-crisis and the crisis period, while there is significant evidence that their interdependence differs when we capture shipping indices correlation with the global commodities' index. This research extends the volatility spillovers literature and results are useful for industry practitioners, traders and portfolio managers." ;
+          :alternativeHeadline "Dynamic correlations between freight markets and commodities market" ;
+          :dateOfSupport "2020-04-01"^^xsd:date ;
+          :institution "Πανεπιστήμιο Αιγαίου" ;
+          :keyWords "Shipping, Freights, Volatility, prices, colleration, Commodities, dcc model, GARCH" ;
+          :language "English" ;
+          :libraryLink "http://hdl.handle.net/11610/22123" ;
+          :nameOfSupervisor "Andreas Andrikopoulos" ;
+          :numberOfPages "81" ;
+          :program "MBA Χίος" ;
+          :title "Δυναμικές συσχετίσεις μεταξύ των ναυλαγορών και της αγοράς των εμπορευμάτων" ;
+          :typeOfDissertation "MasterThesis" .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project/SampleID_14
+:SampleID_14 rdf:type owl:NamedIndividual ,
+                   :Sample ;
+          :basicUnit "Εκθέσεις γνωμοδότησης" ;
+          :collectionMethod "Σκόπιμη επιλογή εκθέσεων μεγάλων ελεγκτικών εταιρειών" ;
+          :methodOfAnalysis "Ποιοτική ανάλυση και συγκριτική παρουσίαση" ;
+          :methodOfRecording "Επισκόπηση και χρήση πληροφοριών και στοιχείων από δημοσιευμένες εκθέσεις και οικονομικές καταστάσεις" ;
+          :recordingTools "Εκθέσεις μεγάλων ελεγκτικών εταιριών (RSM, Grant Thornton, KPMG), Νόμος 4548/2018" ;
+          :sampleCollectionReference "2020" ;
+          :sampleDescription "Εκθέσεις μεγάλων ελεγκτικών εταιριών (RSM GREECE, Grant Thornton, KPMG) για συναλλαγές εταιρειών (ATTICA BANK, TRASTOR, Optima Bank, ΕΛΠΕ)." ;
+          :sampleSize "4" ;
+          :sampleTimeReference "2016-2020" ;
+          :statesOfReference "ΕΛΛΑΔΑ" .
+:SurveyID_14 rdf:type owl:NamedIndividual ,
+                   :Survey ;
+          :hasSample :SampleID_14 ;
+          :sampleProd "Secondary" ;
+          :spaceAnalysis "Μη Ιστορική" ;
+          :strategy "Qualitative" ;
+          :target "Αντικείμενο αυτής της διπλωματικής εργασίας είναι οι αλλαγές που επιφέρει ο νέος Νόμος 4548/2018 στις συναλλαγές της Ανώνυμης Εταιρίας με συνδεδεμένα μέρη." ;
+          :timeAnalysis "Μη Ιστορική" .
+:WriterID_14 rdf:type owl:NamedIndividual ,
+                   :Writer ;
+          :firstName "Άννα" ;
+          :gender "Γυναίκα" ;
+          :surName "Ηλιοπούλου" .
+:ThesisID_14 rdf:type owl:NamedIndividual ,
+                   :MasterThesis ;
+          :hasSurvey :SurveyID_14 ;
+          :hasWriter :WriterID_14 ;
+          :abstract "Η Ανώνυμη Εταιρία επίκεντρο της σύγχρονης οικονομικής ζωής απασχολεί τον επιχειρηματικό, τον οικονομικό και τον κλάδο του Εμπορικού Δικαίου, καθώς η ανάπτυξη της επέρχεται παράλληλα με την οικονομική ανάπτυξη. Αντικείμενο αυτής της διπλωματικής εργασίας είναι οι αλλαγές που επιφέρει ο νέος Νόμος 4548/2018 στις συναλλαγές της Ανώνυμης Εταιρίας με συνδεδεμένα μέρη. Υπό αυτό το πρίσμα, παρουσιάζεται κατ΄ αρχάς το θεωρητικό πλαίσιο του Νόμου που αφορά τις συναλλαγές με συνδεδεμένα μέρη και εν συνεχεία γίνεται προσπάθεια ανάδειξης και αποτύπωσης του θέματος μέσα από σχετικές εκθέσεις μεγάλων ελεγκτικών εταιριών βάσει του άρθρου 101 του Ν. 4548/2018 που έχουν καταρτιστεί στο πλαίσιο των συναλλαγών εταιριών με συνδεδεμένα τους μέρη." ;
+          :alternativeHeadline "MasterThesis_Iliopoulou" ;
+          :dateOfSupport "2020-11-13"^^xsd:date ;
+          :department "Τμήμα Διοίκησης Επιχειρήσεων" ;
+          :institution "Πανεπιστήμιο Αιγαίου" ;
+          :keyWords "Ανώνυμη Εταιρία, Συναλλαγές με συνδεδεμένα μέρη, Νόμος 4548/2018, άρθρο 101, ελεγκτικές εταιρίες" ;
+          :language "Ελληνικά" ;
+          :libraryLink "http://hdl.handle.net/11610/22124" ;
+          :nameOfSupervisor "Στέφανος Χαρακτινιώτης" ;
+          :numberOfPages "57" ;
+          :program "ΠΡΟΓΡΑΜΜΑ ΜΕΤΑΠΤΥΧΙΑΚΩΝ ΣΠΟΥΔΩΝ ΣΤΗ ΔΙΟΙΗΚΗΣΗ ΕΠΙΧΕΙΡΗΣΕΩΝ (ΜΒΑ)" ;
+          :title "ΟΙ ΣΥΝΑΛΛΑΓΕΣ ΜΕ ΤΑ ΣΥΝΔΕΔΕΜΕΝΑ ΜΕΡΗ ΥΠΟ ΤΟ ΠΡΙΣΜΑ ΤΟΥ ΝΕΟΥ ΝΟΜΟΥ 4548/2018" ;
+          :typeOfDissertation "MasterThesis" .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project/SampleID_15
+:SampleID_15 rdf:type owl:NamedIndividual ,
+                   :Sample ;
+          :basicUnit "Περιφέρεια Βορείου Αιγαίου" ;
+          :geographicalUnit "Λέσβος, Χίος, Σάμος, Λήμνος" ;
+          :methodOfAnalysis "Συγκριτική μελέτη, επεξεργασία στατιστικών στοιχείων, SWOT ανάλυση" ;
+          :methodOfRecording "Βιβλιογραφική ανασκόπηση, δημοσίευση στατιστικών δεδομένων και αναφορών από θεσμικούς φορείς" ;
+          :recordingTools "Ερωτηματολόγια διαβούλευσης, Στατιστικές αναφορές (Regional Innovation Scoreboard)" ;
+          :sampleCollectionReference "2020-04-01" ;
+          :sampleDescription "Περιφέρεια Βορείου Αιγαίου, Μικρομεσαίες Επιχειρήσεις" ;
+          :sampleTimeReference "2014 – 2020" ;
+          :spatialCoverage "Περιφέρεια Βορείου Αιγαίου" ;
+          :statesOfReference "Ελλάδα" .
+:SurveyID_15 rdf:type owl:NamedIndividual ,
+                   :Survey ;
+          :hasSample :SampleID_15 ;
+          :sampleProd "Secondary" ;
+          :spaceAnalysis "Μη Ιστορική" ;
+          :strategy "Mixed" ;
+          :target "Σκοπός της παρούσας διπλωματικής εργασίας είναι να παρουσιάσει την Στρατηγική Έξυπνης Εξειδίκευσης (RIS) σε Ευρωπαϊκό και Εθνικό επίπεδο και στη συνέχεια την εξειδίκευση του πλάνου δράσεων της Στρατηγικής Έξυπνης Εξειδίκευσης στην Περιφέρεια Βορείου Αιγαίου." ;
+          :timeAnalysis "Μη Ιστορική" .
+:WriterID_15 rdf:type owl:NamedIndividual ,
+                   :Writer ;
+          :firstName "Ειρήνη" ;
+          :gender "Γυναίκα" ;
+          :surName "Καλυμνιού" .
+:ThesisID_15 rdf:type owl:NamedIndividual ,
+                   :MasterThesis ;
+          :hasSurvey :SurveyID_15 ;
+          :hasWriter :WriterID_15 ;
+          :abstract "Οι απώλειες που σημειώθηκαν για την χώρα μας αλλά και για το σύνολο των χωρών της Ευρωπαϊκής Ένωσης από την κρίση που έπληξε το σύνολο των κρατών, αποτέλεσαν το αντικείμενο της πολιτικής συνοχής όπου σύμφωνα με την προγραμματική περίοδο 2014 – 2020 σκοπός της Ένωσης ήταν να επιτευχθεί η οικονομική, κοινωνική και εδαφική συνοχή. Στα πλαίσια αυτής τη νέας στρατηγικής της Ευρωπαϊκής Ένωσης, τέθηκαν μια σειρά επιμέρους στρατηγικών και εργαλείων για την οικονομική ανάπτυξη και την άμβλυνση των ανισοτήτων ιδιαίτερα στις περιφέρειες που επλήγησαν περισσότερο από την κρίση. Ένα από τα εργαλεία που θεσμοθετήθηκαν από την επιτροπή, είναι η Στρατηγική Έξυπνης Eξειδίκευσης. Η παρούσα διπλωματική εργασία, παρουσιάζει τις θεσπισμένες πολιτικές της Ε.Ε. που αφορά την Στρατηγική Έξυπνης Εξειδίκευσης, και την Εθνική Στρατηγική Έξυπνης Εξειδίκευσης που διαμορφώνεται μέσα από το Εθνικό Στρατηγικό Πλαίσιο Αναφοράς και πιο συγκεκριμένα τις δράσεις που αφορούν την έρευνα και καινοτομία." ;
+          :alternativeHeadline "MasterThesis_Kalimniou" ;
+          :dateOfSupport "2020-04-01"^^xsd:date ;
+          :department "Τμήμα Διοίκησης Επιχειρήσεων" ;
+          :institution "Πανεπιστήμιο Αιγαίου" ;
+          :keyWords "Έξυπνη εξειδίκευση, Καινοτομία, Συνοχή, Στρατηγική, Περιφέρεια" ;
+          :language "Ελληνικά" ;
+          :libraryLink "http://hdl.handle.net/11610/22119" ;
+          :nameOfSupervisor "ΧΡΥΣΤΟΦΑΚΗΣ ΕΜΜΑΝΟΥΗΛ" ;
+          :numberOfPages "110" ;
+          :program "ΠΡΟΓΡΑΜΜΑ ΜΕΤΑΠΤΥΧΙΑΚΩΝ ΣΠΟΥΔΩΝ - ΜΒΑ, ΚΑΤΕΥΘΥΝΣΗ: ΟΡΓΑΝΩΣΗ ΚΑΙ ΔΙΟΙΚΗΣΗ" ;
+          :title "ΣΤΡΑΤΗΓΙΚΗ ΕΠΙΧΕΙΡΗΜΑΤΙΚΟΤΗΤΑΣ ΚΑΙ ΚΑΙΝΟΤΟΜΙΑΣ ΜΕΣΑ ΑΠΟ ΤΟΝ ΠΕΡΙΦΕΡΕΙΑΚΟ ΠΡΟΓΡΑΜΜΑΤΙΣΜΟ: ΠΕΡΙΠΤΩΣΗ ΠΕΡΙΦΕΡΕΙΑΣ Β. ΑΙΓΑΙΟΥ" ;
+          :typeOfDissertation "MasterThesis" .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project/SampleID_16
+:SampleID_16 rdf:type owl:NamedIndividual ,
+                   :Sample ;
+          :analysisTools "E-Views και SPSS" ;
+          :basicUnit "Ξενοδοχειακές επιχειρήσεις" ;
+          :collectionMethod "μη-πιθανοτική δειγματοληψία" ;
+          :methodOfAnalysis "μοντέλο του Jones, τροποποιημένο μοντέλο του Jones, t-test, ανάλυση παλινδρόμησης" ;
+          :methodOfRecording "Καταγραφή από χρηματοοικονομικές καταστάσεις" ;
+          :sampleCollectionReference "2021" ;
+          :sampleDescription "Εισηγμένες ξενοδοχειακές επιχειρήσεις στο χρηματιστήριο του Euronext" ;
+          :sampleSize "9" ;
+          :sampleTimeReference "2015-2019" ;
+          :spatialCoverage "Euronext (Παρίσι, Βρυξέλλες και Λισαβόνα)" ;
+          :statesOfReference "Europe" .
+:SurveyID_16 rdf:type owl:NamedIndividual ,
+                   :Survey ;
+          :hasSample :SampleID_16 ;
+          :sampleProd "Secondary" ;
+          :spaceAnalysis "Μη Ιστορική" ;
+          :strategy "Quantitative" ;
+          :studyAssumptions "ΕΕ1: Οι επιχειρήσεις του ξενοδοχειακού κλάδου εφαρμόζουν μεθόδους και τεχνικές διαχείρισης των κερδών τους βάσει δεδουλευμένων., ΕΕ2: Οι μεγαλύτερες επιχειρήσεις του ξενοδοχειακού κλάδου εφαρμόζουν με χαμηλότερη ένταση μεθόδους και τεχνικές διαχείρισης των κερδών τους βάσει δεδουλευμένων., ΕΕ3: Οι περισσότερο μοχλευμένες επιχειρήσεις του ξενοδοχειακού κλάδου εφαρμόζουν με χαμηλότερη ένταση μεθόδους και τεχνικές διαχείρισης των κερδών τους βάσει δεδουλευμένων., ΕΕ4: Οι περισσότερο κερδοφόρες επιχειρήσεις του ξενοδοχειακού κλάδου εφαρμόζουν με υψηλότερη ένταση μεθόδους και τεχνικές διαχείρισης των κερδών τους βάσει δεδουλευμένων., ΕΕ5: Οι περισσότερο ιδιοκτησιακά συγκεντρωμένες επιχειρήσεις του ξενοδοχειακού κλάδου εφαρμόζουν με χαμηλότερη ένταση μεθόδους και τεχνικές διαχείρισης των κερδών τους βάσει δεδουλευμένων." ;
+          :studyQuestions "Yes" ;
+          :target "η διερεύνηση της χειραγώγησης των κερδών μέσω δεδουλευμένων στον ξενοδοχειακό κλάδο, καθώς και η επίδραση τεσσάρων εταιρικών χαρακτηριστικών σε αυτή." ;
+          :timeAnalysis "Μη Ιστορική" ;
+          :workAssumptions "Yes" .
+:WriterID_16 rdf:type owl:NamedIndividual ,
+                   :Writer ;
+          :firstName "Δέσποινα – Ταξιαρχούλα" ;
+          :gender "Γυναίκα" ;
+          :surName "Καραμανώλη" .
+:ThesisID_16 rdf:type owl:NamedIndividual ,
+                   :MasterThesis ;
+          :hasSurvey :SurveyID_16 ;
+          :hasWriter :WriterID_16 ;
+          :abstract "Σκοπός της παρούσας μελέτης είναι η διερεύνηση της χειραγώγησης των κερδών μέσω δεδουλευμένων στον ξενοδοχειακό κλάδο, καθώς και η επίδραση τεσσάρων εταιρικών χαρακτηριστικών σε αυτή. Συγκεκριμένα, τα εταιρικά χαρακτηριστικά που εξετάστηκαν είναι το μέγεθος, η κερδοφορία, η χρηματοοικονομική μόχλευση και η ιδιοκτησιακή συγκέντρωση της επιχείρησης. Προς το σκοπό αυτό χρησιμοποιήθηκαν το μοντέλο του Jones και το τροποποιημένο μοντέλο του Jones, προκειμένου να διακριθούν τα δεδουλευμένα σε διακριτά και μη διακριτά. Τα διακριτά δεδουλευμένα αποτέλεσαν την εξαρτημένη μεταβλητή της παρούσας μελέτης. Η στατιστική ανάλυση διενεργήθηκε με ελέγχους t για την ισότητα των εταιρικών χαρακτηριστικών μεταξύ των ξενοδοχειακών μονάδων με θετικό και αρνητικό μέσο όρο διακριτών δεδουλευμένων, καθώς και μέσω εκτίμησης παλινδρομήσεων, με εξαρτημένη μεταβλητή τα διακριτά δεδουλευμένα και ανεξάρτητες τα παραπάνω τέσσερα εταιρικά χαρακτηριστικά, ενώ ως μεταβλητές ελέγχου χρησιμοποιήθηκαν η κυκλοφοριακή ρευστότητα και η απόδοση ιδίων κεφαλαίων." ;
+          :alternativeHeadline "MasterThesis_Karamanoli" ;
+          :dateOfSupport "2021-03-20"^^xsd:date ;
+          :department "Τμήμα Διοίκησης Επιχειρήσεων" ;
+          :institution "Πανεπιστήμιο Αιγαίου" ;
+          :keyWords "Διαχείριση Κερδών, Ξενοδοχειακός Κλάδος, Υπόδειγμα Jones, Euronext." ;
+          :language "Ελληνικά" ;
+          :libraryLink "http://hdl.handle.net/11610/22104" ;
+          :nameOfSupervisor "ΔΡ. ΜΙΧΑΗΛ ΜΠΕΚΙΑΡΗΣ" ;
+          :numberOfPages "46" ;
+          :program "ΔΙΟΙΚΗΣΗ ΕΠΙΧΕΙΡΗΣΕΩΝ ΓΙΑ ΣΤΕΛΕΧΗ - EXECUTIVE MBA" ;
+          :title "«ΧΕΙΡΑΓΩΓΗΣΗ ΚΕΡΔΩΝ ΑΠΟ ΤΟΥΣ MANAGERS ΣΕ ΕΥΡΩΠΑΪΚΕΣ ΞΕΝΟΔΟΧΕΙΑΚΕΣ ΕΠΙΧΕΙΡΗΣΕΙΣ»" ;
+          :typeOfDissertation "MasterThesis" .
+
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project/SampleID_17
+:SampleID_17 rdf:type owl:NamedIndividual ,
+                   :Sample ;
+          :basicUnit "ΕΠΑΓΓΕΛΜΑΤΙΕΣ/ΣΤΕΛΕΧΗ ΔΟΜΩΝ" ;
+          :collectionMethod "«ΣΚΟΠΙΜΗ» ΔΕΙΓΜΑΤΟΛΗΨΙΑ" ;
+          :methodOfAnalysis "ΟΡΙΖΟΝΤΙΑ ΑΝΑΛΥΣΗ ΠΟΙΟΤΙΚΩΝ ΔΕΔΟΜΕΝΩΝ" ;
+          :methodOfRecording "ΗΜΙ-ΔΟΜΗΜΕΝΗ ΣΥΝΕΝΤΕΥΞΗ" ;
+          :recordingTools "ΟΔΗΓΟΣ ΣΥΝΕΝΤΕΥΞΗΣ" ;
+          :sampleCollectionReference "2022-12-01 - 2023-01-15" ;
+          :sampleDescription "Επαγγελματίες και στελέχη οργανισμών υποστήριξης θυμάτων έμφυλης βίας στην Ελλάδα" ;
+          :sampleSize "6" ;
+          :sampleTimeReference "2020-2022" ;
+          :spatialCoverage "ΕΛΛΑΔΑ" ;
+          :statesOfReference "ΕΛΛΑΔΑ" .
+:SurveyID_17 rdf:type owl:NamedIndividual ,
+                   :Survey ;
+          :hasSample :SampleID_17 ;
+          :sampleProd "ΠΡΩΤΟΓΕΝΗΣ" ;
+          :spaceAnalysis "Μη Ιστορική" ;
+          :strategy "Qualitative" ;
+          :studyQuestions "ΝΑΙ" ;
+          :target "Σκοπός της παρούσας μελέτης είναι να ερευνήσει α) πως αντιλαμβάνονται οι δομές / οργανισμοί την ύπαρξη περιστατικών έμφυλης βίας κατά τη διάρκεια της πανδημίας και κυρίως τις περιόδους του εγκλεισμού, β) με ποιον τρόπο διαχειρίστηκαν τα περιστατικά οι δομές/οργανισμοί και γ) να παρουσιάσει προτάσεις και ενέργειες για την ενίσχυση των πολιτικών ισότητας." ;
+          :timeAnalysis "Μη Ιστορική" .
+:WriterID_17 rdf:type owl:NamedIndividual ,
+                   :Writer ;
+          :fathersName "Νίκος" ;
+          :firstName "Ελένη" ;
+          :gender "Γυναίκα" ;
+          :surName "Καρούλη" .
+:ThesisID_17 rdf:type owl:NamedIndividual ,
+                   :MasterThesis ;
+          :hasSurvey :SurveyID_17 ;
+          :hasWriter :WriterID_17 ;
+          :abstract "Η παρούσα μελέτη εξετάζει τον αντίκτυπο που είχε η πανδημία Covid-19 όσον αφορά το φαινόμενο της ενδοοικογενειακής βίας κατά των γυναικών και συγκεκριμένα κατά πόσο εκδηλώθηκαν περιστατικά ενδοοικογενειακής βίας κατά την περίοδο αυτή στην Ελλάδα. Η μελέτη ξεκινά με μια σύντομη παρουσίαση των πιο σημαντικών θεωρήσεων σχετικά με τις έμφυλες ανισότητες, διερευνώντας παράλληλα και τη συσχέτιση της ενδοοικογενειακής βίας με την πατριαρχία. Επιπλέον, παρουσιάζονται οι πρακτικές και τα μέτρα που ακολούθησαν φορείς και οργανώσεις για την καταπολέμηση της ενδοοικογενειακής βίας κατά των γυναικών κατά τη διάρκεια της πανδημίας σε σύγκριση με προηγούμενες χρονικές περιόδους. Η μελέτη εστιάζει επίσης σε δημοσιευμένα στοιχεία και αναφορές δημόσιων και ιδιωτικών οργανισμών, όσον αφορά την καταγραφή περιστατικών κακοποίησης γυναικών, τόσο στο ελληνικό πλαίσιο όσο και σε ευρωπαϊκό και διεθνές επίπεδο. Η έρευνα υιοθετεί μία ποιοτική μεθοδολογική προσέγγιση, πραγματοποιώντας συνεντεύξεις με εργαζόμενους από οργανισμούς που διαχειρίστηκαν περιστατικά ενδοοικογενειακής βίας στην Ελλάδα κατά τη διάρκεια της πανδημίας." ;
+          :alternativeHeadline "MasterThesis_Karouli" ;
+          :dateOfSupport "2023-02-28"^^xsd:date ;
+          :department "Τμήμα Κοινωνιολογίας" ;
+          :institution "Πανεπιστήμιο Αιγαίου" ;
+          :keyWords "πανδημία, Covid-19, ενδοοικογενειακή βία, έμφυλη βία, πατριαρχία, πολιτικές αντιμετώπισης" ;
+          :language "Ελληνική" ;
+          :libraryLink "https://hdl.handle.net/11610/28162" ;
+          :nameOfSupervisor "Μαρκαντωνάτου Μαρία" ;
+          :numberOfPages "179" ;
+          :program "ΕΡΕΥΝΑ ΓΙΑ ΤΗΝ ΤΟΠΙΚΗ ΚΟΙΝΩΝΙΚΗ ΑΝΑΠΤΥΞΗ ΚΑΙ ΣΥΝΟΧΗ" ;
+          :title "Η ΒΙΑ ΚΑΤΑ ΤΩΝ ΓΥΝΑΙΚΩΝ ΣΤΗΝ ΕΠΟΧΗ ΤΗΣ ΠΑΝΔΗΜΙΑΣ COVID-19" ;
+          :typeOfDissertation "MasterThesis" .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project/SampleID_18
+:SampleID_18 rdf:type owl:NamedIndividual ,
+                   :Sample ;
+          :analysisTools "IBM SPSS Version 26" ;
+          :basicUnit "εργαζόμενοι" ;
+          :collectionMethod "δειγματοληψία ευκολίας, δειγματοληψία χιονοστιβάδας" ;
+          :geographicalUnit "Πόλεις" ;
+          :methodOfAnalysis "περιγραφική στατιστική, συχνότητες, ποσοστιαίες συχνότητες, μέσες τιμές, τυπικές αποκλίσεις, γραμμική παλινδρόμηση, Kruskal-Wallis, Mann-Whitney U, Pearson Chi-Square" ;
+          :methodOfRecording "ερωτηματολόγιο" ;
+          :recordingTools "LimeSurvey" ;
+          :sampleCollectionReference "2021-03-29 έως 2021-04-14" ;
+          :sampleDescription "εργαζόμενοι της Εθνικής Τράπεζας της Ελλάδος" ;
+          :sampleSize "155" ;
+          :sampleTimeReference "2021" ;
+          :spatialCoverage "Θεσσαλονίκη, Πειραιάς, Λέσβος, Χίος, Σάμος, Ηράκλειο Κρήτης, Χολαργός" ;
+          :statesOfReference "ΕΛΛΑΔΑ" .
+:SurveyID_18 rdf:type owl:NamedIndividual ,
+                   :Survey ;
+          :hasSample :SampleID_18 ;
+          :sampleProd "ΠΡΩΤΟΓΕΝΗΣ" ;
+          :spaceAnalysis "Μη Ιστορική" ;
+          :strategy "Quantitative" ;
+          :studyAssumptions "H0: Η συμπεριφορά και αποδοτικότητα του προσωπικού της Εθνικής Τράπεζας της Ελλάδος επηρεάζεται από το φύλο του. Η1: Η συμπεριφορά και αποδοτικότητα του προσωπικού της Εθνικής Τράπεζας της Ελλάδος κατά τη διενέργεια εσωτερικού ελέγχου επηρεάζεται από την ηλικία του. Η2: Η συμπεριφορά και αποδοτικότητα του προσωπικού της Εθνικής Τράπεζας της Ελλάδος κατά τη διενέργεια εσωτερικού ελέγχου επηρεάζεται από το εκπαιδευτικό του επίπεδο του. Η3: Η συμπεριφορά και αποδοτικότητα του προσωπικού της Εθνικής Τράπεζας της Ελλάδος κατά τη διενέργεια εσωτερικού ελέγχου επηρεάζεται από το καθαρό ετήσιο οικογενειακό τους εισόδημα του. Η4: Η συμπεριφορά και αποδοτικότητα του προσωπικού της Εθνικής Τράπεζας της Ελλάδος κατά τη διενέργεια εσωτερικού ελέγχου επηρεάζεται από τη θέση εργασία τους." ;
+          :studyQuestions "ΝΑΙ" ;
+          :target "να διερευνήσει το βαθμό στον οποίο ο εσωτερικός έλεγχος επιδρά, θετικά ή αρνητικά, με τη συμπεριφορά και την απόδοση των εργαζομένων της Εθνικής Τράπεζας της Ελλάδος" ;
+          :timeAnalysis "Μη Ιστορική" ;
+          :workAssumptions "ΝΑΙ" .
+:WriterID_18 rdf:type owl:NamedIndividual ,
+                   :Writer ;
+          :firstName "Εμμανουήλ" ;
+          :gender "Άνδρας" ;
+          :surName "Κοϊμτζής" .
+:ThesisID_18 rdf:type owl:NamedIndividual ,
+                   :MasterThesis ;
+          :hasSurvey :SurveyID_18 ;
+          :hasWriter :WriterID_18 ;
+          :abstract "Οι σύγχρονες κοινωνίες και οικονομίες καθιστούν αναγκαία την ύπαρξη συγκεκριμένων νομοθετικών και μη κανόνων, που να είναι σε θέση να ρυθμίζουν όλες τις δραστηριότητες στις οποίες επιδίδονται οι επιχειρήσεις και οι οργανισμοί. Εξίσου αναγκαία είναι και η τήρηση των προτύπων που θεσπίζονται σχετικά με την λογιστική απεικόνιση, αλλά και την γενικότερη λογιστική διαδικασία που θα πρέπει να ακολουθούν οι σύγχρονες οικονομικές μονάδες. Το ευμετάβλητο περιβάλλον της παγκόσμιας οικονομίας σε συνδυασμό με τις ραγδαίες εξελίξεις στην τεχνολογία τις τελευταίες δεκαετίες και, ταυτόχρονα, ο μεγάλος όγκος και η πολυπλοκότητα των συναλλαγών, η κατάχρηση εξουσίας της διοίκησης και ο ιδιαίτερα υψηλός κίνδυνος σφαλμάτων στους οργανισμούς, καθιστούν απόλυτα σημαντικό τον εσωτερικό έλεγχο. Επομένως, η ανάπτυξη και η εφαρμογή αποτελεσματικών Συστημάτων Εσωτερικού Ελέγχου στους οργανισμούς, αποτελεί ένα από τα ισχυρότερα μέτρα που μπορούν να λάβουν, προκειμένου να περιορίσουν ή σε ιδανικό βαθμό να εξαλείψουν πολλούς από τους κινδύνους που αντιμετωπίζουν καθημερινά. Η συγγραφή αυτής της εργασίας έχει δύο στόχους. Ο πρώτος είναι να γίνει πλήρης και αναλυτική περιγραφή του εσωτερικού ελέγχου και ο δεύτερος είναι να κατανοηθεί ο τρόπος με τον οποίο ο εσωτερικός έλεγχος επηρεάζει την γενικότερη συμπεριφορά και απόδοση των εργαζομένων." ;
+          :alternativeHeadline "MasterThesis_Koimtzis" ;
+          :dateOfSupport "2021-04-17"^^xsd:date ;
+          :department "Τμήμα Διοίκησης Επιχειρήσεων" ;
+          :institution "Πανεπιστήμιο Αιγαίου" ;
+          :language "Ελληνικά" ;
+          :libraryLink "http://hdl.handle.net/11610/22132" ;
+          :nameOfSupervisor "Δρ. Χριστίνα Βαδάση" ;
+          :numberOfPages "141" ;
+          :program "Μεταπτυχιακό Πρόγραμμα «ΜΒΑ»" ;
+          :title "«Εσωτερικός Έλεγχος στην Εθνική Τράπεζα Ελλάδος»" ;
+          :typeOfDissertation "MasterThesis" .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project/SampleID_19
+:SampleID_19 rdf:type owl:NamedIndividual ,
+                   :Sample ;
+          :basicUnit "Άτομα (εκπαιδευτικοί και εκπαιδευτικά στελέχη)" ;
+          :collectionMethod "Σκόπιμη δειγματοληψία" ;
+          :geographicalUnit "Νομός Λέσβου" ;
+          :methodOfAnalysis "Ανάλυση επίσημων κειμένων πολιτικής και Θεματική ανάλυση" ;
+          :methodOfRecording "Ημιδομημένες συνεντεύξεις" ;
+          :recordingTools "Οδηγός συνέντευξης" ;
+          :sampleCollectionReference "2021" ;
+          :sampleDescription "οκτώ εκπαιδευτικά στελέχη της Πρωτοβάθμιας και Δευτεροβάθμιας Εκπαίδευσης Λέσβου και οκτώ εκπαιδευτικοί Πρωτοβάθμιας Εκπαίδευσης" ;
+          :sampleSize "16" ;
+          :sampleTimeReference "2020-2021" ;
+          :spatialCoverage "Λέσβος" ;
+          :statesOfReference "Ελλάδα" .
+:SurveyID_19 rdf:type owl:NamedIndividual ,
+                   :Survey ;
+          :hasSample :SampleID_19 ;
+          :sampleProd "Πρωτογενή και Δευτερογενή" ;
+          :spaceAnalysis "Μη Ιστορική" ;
+          :strategy "Qualitative" ;
+          :studyQuestions "Ναι" ;
+          :target "διερεύνηση των απόψεων και αντιλήψεων της Πρωτοβάθμιας Εκπαίδευσης Λέσβου αναφορικά με τη διαπολιτισμική εκπαίδευση, την ενσωμάτωσή της στο ελληνικό σχολείο και τους παράγοντες που ενθαρρύνουν ή εμποδίζουν την εφαρμογή της" ;
+          :timeAnalysis "Μη Ιστορική" .
+:WriterID_19 rdf:type owl:NamedIndividual ,
+                   :Writer ;
+          :firstName "Παναγιώτα" ;
+          :gender "Γυναίκα" ;
+          :surName "Κουδουνά" .
+:ThesisID_19 rdf:type owl:NamedIndividual ,
+                   :MasterThesis ;
+          :hasSurvey :SurveyID_19 ;
+          :hasWriter :WriterID_19 ;
+          :abstract "Βασικό χαρακτηριστικό των εκπαιδευτικών συστημάτων του 21ου αιώνα σε παγκόσμιο, ευρωπαϊκό και εθνικό επίπεδο είναι ο πλουραλισμός του μαθητικού πληθυσμού και η συνύπαρξη διαφορετικών πολιτισμών στο σχολικό περιβάλλον. Τις τελευταίες δεκαετίες και κυρίως από το 2015 και μετά που αυξήθηκαν οι προσφυγικές ροές, η ελληνική εκπαιδευτική πολιτική προωθεί τη διαπολιτισμική εκπαίδευση ως «μέσο» για τη διαχείριση της ετερότητας, την εκπαιδευτική ένταξη και την ισότητα των ευκαιριών. Τα ευρωπαϊκά και ελληνικά επίσημα κείμενα πολιτικής επισημαίνουν επίσης, ότι η διαπολιτισμική εκπαίδευση δεν περιορίζεται στην πολιτισμική ποικιλομορφία, αλλά συμπεριλαμβάνει κοινωνικές μεταβλητές και χαρακτηριστικά, όπως η φυλή, η τάξη, το φύλο και η αναπηρία και υπογραμμίζουν την αναγκαιότητα ισότιμης και ενεργής συμμετοχής όλων των μαθητών στο σχολικό σύστημα. Ωστόσο, παρά τον εμπλουτισμό της νομοθεσίας, των πολιτικών και των πρακτικών με τις αρχές της διαπολιτισμικότητας, εξακολουθεί να υφίσταται το ερώτημα για το αν και σε ποιο βαθμό η θεωρία εφαρμόζεται στην πράξη. Επιχειρώντας να «φωτίσει» το πώς γίνονται αντιληπτές οι υφιστάμενες εκπαιδευτικές πολιτικές και κατά πόσο συμβάλλουν στην εφαρμογή της διαπολιτισμικής εκπαίδευσης, η παρούσα ερευνητική μελέτη διερευνά τις απόψεις και αντιλήψεις οκτώ εκπαιδευτικών στελεχών της Πρωτοβάθμιας και Δευτεροβάθμιας Εκπαίδευσης Λέσβου και οκτώ εκπαιδευτικών Πρωτοβάθμιας Εκπαίδευσης, αναφορικά με τη διαπολιτισμική εκπαίδευση, την ενσωμάτωσή της στο ελληνικό σχολείο και τους παράγοντες που ενθαρρύνουν ή εμποδίζουν την εφαρμογή της. Οι ερευνητικές μέθοδοι που χρησιμοποιήθηκαν είναι η ανάλυση επίσημων κειμένων πολιτικής και η ποιοτική προσέγγιση, ενώ ως εργαλείο συλλογής δεδομένων επιλέχθηκαν οι συνεντεύξεις. Τα αποτελέσματα της έρευνας δείχνουν ότι, τόσο οι εκπαιδευτικοί όσο και τα εκπαιδευτικά στελέχη αναγνωρίζουν τη σημαντικότητα της διαπολιτισμικής εκπαίδευσης και τα οφέλη που προσφέρει στους μαθητές και την ευρύτερη κοινωνία. Ωστόσο, αναδεικνύεται επίσης ότι η ουσιαστική εφαρμογή της δεν έχει επιτευχθεί στα ελληνικά σχολεία." ;
+          :alternativeHeadline "MasterThesis_Koudouna" ;
+          :dateOfSupport "2021-01-01"^^xsd:date ;
+          :department "Τμήμα Κοινωνιολογίας" ;
+          :institution "Πανεπιστήμιο Αιγαίου" ;
+          :keyWords "Διαπολιτισμική εκπαίδευση, Στελέχη Εκπαίδευσης, Εκπαιδευτικοί" ;
+          :language "Ελληνικά" ;
+          :libraryLink "http://hdl.handle.net/11610/24237" ;
+          :nameOfSupervisor "ΠΑΡΣΑΝΟΓΛΟΥ ΔΗΜΗΤΡΗΣ" ;
+          :numberOfPages "175" ;
+          :program "ΕΡΕΥΝΑ ΓΙΑ ΤΗΝ ΤΟΠΙΚΗ ΚΟΙΝΩΝΙΚΗ ΑΝΑΠΤΥΞΗ ΚΑΙ ΣΥΝΟΧΗ" ;
+          :title "«ΑΦΟΡΑ ΤΟ ΣΥΝΟΛΟ ΤΗΣ ΚΟΙΝΩΝΙΑΣ ΚΑΙ ΟΧΙ ΜΟΝΟ ΤΟ ΧΩΡΟ ΤΟΥ ΣΧΟΛΕΙΟΥ»: ΑΠΟΨΕΙΣ ΕΚΠΑΙΔΕΥΤΙΚΩΝ ΚΑΙ ΕΚΠΑΙΔΕΥΤΙΚΩΝ ΣΤΕΛΕΧΩΝ ΓΙΑ ΤΗΝ ΕΦΑΡΜΟΓΗ ΤΗΣ ΔΙΑΠΟΛΙΤΙΣΜΙΚΗΣ ΕΚΠΑΙΔΕΥΣΗΣ" ;
+          :typeOfDissertation "MasterThesis" .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project/SampleID_20
+:SampleID_20 rdf:type owl:NamedIndividual ,
+                   :Sample ;
+          :analysisTools "SPSS-21" ;
+          :basicUnit "Individuals" ;
+          :collectionMethod "τυχαία στρωματοποιημένη δειγματοληψία" ;
+          :methodOfAnalysis "Kruskal-Wallis, Mann-Whitney, Spearman ρ, Kolmogorov-Smirnov" ;
+          :methodOfRecording "Survey" ;
+          :recordingTools "Τεστ Αντίληψης Χώρου (ΤΑΧ), Κλίμακα μέτρησης πολλαπλών τύπων νοημοσύνης, Φύλλο με δραστηριότητες της Γεωγραφίας, Ερωτηματολόγιο" ;
+          :sampleCollectionReference "After 2013-11-08" ;
+          :sampleDescription "600 μαθητές της Στ΄ τάξης Δημοτικού, ηλικίας 11-13 ετών από 22 διαφορετικά σχολεία και 33 εκπαιδευτικοί" ;
+          :sampleSize "600" ;
+          :sampleTimeReference "2014-2015" ;
+          :spatialCoverage "ΕΛΛΗΝΙΚΗ ΕΠΙΚΡΑΤΕΙΑ" ;
+          :statesOfReference "ΕΛΛΑΔΑ" .
+:SurveyID_20 rdf:type owl:NamedIndividual ,
+                   :Survey ;
+          :hasSample :SampleID_20 ;
+          :sampleProd "Primary" ;
+          :spaceAnalysis "Μη Ιστορική" ;
+          :strategy "Quantitative" ;
+          :studyAssumptions "Υπάρχει σχέση ανάμέσα στο φύλο και τη χωρική αντίληψη και την επίδοση στο μάθημα της γεωγραφίας" ;
+          :studyQuestions "Presence of clear questions" ;
+          :target "διερεύνηση της σχέσης των πολλαπλών τύπων νοημοσύνης και της αντίληψης του χώρου με τη στάση και την επίδοση των μαθητών του δημοτικού στο μάθημα της γεωγραφίας" ;
+          :timeAnalysis "Μη Ιστορική" ;
+          :workAssumptions "Presence of guiding assumptions" .
+:WriterID_20 rdf:type owl:NamedIndividual ,
+                   :Writer ;
+          :firstName "Άννα-Αικατερίνη" ;
+          :gender "Γυναίκα" ;
+          :surName "Λυκούρη" .
+:ThesisID_20 rdf:type owl:NamedIndividual ,
+                   :DoctoralDissertation ;
+          :hasSurvey :SurveyID_20 ;
+          :hasWriter :WriterID_20 ;
+          :abstract "Στόχος της παρούσας έρευνας ήταν να διερευνηθεί η σχέση των πολλαπλών τύπων νοημοσύνης και της αντίληψης του χώρου με τη στάση και την επίδοση των μαθητών στο μάθημα της Γεωγραφίας. Το δείγμα της έρευνας μας απαρτιζόταν από 600 μαθητές της Στ΄ τάξης Δημοτικού, ηλικίας 11-13 ετών που προέρχονταν από 22 διαφορετικά σχολεία της ελληνικής επικράτειας, κατανεμημένοι σε 33 διαφορετικές τάξεις." ;
+          :alternativeHeadline "THE RELATION OF MULTIPLE INTELLIGENCES AND SPATIAL PERCERTION WITH PERFORMANCE AND ATTITUDE OF STUDENTS IN THE SUBJECT OF GEOGRAPHY" ;
+          :dateOfSupport "2018-06-29"^^xsd:date ;
+          :department "Σχολή Κοινωνικών Επιστημών Τμήμα Γεωγραφίας" ;
+          :institution "Πανεπιστήμιο Αιγαίου" ;
+          :language "ΕΛΛΗΝΙΚΑ" ;
+          :libraryLink "http://hdl.handle.net/11610/20454" ;
+          :nameOfSupervisor "Αικατερίνη Κλωνάρη" ;
+          :numberOfPages "372" ;
+          :title "Η Σχέση των πολλαπλών τύπων νοημοσύνης και της αντίληψης του χώρου με τη στάση και την επίδοση των μαθητών του Δημοτικού στο μάθημα της Γεωγραφίας" ;
+          :typeOfDissertation "DoctoralDissertation" .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project/SampleID_21
+:SampleID_21 rdf:type owl:NamedIndividual ,
+                   :Sample ;
+          :basicUnit "Εταιρείες, Τράπεζες" ;
+          :collectionMethod "Σκόπιμη δειγματοληψία" ;
+          :geographicalUnit "Χώρα" ;
+          :methodOfAnalysis "Συγκριτική ανάλυση, Ανάλυση SWOT" ;
+          :methodOfRecording "Βιβλιογραφική επισκόπηση, Μελέτη περίπτωσης" ;
+          :sampleCollectionReference "2019" ;
+          :sampleDescription "Μελέτη διαφημιστικού προϊόντος στον τραπεζικό τομέα, 5 διαφημιστικοί όμιλοι, 4 τράπεζες" ;
+          :sampleSize "9" ;
+          :sampleTimeReference "2007-2019" ;
+          :spatialCoverage "Παγκόσμια, Ινδία" ;
+          :statesOfReference "Ινδία, Ευρώπη, ΗΠΑ" .
+:SurveyID_21 rdf:type owl:NamedIndividual ,
+                   :Survey ;
+          :hasSample :SampleID_21 ;
+          :sampleProd "Δευτερογενής" ;
+          :spaceAnalysis "Μη Ιστορική" ;
+          :strategy "Qualitative" ;
+          :target "να κάνει μια κλαδική ανάλυση του διαφημιστικού κλάδου παγκοσμίως μέσω της χρηματοοικονομικής ανάλυσης των μεγαλύτερων εταιριών" ;
+          :timeAnalysis "Μη Ιστορική" .
+:WriterID_21 rdf:type owl:NamedIndividual ,
+                   :Writer ;
+          :fathersName "Κ." ;
+          :firstName "Δημήτριος" ;
+          :gender "Άνδρας" ;
+          :surName "Κυριακού" .
+:ThesisID_21 rdf:type owl:NamedIndividual ,
+                   :DoctoralDissertation ;
+          :hasSurvey :SurveyID_21 ;
+          :hasWriter :WriterID_21 ;
+          :alternativeHeadline "DoctoralDissertation_Kiriakou" ;
+          :dateOfSupport "2019-12-01"^^xsd:date ;
+          :department "Τμήμα Μηχανικών Οικονομίας & Διοίκησης" ;
+          :institution "Πανεπιστήμιο Αιγαίου" ;
+          :keyWords "Διαφήμιση, Διαφημιστικές εταιρείες, Τράπεζες, Ψηφιακή διαφήμιση" ;
+          :language "Ελληνικά" ;
+          :libraryLink "http://hdl.handle.net/11610/21175" ;
+          :nameOfSupervisor "ΚΟΥΤΟΥΠΗΣ ΑΝΤΡΕΑΣ" ;
+          :numberOfPages "87" ;
+          :title "ΣΥΓΚΡΙΤΙΚΗ ΑΝΑΛΥΣΗ ΔΙΑΦΗΜΙΣΤΙΚΩΝ ΕΤΑΙΡΕΙΩΝ" ;
+          :typeOfDissertation "DoctoralDissertation" .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project/SampleID_22
+:SampleID_22 rdf:type owl:NamedIndividual ,
+                   :Sample ;
+          :methodOfAnalysis "Ποιοτική ανάλυση" ;
+          :methodOfRecording "Βιβλιογραφική ανασκόπηση" ;
+          :sampleCollectionReference "2015" ;
+          :sampleTimeReference "2015" ;
+          :spatialCoverage "Ελλάδα" ;
+          :statesOfReference "Ελλάδα, Ε.Ε." .
+:SurveyID_22 rdf:type owl:NamedIndividual ,
+                   :Survey ;
+          :hasSample :SampleID_22 ;
+          :sampleProd "Secondary" ;
+          :spaceAnalysis "Μη Ιστορική" ;
+          :strategy "Qualitative" ;
+          :target "«εξέταση του θέματος των Συμπράξεων Ιδιωτικού και Δημόσιου Τομέα (ΣΔΙΤ) δίνοντας έμφαση στην Ελλάδα»" ;
+          :timeAnalysis "Ιστορική" .
+:WriterID_22 rdf:type owl:NamedIndividual ,
+                   :Writer ;
+          :firstName "Ευάγγελος" ;
+          :gender "Άνδρας" ;
+          :surName "Μιχαλάκης" .
+:ThesisID_22 rdf:type owl:NamedIndividual ,
+                   :BachelorsThesis ;
+          :hasSurvey :SurveyID_22 ;
+          :hasWriter :WriterID_22 ;
+          :abstract "Στην παρούσα διπλωματική εργασία εξετάζουμε το θέμα των Συμπράξεων Ιδιωτικού και Δημόσιου Τομέα (ΣΔΙΤ) δίνοντας έμφαση στην Ελλάδα. Αρχικά, γίνεται μια πρώτη ανάλυση και δίνεται ένας ορισμός των ΣΔΙΤ όπως αυτός καταγράφεται από το αρμόδιο Υπουργείο Οικονομίας καθώς επίσης αναφέρονται και συνοπτικά οι κατηγορίες των ΣΔΙΤ αλλά και η διαδικασία για ενταχθεί ένα έργο και να χαρακτηριστεί ως Σύμπραξη." ;
+          :alternativeHeadline "PRIVATE-PUBLIC PARTNERSHIPS (PPPS) WITH EMPHASIS ON GREECE" ;
+          :dateOfSupport "2015-11-01"^^xsd:date ;
+          :institution "Πανεπιστήμιο Αιγαίου" ;
+          :keyWords "Συμπράξεις Ιδιωτικού και Δημόσιου Τομέα, ΣΔΙΤ, Ελλάδα" ;
+          :language "Ελληνικά" ;
+          :libraryLink "http://hdl.handle.net/11610/22113" ;
+          :nameOfSupervisor "ΖΟΥΝΤΑ ΣΤΕΛΛΑ" ;
+          :numberOfPages "73" ;
+          :program "MBA ΧΙΟΣ" ;
+          :title "«ΟΙ ΣΥΜΠΡΑΞΕΙΣ ΔΗΜΟΣΙΟΥ ΙΔΙΩΤΙΚΟΥ ΤΟΜΕΑ (ΣΔΙΤ) Η ΠΕΡΙΠΤΩΣΗ ΤΗΣ ΕΛΛΑΔΑΣ»" ;
+          :typeOfDissertation "BachelorsThesis" .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project/SampleID_23
+:SampleID_23 rdf:type owl:NamedIndividual ,
+                   :Sample ;
+          :basicUnit "άρθρα και επιστημονικά συγγράμματα" ;
+          :collectionMethod "συστηματική αναζήτηση σε βάσεις δεδομένων" ;
+          :methodOfAnalysis "Ποιοτική ανάλυση βιβλιογραφίας" ;
+          :methodOfRecording "Βιβλιογραφική ανασκόπηση" ;
+          :sampleCollectionReference "2020" ;
+          :sampleDescription "Θεωρητική επισκόπηση" ;
+          :sampleTimeReference "1950-2020" ;
+          :statesOfReference "διεθνή και την ελληνική βιβλιογραφία" .
+:SurveyID_23 rdf:type owl:NamedIndividual ,
+                   :Survey ;
+          :hasSample :SampleID_23 ;
+          :sampleProd "Δευτερογενή" ;
+          :spaceAnalysis "Μη Ιστορική" ;
+          :strategy "Qualitative" ;
+          :target "διερεύνηση της εφαρμογής και των παραμέτρων υλοποίησης της Εταιρικής Κοινωνικής Ευθύνης μέσα στο σύγχρονο επιχειρηματικό περιβάλλον" ;
+          :timeAnalysis "Μη Ιστορική" .
+:WriterID_23 rdf:type owl:NamedIndividual ,
+                   :Writer ;
+          :firstName "Κωνσταντίνα" ;
+          :gender "Γυναίκα" ;
+          :surName "Μουστακίδου" .
+:ThesisID_23 rdf:type owl:NamedIndividual ,
+                   :BachelorsThesis ;
+          :hasSurvey :SurveyID_23 ;
+          :hasWriter :WriterID_23 ;
+          :abstract "Σκοπός της παρούσας εργασίας είναι η διερεύνηση της εφαρμογής και των παραμέτρων υλοποίησης της Εταιρικής Κοινωνικής Ευθύνης μέσα στο σύγχρονο επιχειρηματικό περιβάλλον. Για τον σκοπό αυτό πραγματοποιήθηκε μία βιβλιογραφική ανασκόπηση ερευνών που καταδεικνύουν την συμβολή της εταιρικής κοινωνικής ευθύνης στη λειτουργία των εταιρειών, παρουσιάζονται διάφορα επιστημονικά ρεύματα που ασχολήθηκαν με την έννοια της αειφόρου ανάπτυξης ενώ αναπτύσσεται και η έννοια του Πράσινου Μάρκετινγκ το οποίο συνδέεται άμεσα με την αειφόρο ανάπτυξη και την Εταιρική Κοινωνική ευθύνη." ;
+          :alternativeHeadline "BachelorsThesis_Moustakidou" ;
+          :dateOfSupport "2020-10-27"^^xsd:date ;
+          :department "Σχολή Επιστημών Διοίκησης" ;
+          :institution "Πανεπιστήμιο Αιγαίου" ;
+          :keyWords "Εταιρική Κοινωνική Ευθύνη, Εταιρική Διακυβέρνηση, Πράσινο Μάρκετινγκ" ;
+          :language "Ελληνική" ;
+          :libraryLink "http://hdl.handle.net/11610/22129" ;
+          :nameOfSupervisor "Ανδρικόπουλο Ανδρέα" ;
+          :numberOfPages "35" ;
+          :program "ΜΕΤΑΠΤΥΧΙΑΚΟ ΠΡΟΓΡΑΜΜΑ ΣΤΗ ΔΙΟΙΚΗΣΗ ΕΠΙΧΕΙΡΗΣΕΩΝ-MBA" ;
+          :title "Η Εταιρική Κοινωνική Ευθύνη : Μια Θεωρητική Επισκόπηση" ;
+          :typeOfDissertation "BachelorsThesis" .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project/SampleID_24
+:SampleID_24 rdf:type owl:NamedIndividual ,
+                   :Sample ;
+          :basicUnit "βοηθοί εσωτερικού ελεγκτή, εσωτερικοί ελεγκτές, επικεφαλής εσωτερικού ελέγχου" ;
+          :collectionMethod "τυχαίο δείγμα" ;
+          :methodOfAnalysis "στατιστική ανάλυση (πίνακες και σχεδιαγράμματα κατανομών συχνότητας)" ;
+          :methodOfRecording "Ερωτηματολόγιο" ;
+          :recordingTools "Ερωτηματολόγιο" ;
+          :sampleDescription "στελέχη τραπεζών (βοηθοί εσωτερικού ελεγκτή, εσωτερικοί ελεγκτές, επικεφαλής εσωτερικού ελέγχου)" ;
+          :sampleSize "24" ;
+          :sampleTimeReference "2020" ;
+          :spatialCoverage "Ελλάδα" ;
+          :statesOfReference "Ελλάδα" .
+:SurveyID_24 rdf:type owl:NamedIndividual ,
+                   :Survey ;
+          :hasSample :SampleID_24 ;
+          :sampleProd "Πρωτογενή" ;
+          :spaceAnalysis "Μη Ιστορική" ;
+          :strategy "Mixed" ;
+          :studyQuestions "Ναι" ;
+          :target "διερεύνηση της επίδρασης των κυβερνοεπιθέσεων στο σύγχρονο περιβάλλον των χρηματοπιστωτικών ιδρυμάτων και εντοπισμός των ιδιαίτερων μέτρων που λαμβάνουν τα χρηματοπιστωτικά ιδρύματα στην Ελλάδα σε σχέση με την πρόληψη και καταστολή κατά των κυβερνοεπιθέσεων" ;
+          :timeAnalysis "Μη Ιστορική" ;
+          :workAssumptions "Ναι" .
+:WriterID_24 rdf:type owl:NamedIndividual ,
+                   :Writer ;
+          :fathersName "Ι." ;
+          :firstName "Παρασκευάς Σωτήριος" ;
+          :gender "Άνδρας" ;
+          :surName "Ρουπάκας" .
+:ThesisID_24 rdf:type owl:NamedIndividual ,
+                   :BachelorsThesis ;
+          :hasSurvey :SurveyID_24 ;
+          :hasWriter :WriterID_24 ;
+          :abstract "Η παρούσα διπλωματική εργασία επιδιώκει την διερεύνηση της επίδρασης των κυβερνοεπιθέσεων στο σύγχρονο περιβάλλον των χρηματοπιστωτικών ιδρυμάτων και στον εντοπισμό των ιδιαίτερων μέτρων που λαμβάνουν τα χρηματοπιστωτικά ιδρύματα στην Ελλάδα σε σχέση με την πρόληψη και καταστολή κατά των κυβερνοεπιθέσεων. Για το σκοπό αυτό, αρχικά αναπτύσσει το εννοιολογικό πλαίσιο του εσωτερικού ελέγχου. Κατόπιν αναφέρεται στην αναγκαιότητα του εσωτερικού ελέγχου για την ασφάλεια του κυβερνοχώρου στις τράπεζες, στον προσδιορισμό των διαφόρων απειλών κατά της ασφάλειας του διαδικτύου και στις νεότερες πρακτικές αντιμετώπισης αυτών. Στη συνέχεια παρουσιάζει σχετική έρευνα η οποία διεξήχθη υπό μορφή ερωτηματολογίου σε αντιπροσωπευτικό δείγμα ατόμων, προκειμένου να διαπιστωθούν οι τρόποι με τους οποίους τα χρηματοπιστωτικά ιδρύματα στην Ελλάδα αντιμετωπίζουν τις κυβερνοεπιθέσεις και πόσο αποτελεσματικά είναι τα μέτρα που λαμβάνονται για την πρόληψη και την καταστολή των κινδύνων. Τέλος γίνεται αξιολόγηση των απαντήσεων και διεξαγωγή συμπερασμάτων." ;
+          :alternativeHeadline "BachelorsThesis_Roupakas" ;
+          :dateOfSupport "2020-01-01"^^xsd:date ;
+          :department "Τμήμα Διοίκησης Επιχειρήσεων" ;
+          :institution "Πανεπιστήμιο Αιγαίου" ;
+          :language "Ελληνικά" ;
+          :libraryLink "http://hdl.handle.net/11610/22115" ;
+          :nameOfSupervisor "Μιχάλης Μπεκιάρης" ;
+          :numberOfPages "100" ;
+          :program "ΠΡΟΓΡΑΜΜΑ ΜΕΤΑΠΤΥΧΙΑΚΩΝ ΣΠΟΥΔΩΝ (MBA)" ;
+          :title "Το CyberSecurity στις Ελληνικές Τράπεζες, κίνδυνοι, δικλείδες ασφαλείας και μέθοδοι ελέγχου" ;
+          :typeOfDissertation "BachelorsThesis" .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project/SampleID_25
+:SampleID_25 rdf:type owl:NamedIndividual ,
+                   :Sample ;
+          :basicUnit "στελέχη επιχειρήσεων" ;
+          :collectionMethod "σειρά διαθεσιμότητας" ;
+          :methodOfAnalysis "Ποιοτική έρευνα" ;
+          :methodOfRecording "Συνεντεύξεις (μέσω Skype & Teams)" ;
+          :recordingTools "Ερωτηματολόγιο συνεντεύξεων" ;
+          :sampleCollectionReference "2020-11-19 έως 2020-12-02" ;
+          :sampleDescription "στελέχη επιχειρήσεων από το βιομηχανικό αλλά και από τον τραπεζικό κλάδο" ;
+          :sampleSize "3" ;
+          :sampleTimeReference "2020" ;
+          :spatialCoverage "Ελλάδα" ;
+          :statesOfReference "Ελλάδα" .
+:SurveyID_25 rdf:type owl:NamedIndividual ,
+                   :Survey ;
+          :hasSample :SampleID_25 ;
+          :sampleProd "Primary" ;
+          :spaceAnalysis "Μη Ιστορική" ;
+          :strategy "Qualitative" ;
+          :studyQuestions "Yes" ;
+          :target "να εξετάσει μέσα από την έρευνα πως η διοίκηση της απόδοσης εταιριών επηρεάστηκε μετά την εμφάνιση του κορονοϊού" ;
+          :timeAnalysis "Μη Ιστορική" .
+:WriterID_25 rdf:type owl:NamedIndividual ,
+                   :Writer ;
+          :firstName "Αικατερίνη" ;
+          :gender "Γυναίκα" ;
+          :surName "Σίμου" .
+:ThesisID_25 rdf:type owl:NamedIndividual ,
+                   :BachelorsThesis ;
+          :hasSurvey :SurveyID_25 ;
+          :hasWriter :WriterID_25 ;
+          :abstract "Η παρούσα διπλωματική εργασία επικεντρώνεται στο πως η διοίκηση της απόδοσης επηρεάστηκε στην εποχή όπου η πανδημική κρίση του κορονοϊού (Covid-19) έκανε την εμφάνισή της, μέσα από τη μελέτη διαστάσεων του performance management και συγκεκριμένα της αξιολόγησης, της παρακίνησης και της τεχνολογίας." ;
+          :alternativeHeadline "BachelorsThesis_Simou" ;
+          :dateOfSupport "2021-03-19"^^xsd:date ;
+          :department "Τμήμα Διοίκησης Επιχειρήσεων" ;
+          :institution "Πανεπιστήμιο Αιγαίου" ;
+          :keyWords "διαχείριση της απόδοσης, performance management, Covid-19, αξιολόγηση, παρακίνηση, τεχνολογία" ;
+          :language "Ελληνική" ;
+          :libraryLink "http://hdl.handle.net/11610/22134" ;
+          :nameOfSupervisor "Κίνιας Ιωάννης" ;
+          :numberOfPages "85" ;
+          :program "Μεταπτυχιακό Πρόγραμμα Σπουδών ΜΒΑ" ;
+          :title "Διαχείριση της απόδοσης (performance management) κατά τη διάρκεια της πανδημικής κρίσης του Covid-19" ;
+          :typeOfDissertation "BachelorsThesis" .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project/SampleID_26
+:SampleID_26 rdf:type owl:NamedIndividual ,
+                   :Sample ;
+          :basicUnit "Περιφέρειες, Νομοί" ;
+          :geographicalUnit "Νησιά, Περιφερειακές ενότητες" ;
+          :methodOfAnalysis "Ποσοτική ανάλυση, συγκριτική ανάλυση" ;
+          :methodOfRecording "Επεξεργασία στατιστικών στοιχείων" ;
+          :sampleDescription "Περιφέρεια Βορείου Αιγαίου" ;
+          :sampleTimeReference "2000-2020" ;
+          :spatialCoverage "Περιφέρεια Βορείου Αιγαίου" ;
+          :statesOfReference "Ελλάδα" .
+:SurveyID_26 rdf:type owl:NamedIndividual ,
+                   :Survey ;
+          :hasSample :SampleID_26 ;
+          :sampleProd "Secondary" ;
+          :spaceAnalysis "Μη Ιστορική" ;
+          :strategy "Mixed" ;
+          :target "να αναλυθεί ο ρόλος της νησιωτικότητας στη χάραξη της περιφερειακής πολιτικής και να παρουσιαστεί το χρηματοδοτικό πλαίσιο που υλοποιείται στην περιφέρεια Βορείου Αιγαίου" ;
+          :timeAnalysis "Ιστορική" ;
+          :workAssumptions "οι νησιωτικές περιφέρειες έχουν δομικά μειονεκτήματα εξαιτίας των φυσικών χαρακτηριστικών τους, που δυσκολεύουν τους τομείς της οικονομίας και της ανάπτυξής τους" .
+:WriterID_26 rdf:type owl:NamedIndividual ,
+                   :Writer ;
+          :firstName "Γεώργιος" ;
+          :gender "Άνδρας" ;
+          :surName "Στείρος" .
+:ThesisID_26 rdf:type owl:NamedIndividual ,
+                   :BachelorsThesis ;
+          :hasSurvey :SurveyID_26 ;
+          :hasWriter :WriterID_26 ;
+          :abstract "Η παρούσα εργασία πραγματεύεται την ασκούμενη περιφερειακή πολιτική στις νησιωτικές περιφέρειες και δίνει έμφαση στον παράγοντα της νησιωτικότητας και στον βαθμό που αυτός μπορεί να επηρεάσει τη χάραξη της πολιτικής περιφερειακής ανάπτυξης, δηλαδή την οικονομική ανάπτυξη και την αύξηση του βιοτικού επιπέδου της ζωής των ανθρώπων που ζουν σε νησιώτικες περιφέρειες. Ως μελέτη περίπτωσης επιλέγεται η περιφέρεια Βορείου Αιγαίου." ;
+          :alternativeHeadline "BachelorsThesis_Steiros" ;
+          :dateOfSupport "2020-01-01"^^xsd:date ;
+          :department "Τμήμα Διοίκησης Επιχειρήσεων" ;
+          :institution "Πανεπιστήμιο Αιγαίου" ;
+          :keyWords "νησιωτικότητα, περιφερειακή πολιτική, Περιφέρεια Βορείου Αιγαίου, οικονομική ανάπτυξη" ;
+          :language "Ελληνική" ;
+          :libraryLink "http://hdl.handle.net/11610/22116" ;
+          :nameOfSupervisor "ΧΡΙΣΤΟΦΑΚΗΣ ΕΜΜΑΝΟΥΗΛ" ;
+          :numberOfPages "65" ;
+          :program "ΠΡΟΓΡΑΜΜΑ ΜΕΤΑΠΤΥΧΙΑΚΩΝ ΣΠΟΥΔΩΝ ΣΤΗ ΔΙΟΙΚΗΣΗ ΕΠΙΧΕΙΡΗΣΕΩΝ - MBA" ;
+          :title "«Ο παράγοντας νησιωτικότητα ως ιδιαιτερότητα και ως πρόκληση στη χάραξη περιφερειακής πολιτικής: Μελέτη περίπτωσης της Περιφέρειας Βορείου Αιγαίου»" ;
+          :typeOfDissertation "BachelorsThesis" .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project/SampleID_27
+:SampleID_27 rdf:type owl:NamedIndividual ,
+                   :Sample ;
+          :basicUnit "ιδιοκτήτες, managers, στελέχη τμήματος εσωτερικού ελέγχου" ;
+          :collectionMethod "Ποιοτική μέθοδος" ;
+          :geographicalUnit "ξενοδοχειακές μονάδες" ;
+          :methodOfAnalysis "Ποιοτική ανάλυση" ;
+          :methodOfRecording "ημιδομημένες συνεντεύξεις" ;
+          :recordingTools "Οδηγός Συνεντεύξεων, Skype, μαγνητόφωνο" ;
+          :sampleCollectionReference "2020" ;
+          :sampleDescription "ιδιοκτήτες και στελέχη δύο μεγάλων ξενοδοχειακών επιχειρήσεων (Aldemar και Σύνθεσις Α.Ε.)" ;
+          :sampleSize "2" ;
+          :sampleTimeReference "2019-2020" ;
+          :spatialCoverage "Κρήτη, Πελοπόννησο, Ρόδο, Κω" ;
+          :statesOfReference "Ελλάδα" .
+:SurveyID_27 rdf:type owl:NamedIndividual ,
+                   :Survey ;
+          :hasSample :SampleID_27 ;
+          :sampleProd "Primary" ;
+          :spaceAnalysis "Μη Ιστορική" ;
+          :strategy "Qualitative" ;
+          :studyQuestions "Yes" ;
+          :target "να μελετηθεί κατά πόσο ο εσωτερικός έλεγχος συμβάλει στη διαχείριση κινδύνων και αν οι ξενοδοχειακές μονάδες εφαρμόζουν τον έλεγχο βάσει κινδύνου." ;
+          :timeAnalysis "Μη Ιστορική" .
+:WriterID_27 rdf:type owl:NamedIndividual ,
+                   :Writer ;
+          :firstName "Γεωργία – Αντογόνη" ;
+          :gender "Γυναίκα" ;
+          :surName "Τσιφετάκη" .
+:ThesisID_27 rdf:type owl:NamedIndividual ,
+                   :BachelorsThesis ;
+          :hasSurvey :SurveyID_27 ;
+          :hasWriter :WriterID_27 ;
+          :abstract "Στόχος της παρούσας εργασίας είναι να εξεταστεί το πως αντιλαμβάνονται τον κίνδυνο οι ιδιοκτήτες δύο μεγάλων ξενοδοχειακών επιχειρήσεων της χώρας, καθώς και ο τρόπος που εφαρμόζεται ο εσωτερικός έλεγχος και η διαχείριση κινδύνων στις ξενοδοχειακές τους μονάδες." ;
+          :alternativeHeadline "EXECUTIVE MBA" ;
+          :dateOfSupport "2021-03-28"^^xsd:date ;
+          :department "Τμήμα Διοίκησης Επιχειρήσεων" ;
+          :institution "Πανεπιστήμιο Αιγαίου" ;
+          :keyWords "εσωτερικός έλεγχος, διαχείριση κινδύνου, ξενοδοχειακές μονάδες, COSO" ;
+          :language "Ελληνικά" ;
+          :libraryLink "http://hdl.handle.net/11610/22108" ;
+          :nameOfSupervisor "ΒΑΔΑΣΗ ΧΡΙΣΤΙΝΑ" ;
+          :numberOfPages "58" ;
+          :program "ΠΡΟΓΡΑΜΜΑ ΜΕΤΑΠΤΥΧΙΑΚΩΝ ΣΠΟΥΔΩΝ ΣΤΗ ΔΙΟΙΚΗΣΗ ΕΠΙΧΕΙΡΗΣΕΩΝ ΓΙΑ ΣΤΕΛΕΧΗ – EXECUTIVE MBA" ;
+          :title "Ο ΕΣΩΤΕΡΙΚΟΣ ΕΛΕΓΧΟΣ ΚΑΙ Η ΔΙΑΧΕΙΡΙΣΗ ΚΙΝΔΥΝΟΥ ΣΤΙΣ ΞΕΝΟΔΟΧΕΙΑΚΕΣ ΜΟΝΑΔΕΣ" ;
+          :typeOfDissertation "BachelorsThesis" .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project/SampleID_28
+:SampleID_28 rdf:type owl:NamedIndividual ,
+                   :Sample ;
+          :analysisTools "IBM SPSS Statistics, version 23" ;
+          :basicUnit "Διοικητικοί υπάλληλοι" ;
+          :geographicalUnit "Νομός Ξάνθης" ;
+          :methodOfAnalysis "Μονομεταβλητή Ανάλυση, Διμεταβλητή Ανάλυση, Πολυμεταβλητή Ανάλυση (Chi-square test, Pearson’s Correlation, Factor Analysis)" ;
+          :methodOfRecording "ερωτηματολόγια" ;
+          :recordingTools "Ερωτηματολόγια" ;
+          :sampleCollectionReference "Φεβρουαρίου-Μαρτίου 2020" ;
+          :sampleDescription "Διοικητικοί υπάλληλοι της Περιφερειακής Ενότητας Ξάνθης" ;
+          :sampleSize "92" ;
+          :sampleTimeReference "2020" ;
+          :spatialCoverage "Περιφέρεια Ανατολικής Μακεδονίας και Θράκης" ;
+          :statesOfReference "Ελλάδα" .
+:SurveyID_28 rdf:type owl:NamedIndividual ,
+                   :Survey ;
+          :hasSample :SampleID_28 ;
+          :sampleProd "Πρωτογενή" ;
+          :spaceAnalysis "Μη Ιστορική" ;
+          :strategy "Quantitative" ;
+          :studyAssumptions "Ho: Οι μεταβλητές αυτές είναι ανεξάρτητες δηλαδή δεν υπάρχει συσχέτιση μεταξύ των δύο μεταβλητών. H1: Υπάρχει συσχέτιση μεταξύ των δύο μεταβλητών." ;
+          :studyQuestions "Ναι" ;
+          :target "Ο στόχος της συγκεκριμένης διπλωματικής εργασίας είναι να παρουσιάσει τη διοίκηση και το εσωτερικό μάρκετινγκ που εφαρμόζει ο Δημόσιος Τομέας." ;
+          :timeAnalysis "Μη Ιστορική" .
+:WriterID_28 rdf:type owl:NamedIndividual ,
+                   :Writer ;
+          :firstName "Στεργιανή" ;
+          :gender "Γυναίκα" ;
+          :surName "Φλωροκάπη" .
+:ThesisID_28 rdf:type owl:NamedIndividual ,
+                   :BachelorsThesis ;
+          :hasSurvey :SurveyID_28 ;
+          :hasWriter :WriterID_28 ;
+          :abstract "Ο στόχος της συγκεκριμένης διπλωματικής εργασίας είναι να παρουσιάσει τη διοίκηση και το εσωτερικό μάρκετινγκ που εφαρμόζει ο Δημόσιος Τομέας. Για το λόγο αυτό αρχικά πραγματοποιήθηκε μια θεωρητική προσέγγιση της έννοιας Διοίκησης Ανθρώπινου Δυναμικού. Παράλληλα μέσω της διπλωματικής εργασίας πραγματοποιείται μιας προσπάθεια μελέτης της ποιότητα των παρεχόμενων υπηρεσιών από το Δημόσιο Οργανισμό προς το Πολίτη αναφέροντας εκτενώς στη θεωρία την έννοια της υπηρεσίας και της ποιότητας. Ωστόσο η βέλτιστη παροχή υπηρεσιών προσδίδει το αίσθημα ικανοποίησης στο Πολίτη και έτσι θεωρήθηκε σκόπιμη η αναφορά στον όρο ικανοποίηση του Πολίτη και μετέπειτα η αναφορά στη Δημόσια Διοίκηση ώστε να κατανοηθεί πλήρως η οργάνωση του Δημοσίου Τομέα και ο τρόπος που συμβάλλει στη βέλτιστη εξυπηρέτηση και παροχή υπηρεσιών. Για την ολοκλήρωση της έρευνας πραγματοποιήθηκε ποσοτική έρευνα χρησιμοποιώντας ερωτηματολόγια σε δείγμα 92 ατόμων που εργάζονται στη Περιφέρεια Ανατολικής Μακεδονίας και Θράκης. Σύμφωνα με τα αποτελέσματα οι εργαζόμενοι του Δημοσίου Τομέα είναι πρόθυμοι να βελτιώσουν τη ποιότητα υπηρεσιών που παρέχουν και το επίπεδο της εξυπηρέτησής τους, τονίζοντας ότι η Δημόσια Διοίκηση χρήζει άμεσα βελτίωση παρά τη προσπάθεια που έχει γίνει κατά τη τελευταία δεκαετία. Η Δημόσια Διοίκηση χαρακτηρίζεται από ένα γραφειοκρατικό σύστημα το οποίο πρέπει να εκσυγχρονιστεί και να συμβάλλει στην ικανοποίηση του απλού Πολίτη." ;
+          :alternativeHeadline "BachelorsThesis_Florokapi" ;
+          :dateOfSupport "2020-03-31"^^xsd:date ;
+          :department "Τμήμα Διοίκησης Επιχειρήσεων" ;
+          :institution "Πανεπιστήμιο Αιγαίου" ;
+          :keyWords "Ποιότητα Υπηρεσιών, Ικανοποίηση Πελατών, Δημόσια Διοίκηση" ;
+          :language "Ελληνικά" ;
+          :libraryLink "http://hdl.handle.net/11610/22120" ;
+          :nameOfSupervisor "ΣΑΛΑΜΟΥΡΑ ΜΑΡΙΑ" ;
+          :numberOfPages "191" ;
+          :program "ΠΡΟΓΡΑΜΜΑ ΜΕΤΑΠΤΥΧΙΑΚΩΝ ΣΠΟYΔΩΝ ΣΤΗ ΔΙΟΙΚΗΣΗ ΕΠΙΧΕΙΡΗΣΕΩΝ- ΜΒΑ" ;
+          :title "Η ΣΥΜΒΟΛΗ ΤΗΣ ΠΟΙΟΤΗΤΑΣ ΥΠΗΡΕΣΙΩΝ ΚΑΙ ΕΞΥΠΗΡΕΤΗΣΗΣ ΠΕΛΑΤΩΝ ΣΤΗΝ ΕΛΛΗΝΙΚΗ ΔΗΜΟΣΙΑ ΔΙΟΙΚΗΣΗ: Η ΠΕΡΙΠΤΩΣΗ ΤΟΥ ΔΗΜΟΣΙΟΥ ΤΟΜΕΑ ΤΟΥ ΝΟΜΟΥ ΞΑΝΘΗΣ" ;
+          :typeOfDissertation "BachelorsThesis" .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project/SampleID_29
+:SampleID_29 rdf:type owl:NamedIndividual ,
+                   :Sample ;
+          :analysisTools "Google Forms, Microsoft Excel" ;
+          :basicUnit "άνθρωποι" ;
+          :collectionMethod "email και κοινωνικών δικτύων (LinkedIn και Facebook)" ;
+          :methodOfAnalysis "ποσοτική και ποιοτική ανάλυση" ;
+          :methodOfRecording "ερωτηματολόγια μέσω διαδικτύου" ;
+          :recordingTools "Google Forms" ;
+          :sampleCollectionReference "1η Αυγούστου 2020, μέχρι και τις 20 Σεπτεμβρίου 2020" ;
+          :sampleDescription "άνθρωποι που γνωρίζουν για τις αλγοριθμικές συναλλαγές και δυνητικοί πελάτες" ;
+          :sampleSize "350" ;
+          :sampleTimeReference "2020" ;
+          :statesOfReference "Ελλάδα" .
+:SurveyID_29 rdf:type owl:NamedIndividual ,
+                   :Survey ;
+          :hasSample :SampleID_29 ;
+          :sampleProd "Primary and Secondary" ;
+          :spaceAnalysis "Μη Ιστορική" ;
+          :strategy "Mixed" ;
+          :studyQuestions "να εντοπίσει το κατά πόσο οι άνθρωποι γνωρίζουν για τις αλγοριθμικές συναλλαγές και επίσης να αναγνωρίσει το γκρουπ των ανθρώπων τους οποίους θα πρέπει να στοχεύσω ως δυνητικούς πελάτες" ;
+          :target "να περιγράψω μερικές λεπτομέρειες για την ανάπτυξη των αλγοριθμικών συναλλαγών τα 30 τελευταία χρόνια... να παρουσιάσω το επιχειρηματικό μου σχέδιο" ;
+          :timeAnalysis "Μη Ιστορική" .
+:WriterID_29 rdf:type owl:NamedIndividual ,
+                   :Writer ;
+          :fathersName "Α." ;
+          :firstName "Γεώργιος" ;
+          :gender "Άνδρας" ;
+          :surName "Φουντούλης" .
+:ThesisID_29 rdf:type owl:NamedIndividual ,
+                   :DoctoralDissertation ;
+          :hasSurvey :SurveyID_29 ;
+          :hasWriter :WriterID_29 ;
+          :abstract "Στη δεκαετία του 1990 η αγορά συναλλάγματος ξεκίνησε να αναπτύσσεται και να γίνεται προσβάσιμη στους επενδυτές που ήθελαν να επενδύσουν σε ισοτιμίες συναλλάγματος και να κάνουν συναλλαγές σε εμπορεύματα... Το επόμενο βήμα... ήταν η ενσωμάτωση των ηλεκτρονικών υπολογιστών στις συναλλαγές και η δημιουργία αλγορίθμων... Στο πρώτο μέρος της παρούσας εργασίας θα προσπαθήσω να περιγράψω μερικές λεπτομέρειες για την ανάπτυξη των αλγοριθμικών συναλλαγών τα 30 τελευταία χρόνια... Στο δεύτερο μέρος θα παρουσιάσω το επιχειρηματικό μου σχέδιο... Επιπλέον θα περιγράψω τα αποτελέσματα της έρευνάς μου, η οποία είχε ως στόχο να εντοπίσει το κατά πόσο οι άνθρωποι γνωρίζουν για τις αλγοριθμικές συναλλαγές και επίσης να αναγνωρίσει το γκρουπ των ανθρώπων τους οποίους θα πρέπει να στοχεύσω ως δυνητικούς πελάτες." ;
+          :alternativeHeadline "The evolution of algorithmic trading and its role in the financial markets" ;
+          :dateOfSupport "2020-09-01"^^xsd:date ;
+          :department "Τμήμα Διοίκησης Επιχειρήσεων" ;
+          :institution "Πανεπιστήμιο Αιγαίου" ;
+          :keyWords "Αλγοριθμικές Συναλλαγές, Forex, Επιχειρηματικό Σχέδιο, Χρηματαγορές" ;
+          :language "Ελληνικά" ;
+          :libraryLink "http://hdl.handle.net/11610/22125" ;
+          :nameOfSupervisor "Δρ. Αριστείδης Σάμιτας" ;
+          :numberOfPages "58" ;
+          :program "ΜΕΤΑΠΤΥΧΙΑΚΟ ΠΡΟΓΡΑΜΜΑ ΣΠΟΥΔΩΝ ΣΤΗ ΔΙΟΙΚΗΣΗ ΕΠΙΧΕΙΡΗΣΕΩΝ" ;
+          :title "Η ΕΞΕΛΙΞΗ ΤΩΝ ΑΛΓΟΡΙΘΜΙΚΩΝ ΣΥΝΑΛΛΑΓΩΝ ΚΑΙ Ο ΡΟΛΟΣ ΤΟΥΣ ΣΤΙΣ ΧΡΗΜΑΤΑΓΟΡΕΣ" ;
+          :typeOfDissertation "DoctoralDissertation" .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project/SampleID_30
+:SampleID_30 rdf:type owl:NamedIndividual ,
+                   :Sample ;
+          :analysisTools "SPSS, version 23" ;
+          :basicUnit "υπάλληλοι" ;
+          :collectionMethod "συνδυασμό της δειγματοληψίας ευκολίας και της απλής τυχαίας δειγματοληψίας" ;
+          :geographicalUnit "Δήμος" ;
+          :methodOfAnalysis "περιγραφική στατιστική" ;
+          :methodOfRecording "δομημένο ερωτηματολόγιο" ;
+          :recordingTools "δομημένο ερωτηματολόγιο" ;
+          :sampleCollectionReference "18 Σεπτεμβρίου έως και 17 Οκτωβρίου 2019" ;
+          :sampleDescription "υπάλληλοι του Δήμου Χίου" ;
+          :sampleSize "130" ;
+          :sampleTimeReference "2019" ;
+          :spatialCoverage "Δήμος Χίου" ;
+          :statesOfReference "Ελλάδα" .
+:SurveyID_30 rdf:type owl:NamedIndividual ,
+                   :Survey ;
+          :hasSample :SampleID_30 ;
+          :sampleProd "Πρωτογενής" ;
+          :spaceAnalysis "Μη Ιστορική" ;
+          :strategy "Mixed" ;
+          :studyAssumptions "ΥΕ1: Υπάρχει συσχέτιση μεταξύ του φύλου και της παρακίνησης των εργαζομένων;, ΥΕ2: Υπάρχει συσχέτιση μεταξύ της ηλικίας και της παρακίνησης των εργαζομένων;, ΥΕ3: Υπάρχει συσχέτιση μεταξύ του εκπαιδευτικού επιπέδου και της παρακίνησης των εργαζομένων;, ΥΕ4: Υπάρχει συσχέτιση μεταξύ της θέσης στην υπηρεσία και της παρακίνησης των εργαζομένων;" ;
+          :studyQuestions "1.Ποια είναι τα δημογραφικά χαρακτηριστικά των εργαζομένων που απασχολούνται στο Δήμο Χίου ;, 2.Είναι ικανοποιημένοι οι εργαζόμενοι του Δ. Χίου από το αντικείμενο, τις συνθήκες, τις αποδοχές τους και την ανάληψη πρωτοβουλιών από την εργασία τους;, 3.Ποιοι τρόποι θεωρούν ότι θα τους παρακινούσαν να εργαστούν με περισσότερο ζήλο, 4.Ποιους άλλους τρόπους παρακίνησης θα πρότειναν;, 5. Ζητήθηκε από τους εργαζόμενους να αξιολογήσουν μια σειρά από τεχνικές που τους δόθηκαν, 6. Ζητήθηκε να ιεραρχήσουν διάφορους τρόπους παρακίνησης, 7.Σε ποιο βαθμό η οικονομική κρίση έχει επηρεάσει τις διαπροσωπικές τους σχέσεις;, 8.Ποια είναι η διαφορά της σημερινής οικονομικής τους κατάστασης με το προηγούμενο έτος;, 9. Σε ποιο βαθμό αισθάνονται ανασφάλεια για τη θέση εργασίας τους;, 10.Τα οικονομικά κίνητρα είναι ο μόνος τρόπος παρακίνησης σε περίοδο κρίσης;" ;
+          :target "να μελετήσει το φαινόμενο της παρακίνησης και ειδικότερα να εντοπίσει τους παράγοντες που παρακινούν τους εργαζόμενους υπό τις παρούσες οικονομικές συνθήκες" ;
+          :timeAnalysis "Μη Ιστορική" ;
+          :workAssumptions "Ναι" .
+:WriterID_30 rdf:type owl:NamedIndividual ,
+                   :Writer ;
+          :fathersName "Γιώργος" ;
+          :firstName "Θεοδώρα" ;
+          :gender "Γυναίκα" ;
+          :surName "Χαβιάρα" .
+:ThesisID_30 rdf:type owl:NamedIndividual ,
+                   :BachelorsThesis ;
+          :hasSurvey :SurveyID_30 ;
+          :hasWriter :WriterID_30 ;
+          :abstract "Η παρακίνηση των εργαζομένων αποτελεί ένα από τα σημαντικότερα θέματα ενδιαφέροντος των επιχειρήσεων και των οργανισμών κυρίως στις ημέρες μας, μετά την οικονομική κρίση που βιώσαμε ως χώρα, αλλά και ως άτομα χωριστά ο καθένας μας και της οποίας τις συνέπειες αντιμετωπίζουμε ακόμα και σήμερα. Ο κυριότερος λόγος είναι η κατανόηση της σημασίας των ανθρώπινων πόρων ή αλλιώς του ανθρώπινου δυναμικού που διαθέτει μια επιχείρηση ή ένας οργανισμός και κατ' επέκταση η ανάγκη για την παροχή κινήτρων με σκοπό την μεγιστοποίηση της αποτελεσματικότητας των υπαλλήλων." ;
+          :alternativeHeadline "Motivation and public sector. The case of employees in the municipality of Chios" ;
+          :dateOfSupport "2020-03-30"^^xsd:date ;
+          :department "Τμήμα Διοίκησης Επιχειρήσεων" ;
+          :institution "Πανεπιστήμιο Αιγαίου" ;
+          :keyWords "παρακίνηση, θεωρίες παρακίνησης, τεχνικές παρακίνησης, Δημόσιος Τομέας, οικονομική κρίση, Οργανισμοί Τοπικής Αυτοδιοίκησης." ;
+          :language "Ελληνικά" ;
+          :libraryLink "http://hdl.handle.net/11610/22118" ;
+          :nameOfSupervisor "Νικόλαος Κωνσταντόπουλος" ;
+          :numberOfPages "197" ;
+          :program "ΠΡΟΓΡΑΜΜΑ ΜΕΤΑΠΤΥΧΙΑΚΩΝ ΣΠΟΥΔΩΝ ΣΤΗ ΔΙΟΙΚΗΣΗ ΕΠΙΧΕΙΡΗΣΕΩΝ-MBA" ;
+          :title "«Παρακίνηση και Δημόσιος τομέας. Η περίπτωση των εργαζομένων στο Δήμο Χίου »" ;
+          :typeOfDissertation "BachelorsThesis" .
+
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project/SampleID_31
+:SampleID_31 rdf:type owl:NamedIndividual ,
+                   :Sample ;
+          :basicUnit "Εταιρείες της λίστας Fortune 500 (The Coca-Cola Company, Hewlett-Packard, Walmart)" ;
+          :methodOfAnalysis "Ποιοτική και περιγραφική ανάλυση" ;
+          :methodOfRecording "Βιβλιογραφική ανασκόπηση και μελέτη περίπτωσης" ;
+          :recordingTools "Ιστοσελίδες εταιρειών, Πλατφόρμες κοινωνικής δικτύωσης (Facebook, Twitter, Blogs, Forums)" ;
+          :sampleDescription "Μεγάλες, πολυεθνικές εταιρείες της λίστας Fortune 500 και 3 μελέτες περίπτωσης" ;
+          :sampleSize "500" ;
+          :sampleTimeReference "2009-2020" ;
+          :spatialCoverage "ΗΠΑ" ;
+          :statesOfReference "ΗΠΑ" .
+:SurveyID_31 rdf:type owl:NamedIndividual ,
+                   :Survey ;
+          :hasSample :SampleID_31 ;
+          :sampleProd "Secondary" ;
+          :spaceAnalysis "Μη Ιστορική" ;
+          :strategy "Qualitative" ;
+          :target "Ανάλυση και αξιολόγηση της χρήσης των μέσων κοινωνικής δικτύωσης από μεγάλες πολυεθνικές εταιρείες και προσδιορισμός στρατηγικών για την αποτελεσματική υιοθέτησή τους." ;
+          :timeAnalysis "Μη Ιστορική" .
+:WriterID_31 rdf:type owl:NamedIndividual ,
+                   :Writer ;
+          :fathersName "Κ." ;
+          :firstName "Σμαράγδα" ;
+          :gender "Γυναίκα" ;
+          :surName "Χουζούρη" .
+:ThesisID_31 rdf:type owl:NamedIndividual ,
+                   :DoctoralDissertation ;
+          :hasSurvey :SurveyID_31 ;
+          :hasWriter :WriterID_31 ;
+          :abstract "Τα social media είναι ένα μέσο πολύ σύγχρονο το οποίο υιοθετείται από όλο και περισσότερους ανθρώπους ανά τον κόσμο, που το επιλέγουν για να επικοινωνούν με άλλους. Λόγω της ευρείας χρήσης του πολλοί οργανισμοί επέλεξαν να το αξιοποιήσουν, ώστε να αλληλεπιδράσουν με τους πελάτες τους αλλά και με το προσωπικό τους, τους συνεργάτες και τους προμηθευτές τους. Στην παρούσα διπλωματική αναλύεται και αξιολογείται η χρήση των μέσων κοινωνικής δικτύωσης από κυρίως μεγάλες, αμερικάνικες πολυεθνικές εταιρείες που δραστηριοποιούνται σε πολλούς διαφορετικούς τομείς. Πιο συγκεκριμένα, αναφέρονται τα οφέλη από τη χρήση τους, στρατηγικές που πρέπει να χρησιμοποιηθούν για την αποτελεσματική υιοθέτησή τους, καθώς επίσης και κάποιες μελέτες περίπτωσης για την πιο εμπεριστατωμένη και ολοκληρωμένη προσέγγιση του θέματος." ;
+          :alternativeHeadline "DoctoralDissertation_Chouzouri" ;
+          :dateOfSupport "2020-09-01"^^xsd:date ;
+          :department "Τμήμα Διοίκησης Επιχειρήσεων" ;
+          :institution "Ελληνικό Μεσογειακό Πανεπιστήμιο" ;
+          :keyWords "social media, e-marketing, Web 2.0, Fortune 500, Coca-Cola, Hewlett-Packard, Walmart" ;
+          :language "Ελληνικά" ;
+          :libraryLink "http://hdl.handle.net/11610/22122" ;
+          :nameOfSupervisor "ΚΙΝΙΑΣ ΙΩΑΝΝΗΣ" ;
+          :numberOfPages "94" ;
+          :program "ΜΕΤΑΠΤΥΧΙΑΚΟ ΠΡΟΓΡΑΜΜΑ ΣΠΟΥΔΩΝ “MBA”" ;
+          :title "ΠΟΛΙΤΙΚΕΣ ΓΙΑ ΤΗΝ ΑΠΟΤΕΛΕΣΜΑΤΙΚΗ ΑΞΙΟΠΟΙΗΣΗ ΤΩΝ SOCIAL MEDIA ΑΠΟ ΜΕΓΑΛΕΣ, ΠΟΛΥΕΘΝΙΚΕΣ ΕΤΑΙΡΕΙΕΣ" ;
+          :typeOfDissertation "DoctoralDissertation" .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Dissertation
+                :Sample
+                :Spacetime
+                :Survey
+                :Writer
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
