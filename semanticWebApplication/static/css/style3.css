@@ -1,0 +1,234 @@
+:root {
+  --bg0: #0b0f14;
+  --bg1: #0f1319;
+  --panel: #2A323C;
+  --card: rgba(55, 63, 71, 0.72);
+  --text: #d7dde6;
+  --muted: #a6b0bf;
+  --stroke: rgba(255, 255, 255, 0.10);
+  --accent: #83b3d1;
+  --accent2: #a3c4e0;
+  --good: #48cae4;
+  --warn: #ff4d6d;
+  --shadow: 0 18px 60px rgba(0, 0, 0, 0.55);
+  --shadow2: 0 10px 30px rgba(0, 0, 0, 0.35);
+  --r-lg: 28px;
+  --r-md: 18px;
+  --r-sm: 12px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(1200px 700px at 10% 10%, rgba(131, 179, 209, 0.18), transparent 60%),
+    radial-gradient(900px 550px at 90% 25%, rgba(255, 77, 109, 0.14), transparent 55%),
+    radial-gradient(900px 600px at 40% 95%, rgba(72, 202, 228, 0.12), transparent 55%),
+    linear-gradient(180deg, var(--bg0), var(--bg1));
+  overflow-x: hidden;
+  padding: clamp(18px, 4vw, 40px);
+  display: flex;
+  justify-content: center;
+}
+
+.aurora {
+  position: fixed;
+  inset: -200px;
+  pointer-events: none;
+  filter: blur(40px);
+  opacity: 0.65;
+  z-index: 0;
+  background:
+    conic-gradient(from 180deg at 50% 50%,
+      rgba(131, 179, 209, 0.0),
+      rgba(131, 179, 209, 0.22),
+      rgba(72, 202, 228, 0.18),
+      rgba(255, 77, 109, 0.14),
+      rgba(131, 179, 209, 0.0));
+  animation: swirl 16s linear infinite;
+}
+
+@keyframes swirl {
+  from { transform: rotate(0deg) scale(1.05); }
+  to { transform: rotate(360deg) scale(1.05); }
+}
+
+.main {
+  position: relative;
+  z-index: 1;
+  width: min(1200px, 92vw);
+  background: linear-gradient(135deg, rgba(42, 50, 60, 0.90), rgba(42, 50, 60, 0.70));
+  border: 1px solid var(--stroke);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow);
+  /* Διόρθωση σφαλμάτων Safari */
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  padding: clamp(18px, 3.5vw, 28px);
+  
+  /* ΠΡΟΣΘΗΚΗ SCROLL BAR ΣΤΟ ΚΕΝΤΡΙΚΟ ΠΛΑΙΣΙΟ */
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* Στυλ για τη μπάρα κύλισης (Scrollbar) */
+.main::-webkit-scrollbar {
+  width: 8px;
+}
+.main::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+.main::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 10px;
+}
+
+.header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+  padding-bottom: 14px;
+  margin-bottom: 18px;
+}
+
+.title h1 {
+  margin: 0;
+  font-size: clamp(20px, 2.2vw, 28px);
+  color: var(--accent2);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.title p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(15, 19, 25, 0.45);
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.btn.primary {
+  background: linear-gradient(135deg, rgba(131, 179, 209, 0.95), rgba(131, 179, 209, 0.70));
+  color: #0b0f14;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+}
+
+.card {
+  grid-column: span 12;
+  background: var(--card);
+  border: 1px solid var(--stroke);
+  border-radius: var(--r-md);
+  padding: 16px;
+  position: relative;
+  /* Διόρθωση σφαλμάτων Safari */
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.kpis {
+  display: flex;
+  gap: 10px;
+}
+
+.kpi {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px 12px;
+  border-radius: 16px;
+  background: rgba(15, 19, 25, 0.35);
+  min-width: 140px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.kpi .k { color: rgba(215, 221, 230, 0.65); font-size: 11px; font-weight: 800; text-transform: uppercase; }
+.kpi .v { color: #fff; font-size: 18px; font-weight: 900; }
+
+.canvas-wrap {
+  background: rgba(15, 19, 25, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 12px;
+  height: 420px;
+  position: relative;
+}
+
+canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.section-label {
+  grid-column: span 12;
+  margin-top: 10px;
+  color: var(--muted);
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.insights {
+  grid-column: span 12;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 12px;
+}
+
+.insight {
+  grid-column: span 3;
+  border-radius: 18px;
+  background: rgba(15, 19, 25, 0.32);
+  padding: 14px;
+  /* Διόρθωση σφαλμάτων Safari */
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+}
+
+@media (max-width: 1100px) { .insight { grid-column: span 6; } }
+@media (max-width: 700px) { .insight { grid-column: span 12; } }

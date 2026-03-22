@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Αποτελέσματα | Αποθετήριο</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style2.css') }}">
+</head>
+
+<body>
+  <div class="aurora"></div>
+
+  <div class="main">
+    <div class="header">
+      <div class="title">
+        <h1><i class='bx bx-table'></i> Αποτελέσματα Ερωτήματος</h1>
+        <p>Πατήστε “Προβολή” για popup με λεπτομέρειες (thesis_details).</p>
+      </div>
+
+      <div class="actions">
+        <a class="btn" href="/"><i class='bx bx-left-arrow-alt'></i> Πίσω</a>
+        <button class="btn primary" type="button" onclick="window.print()">
+          <i class='bx bx-printer'></i> Εκτύπωση / PDF
+        </button>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      {% if results %}
+        <div class="scroll">
+          <table>
+            <thead>
+              <tr>
+                {% for column in columns %}
+                  {% if column != "ThesisID" %}
+                    <th>{{ column }}</th>
+                  {% endif %}
+                {% endfor %}
+                <th class="col-actions">Ενέργειες</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {% for row in results %}
+                <tr>
+                  {% for column in columns %}
+                    {% if column != "ThesisID" %}
+                      <td>
+                        {% if column in row %}
+                          <div class="{% if column in ['Title','Abstract','KeyWords'] %}truncate{% endif %}">
+                            {{ row[column].value }}
+                          </div>
+                        {% else %}
+                          <span class="cell-muted">—</span>
+                        {% endif %}
+                      </td>
+                    {% endif %}
+                  {% endfor %}
+
+                  <td class="col-actions">
+                    <button
+                      class="mini-btn primary"
+                      type="button"
+                      data-columns='{{ columns|tojson|safe }}'
+                      data-row='{{ row|tojson|safe }}'
+                      onclick="openModal(this)">
+                      <i class='bx bx-show'></i> Προβολή
+                    </button>
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      {% else %}
+        <div class="empty">
+          <i class='bx bx-info-circle'></i>
+          <h3 style="margin:0;">Δεν βρέθηκαν αποτελέσματα</h3>
+          <p>Δοκίμασε άλλα φίλτρα.</p>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="modalOverlay" class="modal-overlay" role="dialog" aria-modal="true">
+    <div class="modal">
+      <div class="modal-header">
+        <div class="modal-title">
+          <h2><i class='bx bx-detail'></i> Πλήρης Προβολή</h2>
+          <p>Στοιχεία από thesis_details.</p>
+        </div>
+        <button class="modal-close" type="button" onclick="closeModal()">
+          <i class='bx bx-x'></i> Κλείσιμο
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="kv-grid" id="kvGrid"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const overlay = document.getElementById('modalOverlay');
+    const kvGrid = document.getElementById('kvGrid');
+
+    function escapeHtml(str){
+      return String(str)
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;')
+        .replaceAll("'", '&#039;');
+    }
+
+    function safeValue(rowObj, key){
+      if (!rowObj || !rowObj[key] || rowObj[key].value === undefined) return '—';
+      const v = String(rowObj[key].value);
+      return v.trim() === '' ? '—' : v;
+    }
+
+    function renderKV(obj){
+      kvGrid.innerHTML = '';
+      const entries = Object.entries(obj || {});
+      if (!entries.length){
+        kvGrid.innerHTML = `<div class="empty"><p>Δεν βρέθηκαν λεπτομέρειες.</p></div>`;
+        return;
+      }
+
+      for (const [k, vRaw] of entries){
+        const v = (vRaw === null || vRaw === undefined || String(vRaw).trim()==='') ? '—' : vRaw;
+        const vs = Array.isArray(v) ? v.join(', ') : String(v);
+
+        const isUrl = /^https?:\/\//i.test(vs);
+        const isLibraryLink = k.toLowerCase() === 'librarylink' || k.toLowerCase() === 'link';
+
+        const valHtml = (isUrl && isLibraryLink)
+          ? `<a href="${escapeHtml(vs)}" target="_blank" rel="noopener noreferrer">${escapeHtml(vs)}</a>`
+          : escapeHtml(vs);
+
+        const box = document.createElement('div');
+        box.className = 'kv';
+        box.innerHTML = `
+          <div class="k"><i class='bx bx-label'></i> ${escapeHtml(k)}</div>
+          <div class="v">${valHtml}</div>
+        `;
+        kvGrid.appendChild(box);
+      }
+    }
+
+    async function openModal(btn){
+      const columns = JSON.parse(btn.getAttribute('data-columns') || '[]');
+      const row = JSON.parse(btn.getAttribute('data-row') || '{}');
+      const thesisId = safeValue(row, 'ThesisID');
+
+      overlay.classList.add('open');
+      document.addEventListener('keydown', handleEsc);
+
+      kvGrid.innerHTML = `<div class="empty"><p>Φόρτωση...</p></div>`;
+
+      if (!thesisId || thesisId === '—'){
+        // fallback: show row
+        const fallback = {};
+        for (const c of columns) fallback[c] = safeValue(row, c);
+        renderKV(fallback);
+        return;
+      }
+
+      try{
+        const res = await fetch(`/thesis_details?thesis_id=${encodeURIComponent(thesisId)}`);
+        const data = await res.json();
+        renderKV(data);
+      }catch(e){
+        const fallback = {};
+        for (const c of columns) fallback[c] = safeValue(row, c);
+        renderKV(fallback);
+      }
+    }
+
+    function closeModal(){
+      overlay.classList.remove('open');
+      document.removeEventListener('keydown', handleEsc);
+    }
+
+    function handleEsc(e){
+      if (e.key === 'Escape') closeModal();
+    }
+
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) closeModal();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Αποθετήριο Διατριβών | Dashboard</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style1.css') }}">
+</head>
+
+<body>
+  <div class="aurora"></div>
+
+  <div class="wrap">
+    <div class="hero">
+      <div class="title">
+        <h1><i class='bx bxs-graduation'></i> Διαχείριση Ακαδημαϊκών Διατριβών</h1>
+        <p>
+          Διάλεξε ενέργεια/ερώτημα, κάνε φιλτράρισμα και δες αποτελέσματα.
+          Η σχεδίαση είναι “one-stop dashboard” για τα SPARQL ερωτήματα.
+        </p>
+      </div>
+
+      <div class="chips">
+        <div class="chip"><i class='bx bx-network-chart'></i> Virtuoso + SPARQL</div>
+        <div class="chip"><i class='bx bx-shield-quarter'></i> Semantic Repository</div>
+        <div class="chip"><i class='bx bx-bolt-circle'></i> Fast Filters</div>
+      </div>
+    </div>
+
+    <div class="section-label"><i class='bx bx-star'></i> Βασικές Αναζητήσεις</div>
+
+    <div class="grid">
+      <!-- Keyword / Author -->
+      <div class="card span-6">
+        <h3><i class='bx bx-search-alt'></i> Αναζήτηση με Λέξεις (Τίτλος & λέξεις-κλειδιά)</h3>
+        <form action="/query" method="POST">
+          <input type="hidden" name="query_type" value="search_title_keywords">
+          <input type="text" name="keyword" placeholder="Τίτλος & Keywords..." required>
+          <button class="btn" type="submit">Εύρεση</button>
+        </form>
+
+        <div class="divider"></div>
+
+        <h3><i class='bx bx-search-alt'></i> Αναζήτηση στην Περίληψη (abstract) </h3>
+        <form action="/query" method="POST">
+          <input type="hidden" name="query_type" value="search_abstract">
+          <input type="text" name="keyword" placeholder="Περίληψη..." required>
+          <button class="btn" type="submit">Εύρεση</button>
+        </form>
+        <div class="hint">Υποστηρίζεται αναζήτηση χωρίς τόνους.</div>
+      </div>
+
+      <!-- NEW: Supervisor -->
+      <div class="card span-6">
+
+        <h3 style="margin-top:0;"><i class='bx bx-user'></i> Αναζήτηση Συγγραφέα</h3>
+        <form action="/query" method="POST">
+          <input type="hidden" name="query_type" value="search_author_name">
+          <input type="text" name="author_name" placeholder="Όνομα ή Επώνυμο..." required>
+          <button class="btn btn-special" type="submit">Αναζήτηση</button>
+        </form>
+        <div class="hint">Υποστηρίζεται αναζήτηση χωρίς τόνους και με διαφορετική σειρά ονόματος.</div>
+
+        <div class="divider"></div>
+
+        <h3><i class='bx bx-user-voice'></i> Αναζήτηση Επιβλέποντα</h3>
+        <form action="/query" method="POST">
+          <input type="hidden" name="query_type" value="search_supervisor">
+          <input type="text" name="supervisor_name" placeholder="Όνομα Επιβλέποντα..." required>
+          <button class="btn btn-special" type="submit">Εύρεση Διατριβών</button>
+        </form>
+        <div class="hint">Βρες διατριβές με βάση τον/την επιβλέποντα/ουσα.</div>
+
+
+
+
+
+      </div>
+
+      <div class="section-label span-12"><i class='bx bx-slider-alt'></i> Φίλτρα & Κατηγορίες</div>
+
+      <!-- Type -->
+      <div class="card span-6">
+        <h3><i class='bx bx-file'></i> Τύπος Διατριβής</h3>
+        <form action="/query" method="POST">
+          <div class="radio-wrap">
+            <label class="radio">
+              <input type="radio" name="query_type" value="MasterThesis" checked>
+              <div><strong>Master</strong><br><span>Μεταπτυχιακή</span></div>
+            </label>
+            <label class="radio">
+              <input type="radio" name="query_type" value="DoctoralThesis">
+              <div><strong>Doctoral</strong><br><span>Διδακτορική</span></div>
+            </label>
+            <label class="radio">
+              <input type="radio" name="query_type" value="BachelorThesis">
+              <div><strong>Bachelor</strong><br><span>Πτυχιακή</span></div>
+            </label>
+            <label class="radio">
+              <input type="radio" name="query_type" value="AllThesis">
+              <div><strong>Όλες</strong><br><span>Όλοι οι τύποι</span></div>
+            </label>
+          </div>
+          <button class="btn" type="submit">Προβολή</button>
+        </form>
+      </div>
+
+      <!-- Strategy -->
+      <div class="card span-6">
+        <h3><i class='bx bx-test-tube'></i> Μεθοδολογία Έρευνας</h3>
+        <form action="/query" method="POST">
+          <div class="radio-wrap">
+            <label class="radio">
+              <input type="radio" name="query_type" value="by_strategy_Qualitative" checked>
+              <div><strong>Ποιοτική</strong><br><span>Qualitative</span></div>
+            </label>
+            <label class="radio">
+              <input type="radio" name="query_type" value="by_strategy_Quantitative">
+              <div><strong>Ποσοτική</strong><br><span>Quantitative</span></div>
+            </label>
+            <label class="radio">
+              <input type="radio" name="query_type" value="by_strategy_Mixed">
+              <div><strong>Μικτή</strong><br><span>Mixed</span></div>
+            </label>
+            <label class="radio">
+              <input type="radio" name="query_type" value="by_strategy_All">
+              <div><strong>Όλες</strong><br><span>Χωρίς φίλτρο</span></div>
+            </label>
+          </div>
+          <button class="btn" type="submit">Φιλτράρισμα</button>
+        </form>
+      </div>
+
+      <!-- Gender -->
+      <div class="card span-6">
+        <h3><i class='bx bx-male-female'></i> Φύλο Συγγραφέα</h3>
+        <form action="/query" method="POST">
+          <div class="radio-wrap">
+            <label class="radio">
+              <input type="radio" name="query_type" value="female_authors" checked>
+              <div><strong>Γυναίκες</strong><br><span>Female authors</span></div>
+            </label>
+            <label class="radio">
+              <input type="radio" name="query_type" value="male_authors">
+              <div><strong>Άνδρες</strong><br><span>Male authors</span></div>
+            </label>
+          </div>
+          <button class="btn" type="submit">Προβολή</button>
+        </form>
+      </div>
+
+      <!-- Year -->
+      <div class="card span-6">
+        <h3><i class='bx bx-calendar'></i> Έτος Υποστήριξης</h3>
+        <form action="/query" method="POST">
+          <input type="hidden" name="query_type" value="by_year">
+          <select name="selected_year" required>
+            <option value="" disabled selected>Επιλέξτε Έτος...</option>
+            {% for year in year_labels %}
+            <option value="{{ year }}">{{ year }}</option>
+            {% endfor %}
+          </select>
+          <button class="btn" type="submit">Προβολή</button>
+        </form>
+      </div>
+
+      <div class="section-label span-12"><i class='bx bx-extension'></i> Νέα Ερωτήματα Ανάλυσης</div>
+
+      <!-- NEW: timeAnalysis -->
+      <div class="card span-6">
+        <h3><i class='bx bx-time-five'></i> timeAnalysis</h3>
+        <form action="/query" method="POST">
+          <div class="radio-wrap">
+            <label class="radio">
+              <input type="radio" name="query_type" value="time_analysis_historical" checked>
+              <div><strong>Ιστορική</strong><br><span>Historical</span></div>
+            </label>
+            <label class="radio">
+              <input type="radio" name="query_type" value="time_analysis_nonhistorical">
+              <div><strong>Μη Ιστορική</strong><br><span>Non-historical</span></div>
+            </label>
+          </div>
+          <button class="btn" type="submit">Εκτέλεση</button>
+        </form>
+        <div class="hint">Φιλτράρισμα με βάση το αν η μελέτη έχει ιστορική χρονική διάσταση.</div>
+      </div>
+
+      <!-- NEW: spaceAnalysis -->
+      <div class="card span-6">
+        <h3><i class='bx bx-map-alt'></i> spaceAnalysis</h3>
+        <form action="/query" method="POST">
+          <div class="radio-wrap">
+            <label class="radio">
+              <input type="radio" name="query_type" value="space_analysis_historical" checked>
+              <div><strong>Ιστορική</strong><br><span>Historical</span></div>
+            </label>
+            <label class="radio">
+              <input type="radio" name="query_type" value="space_analysis_nonhistorical">
+              <div><strong>Μη Ιστορική</strong><br><span>Non-historical</span></div>
+            </label>
+          </div>
+          <button class="btn" type="submit">Εκτέλεση</button>
+        </form>
+        <div class="hint">Φιλτράρισμα με βάση το αν η μελέτη έχει ιστορική χωρική/γεωγραφική διάσταση.</div>
+      </div>
+
+      <!-- NEW: sampleSize -->
+      <div class="card span-6">
+        <h3><i class='bx bx-hash'></i> sampleSize</h3>
+        <form action="/query" method="POST">
+          <input type="hidden" name="query_type" value="sample_size_min">
+          <input type="number" name="min_sample_size" min="0" step="1" placeholder="Ελάχιστο μέγεθος δείγματος (π.χ. 100)" required>
+          <button class="btn btn-special" type="submit">Αναζήτηση</button>
+        </form>
+        <div class="hint">Επιστρέφει διατριβές με sampleSize ≥ τον αριθμό που δίνεις.</div>
+      </div>
+
+      <!-- NEW: institution + department -->
+      <div class="card span-6">
+        <h3><i class='bx bx-building-house'></i> Institution / Department</h3>
+
+        <form action="/query" method="POST">
+          <input type="hidden" name="query_type" value="by_institution">
+
+          <div class="two-col">
+            <div>
+              <select name="institution" required>
+                <option value="" disabled selected>Επιλέξτε Ίδρυμα...</option>
+                <!-- Αν έχεις dynamic λίστα, θα την γεμίσεις με Jinja αργότερα -->
+                <option value="all_institutions">Όλα τα Ιδρύματα</option>
+                {% for institution in institutions %}
+                <option value="{{ institution }}">{{ institution }}</option>
+                {% endfor %}
+              </select>
+            </div>
+
+            <div>
+              <select name="department">
+                <option value="" selected>Προαιρετικά: Τμήμα...</option>
+                <option value="*">Όλα τα Τμήματα</option>
+              </select>
+            </div>
+          </div>
+
+          <button class="btn" type="submit">Φιλτράρισμα</button>
+        </form>
+
+        <div class="hint">
+          Αν αφήσεις το Τμήμα κενό, φιλτράρει μόνο με βάση το Ίδρυμα.
+        </div>
+      </div>
+
+      <div class="section-label span-12"><i class='bx bx-wrench'></i> Εργαλεία</div>
+
+      <!-- Tools -->
+      <div class="card span-12">
+        <h3><i class='bx bx-bar-chart-alt-2'></i> Γρήγορες Ενέργειες</h3>
+
+        <div class="mini-actions">
+          <form action="/query" method="POST">
+            <button class="btn" name="query_type" value="all_dissertations" type="submit">
+              <i class='bx bx-collection' style="margin-right:8px;"></i> Όλες οι Διατριβές
+            </button>
+          </form>
+
+          <form action="/query" method="POST">
+            <button class="btn" name="query_type" value="all_institutions" type="submit">
+              <i class='bx bx-buildings' style="margin-right:8px;"></i> Ανά Ίδρυμα
+            </button>
+          </form>
+
+          <form action="/query" method="POST">
+            <button class="btn" name="query_type" value="recent" type="submit">
+              <i class='bx bx-time' style="margin-right:8px;"></i> Πρόσφατες (Top 10)
+            </button>
+          </form>
+
+          <button class="btn btn-special" type="button" onclick="location.href='/stats'">
+            <i class='bx bx-pie-chart-alt-2' style="margin-right:8px;"></i> Στατιστικά
+          </button>
+        </div>
+
+        <div class="hint">
+          Τα αποτελέσματα εμφανίζονται σε ενιαία σελίδα “Αποτελέσματα”. Τα γραφήματα υπάρχουν στη σελίδα “Στατιστικά”.
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-note">
+      
+    </div>
+  </div>
+</body>
+</html>

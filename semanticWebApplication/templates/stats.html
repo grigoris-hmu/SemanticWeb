@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Στατιστικά | Αποθετήριο</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style3.css') }}">
+</head>
+
+<body>
+  <div class="aurora"></div>
+
+  <div class="main">
+    <div class="header">
+      <div class="title">
+        <h1><i class='bx bx-pie-chart-alt-2'></i> Στατιστικά Στοιχεία</h1>
+        <p>Σύνοψη του αποθετηρίου: εξέλιξη διατριβών ανά έτος και κατανομή φύλου συγγραφέων.</p>
+      </div>
+
+      <div class="actions">
+        <a class="btn" href="/"><i class='bx bx-left-arrow-alt'></i> Πίσω στο Dashboard</a>
+        <button class="btn primary" type="button" onclick="window.print()">
+          <i class='bx bx-printer'></i> Εκτύπωση / PDF
+        </button>
+      </div>
+    </div>
+
+    <!-- Data bridge -->
+    <div id="data-bridge"
+         data-years='{{ year_labels|tojson|safe }}'
+         data-year-counts='{{ year_counts|tojson|safe }}'
+         data-genders='{{ gender_labels|tojson|safe }}'
+         data-gender-counts='{{ gender_counts|tojson|safe }}'
+         style="display:none;">
+    </div>
+
+    <div class="grid">
+      <!-- Years -->
+      <div class="card">
+        <div class="card-head">
+          <div>
+            <h3><i class='bx bx-trending-up'></i> Διατριβές ανά Έτος Υποστήριξης</h3>
+            <div class="sub">Bar chart με τον αριθμό διατριβών ανά έτος (από τα SPARQL aggregates).</div>
+          </div>
+
+          <div class="kpis">
+            <div class="kpi">
+              <div class="k">Σύνολο Διατριβών</div>
+              <div class="v" id="kpiTotal">0</div>
+            </div>
+            <div class="kpi">
+              <div class="k">Κορυφή Έτους</div>
+              <div class="v" id="kpiPeak">—</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="canvas-wrap">
+          <canvas id="yearChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Gender -->
+      <div class="card">
+        <div class="card-head">
+          <div>
+            <h3><i class='bx bx-group'></i> Κατανομή Φύλου Συγγραφέων</h3>
+            <div class="sub">Doughnut chart για άνδρες/γυναίκες (με clean labels από τον server).</div>
+          </div>
+
+          <div class="kpis">
+            <div class="kpi">
+              <div class="k">Άνδρες</div>
+              <div class="v" id="kpiMen">0 <small id="kpiMenPct"></small></div>
+            </div>
+            <div class="kpi">
+              <div class="k">Γυναίκες</div>
+              <div class="v" id="kpiWomen">0 <small id="kpiWomenPct"></small></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="canvas-wrap">
+          <canvas id="genderChart"></canvas>
+        </div>
+      </div>
+
+      <!-- INSIGHTS -->
+      <div class="section-label">
+        <i class='bx bx-bulb'></i> Αυτόματες Παρατηρήσεις
+        <span class="pill" style="margin-left:auto;"><i class='bx bx-magic-wand'></i> Insights από τα υπάρχοντα δεδομένα</span>
+      </div>
+
+      <div class="insights">
+        <div class="insight">
+          <div class="top">
+            <div>
+              <p class="label">Κορυφαίο έτος</p>
+              <div class="value" id="insPeakYear">—</div>
+            </div>
+            <div class="icon"><i class='bx bx-crown'></i></div>
+          </div>
+          <div class="desc" id="insPeakDesc">—</div>
+        </div>
+
+        <div class="insight">
+          <div class="top">
+            <div>
+              <p class="label">Μέσος όρος / έτος</p>
+              <div class="value" id="insAvg">—</div>
+            </div>
+            <div class="icon"><i class='bx bx-line-chart'></i></div>
+          </div>
+          <div class="desc" id="insAvgDesc">—</div>
+        </div>
+
+        <div class="insight">
+          <div class="top">
+            <div>
+              <p class="label">Ισορροπία φύλου</p>
+              <div class="value" id="insGenderBalance">—</div>
+            </div>
+            <div class="icon"><i class='bx bx-balance'></i></div>
+          </div>
+          <div class="desc" id="insGenderDesc">—</div>
+        </div>
+
+        <div class="insight">
+          <div class="top">
+            <div>
+              <p class="label">Πρόσφατη τάση</p>
+              <div class="value" id="insTrend">—</div>
+            </div>
+            <div class="icon"><i class='bx bx-trending-up'></i></div>
+          </div>
+          <div class="desc" id="insTrendDesc">—</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // -------- Data from bridge --------
+    const bridge = document.getElementById('data-bridge');
+
+    const yearLabels = JSON.parse(bridge.dataset.years || '[]');
+    const yearCounts = JSON.parse(bridge.dataset.yearCounts || '[]').map(x => Number(x || 0));
+
+    const genderLabels = JSON.parse(bridge.dataset.genders || '[]');
+    const genderCounts = JSON.parse(bridge.dataset.genderCounts || '[]').map(x => Number(x || 0));
+
+    // -------- Helpers --------
+    const sum = (arr) => arr.reduce((a,b) => a + Number(b || 0), 0);
+
+    function animateNumber(el, to, duration=650){
+      const start = 0;
+      const t0 = performance.now();
+      function tick(t){
+        const p = Math.min(1, (t - t0) / duration);
+        const val = Math.round(start + (to - start) * (1 - Math.pow(1-p, 3)));
+        el.textContent = val.toLocaleString('el-GR');
+        if (p < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+
+    function fmt(n){ return Number(n||0).toLocaleString('el-GR'); }
+    function clamp01(x){ return Math.max(0, Math.min(1, x)); }
+
+    // -------- KPI baseline --------
+    const totalTheses = sum(yearCounts);
+
+    // Peak year
+    const peakIdx = yearCounts.length
+      ? yearCounts.indexOf(Math.max(...yearCounts))
+      : -1;
+    const peakYear = peakIdx >= 0 ? yearLabels[peakIdx] : '—';
+    const peakVal  = peakIdx >= 0 ? yearCounts[peakIdx] : 0;
+
+    // Gender breakdown (best-effort mapping)
+    const menIdx = genderLabels.findIndex(x => String(x).toLowerCase().includes('άνδ') || String(x).toLowerCase().includes('ανδ'));
+    const womenIdx = genderLabels.findIndex(x => String(x).toLowerCase().includes('γυν'));
+
+    const men = menIdx >= 0 ? genderCounts[menIdx] : (genderCounts[0] || 0);
+    const women = womenIdx >= 0 ? genderCounts[womenIdx] : (genderCounts[1] || 0);
+    const gTotal = men + women;
+    const menPct = gTotal ? Math.round((men/gTotal)*100) : 0;
+    const womenPct = gTotal ? Math.round((women/gTotal)*100) : 0;
+
+    // Average per year (only for years present in labels)
+    const yearsWithData = yearCounts.filter(x => x > 0).length || yearCounts.length || 1;
+    const avg = totalTheses / yearsWithData;
+
+    // Recent trend: compare last 3 vs previous 3 (if possible)
+    // We assume yearLabels are sorted ascending in your SPARQL (they are ORDER BY ?Year),
+    // so last items are most recent.
+    const n = yearCounts.length;
+    const recent3 = n >= 3 ? yearCounts.slice(n-3) : yearCounts.slice();
+    const prev3 = n >= 6 ? yearCounts.slice(n-6, n-3) : [];
+
+    const recentSum = sum(recent3);
+    const prevSum = prev3.length ? sum(prev3) : null;
+    let trendLabel = '—';
+    let trendDesc = 'Δεν υπάρχουν αρκετά δεδομένα για σύγκριση πρόσφατης τάσης.';
+
+    if (prevSum !== null && prevSum !== 0){
+      const delta = recentSum - prevSum;
+      const pct = Math.round((delta / prevSum) * 100);
+      if (delta > 0){
+        trendLabel = `Ανοδική · +${pct}%`;
+        trendDesc = `Τα 3 πιο πρόσφατα έτη έχουν ${fmt(recentSum)} διατριβές έναντι ${fmt(prevSum)} στα προηγούμενα 3.`;
+      } else if (delta < 0){
+        trendLabel = `Πτωτική · ${pct}%`;
+        trendDesc = `Τα 3 πιο πρόσφατα έτη έχουν ${fmt(recentSum)} διατριβές έναντι ${fmt(prevSum)} στα προηγούμενα 3.`;
+      } else {
+        trendLabel = `Σταθερή · 0%`;
+        trendDesc = `Ίδιο σύνολο (${fmt(recentSum)}) στα 3 πιο πρόσφατα και στα προηγούμενα 3 έτη.`;
+      }
+    } else if (n >= 3){
+      trendLabel = `Τελευταία 3 έτη: ${fmt(recentSum)}`;
+      trendDesc = `Έχουμε μόνο τα πιο πρόσφατα έτη διαθέσιμα για γρήγορη σύνοψη.`;
+    }
+
+    // Gender balance insight
+    let balance = '—';
+    let balanceDesc = 'Δεν υπάρχουν αρκετά δεδομένα για κατανομή φύλου.';
+    if (gTotal > 0){
+      const diff = Math.abs(menPct - womenPct);
+      if (diff <= 10){
+        balance = `Σχετικά ισορροπημένο`;
+        balanceDesc = `Η διαφορά είναι ~${diff}% (Άνδρες ${menPct}% · Γυναίκες ${womenPct}%).`;
+      } else {
+        const dom = menPct > womenPct ? 'Άνδρες' : 'Γυναίκες';
+        balance = `Υπερισχύουν: ${dom}`;
+        balanceDesc = `${dom} εμφανίζονται συχνότερα (Άνδρες ${menPct}% · Γυναίκες ${womenPct}%).`;
+      }
+    }
+
+    // -------- Fill KPIs (top cards) --------
+    animateNumber(document.getElementById('kpiTotal'), totalTheses);
+    document.getElementById('kpiPeak').textContent = peakYear !== '—' ? `${peakYear} (${peakVal})` : '—';
+
+    animateNumber(document.getElementById('kpiMen'), men);
+    animateNumber(document.getElementById('kpiWomen'), women);
+    document.getElementById('kpiMenPct').textContent = gTotal ? ` · ${menPct}%` : '';
+    document.getElementById('kpiWomenPct').textContent = gTotal ? ` · ${womenPct}%` : '';
+
+    // -------- Fill Insights --------
+    document.getElementById('insPeakYear').textContent = peakYear !== '—' ? `${peakYear}` : '—';
+    document.getElementById('insPeakDesc').textContent =
+      peakYear !== '—'
+        ? `Το έτος ${peakYear} εμφανίζει τη μέγιστη παραγωγή με ${fmt(peakVal)} διατριβές.`
+        : `Δεν εντοπίστηκε κορυφαίο έτος (ίσως κενά δεδομένα).`;
+
+    document.getElementById('insAvg').textContent = `${avg.toFixed(1)}`;
+    document.getElementById('insAvgDesc').textContent =
+      `Μέσος όρος περίπου ${avg.toFixed(1)} διατριβών ανά έτος (στα έτη που υπάρχουν δεδομένα).`;
+
+    document.getElementById('insGenderBalance').textContent = balance;
+    document.getElementById('insGenderDesc').textContent = balanceDesc;
+
+    document.getElementById('insTrend').textContent = trendLabel;
+    document.getElementById('insTrendDesc').textContent = trendDesc;
+
+    // -------- Chart.js global theme --------
+    Chart.defaults.color = '#d7dde6';
+    Chart.defaults.font.family = 'Segoe UI';
+
+    // -------- Year Chart --------
+    new Chart(document.getElementById('yearChart'), {
+      type: 'bar',
+      data: {
+        labels: yearLabels,
+        datasets: [{
+          label: 'Αριθμός Διατριβών',
+          data: yearCounts,
+          backgroundColor: '#83b3d1',
+          borderRadius: 10,
+          hoverBackgroundColor: '#a3c4e0'
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        animation: { duration: 900, easing: 'easeOutQuart' },
+        scales: {
+          y: {
+            beginAtZero: true,
+            grid: { color: 'rgba(255, 255, 255, 0.10)' },
+            ticks: { stepSize: 1 }
+          },
+          x: { grid: { display: false } }
+        },
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            backgroundColor: 'rgba(15,19,25,0.9)',
+            borderColor: 'rgba(255,255,255,0.12)',
+            borderWidth: 1,
+            titleColor: '#a3c4e0',
+            bodyColor: '#d7dde6',
+            padding: 12
+          }
+        }
+      }
+    });
+
+    // -------- Gender Chart --------
+    new Chart(document.getElementById('genderChart'), {
+      type: 'doughnut',
+      data: {
+        labels: genderLabels,
+        datasets: [{
+          data: genderCounts,
+          backgroundColor: ['#48cae4', '#ff4d6d'],
+          borderColor: '#2A323C',
+          borderWidth: 4,
+          hoverOffset: 14
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        cutout: '66%',
+        animation: { duration: 900, easing: 'easeOutQuart' },
+        plugins: {
+          legend: {
+            position: 'bottom',
+            labels: { padding: 18, font: { size: 14 } }
+          },
+          tooltip: {
+            backgroundColor: 'rgba(15,19,25,0.9)',
+            borderColor: 'rgba(255,255,255,0.12)',
+            borderWidth: 1,
+            titleColor: '#a3c4e0',
+            bodyColor: '#d7dde6',
+            padding: 12
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
+
