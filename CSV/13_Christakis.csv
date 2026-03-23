@@ -1,0 +1,42 @@
+﻿strategy,Quantitative
+sampleProd,Secondary
+timeAnalysis,Μη Ιστορική
+spaceAnalysis,Μη Ιστορική
+abstract,"This research investigates the correlations between freight rates and commodities' markets during the last decade. We employ the Dynamic Conditional Correlation (DCC) model to examine dynamics in the correlation of returns between shipping indices and commodities markets such as agricultural products, oil and energy indices. Empirical findings indicate significant correlation dynamics among commodities' price returns and freight rates during both the pre-crisis and the crisis period, while there is significant evidence that their interdependence differs when we capture shipping indices correlation with the global commodities' index. This research extends the volatility spillovers literature and results are useful for industry practitioners, traders and portfolio managers."
+studyQuestions,Presence of clear questions
+workAssumptions,N/A
+studyAssumptions,N/A
+sampleTimeReference,2000 to 2019
+sampleCollectionReference,N/A
+statesOfReference,Global
+spatialCoverage,Global
+geographicalUnit,Commodity and Freight markets
+population,freight markets and commodities market
+basicUnit,"Daily and weekly closing prices of shipping indices (BDI, BPI, BCI, BSI, BHSI, BDTI, BCTI) and commodity indices/prices (GOLD, AlUMINA, IRON ORE, BRENT, NG, WTI, LPG, SOYBEANS, Wheat, COT)"
+sampleSize,N/A
+collectionMethod,N/A
+methodOfRecording,Database extraction from Thomson Reuters Eikon
+methodOfAnalysis,Dynamic Conditional Correlation (DCC) GARCH model
+recordingTools,N/A
+analysisTools,"Excel, MATLAB"
+firstName,Γεώργιος
+surName,Χριστάκης
+gender,Άνδρας
+fathersName,N/A
+title,Δυναμικές συσχετίσεις μεταξύ των ναυλαγορών και της αγοράς των εμπορευμάτων
+nameOfSupervisor,Andreas Andrikopoulos
+dateOfSupport,2020-04-01
+numberOfPages,81
+language,English
+typeOfDissertation,MasterThesis
+keyWords,"Shipping, Freights, Volatility, prices, colleration, Commodities, dcc model, GARCH"
+altTitle,Dynamic correlations between freight markets and commodities market
+nameOfCom1,N/A
+nameOfCom2,N/A
+otherNotes,MBA Χίος
+institution,Πανεπιστήμιο Αιγαίου
+department,N/A
+program,MBA Χίος
+libraryLink,http://hdl.handle.net/11610/22123
+target,The purpose of this research is to study how freight markets and commodities interact and what kind of correlation is there between them and it aims also to examine volatility spillovers between commodities’ prices and freight rates.
+sampleDescription,"Econometric analysis of shipping indices and commodity price returns, Daily and weekly data from 2000 to 2019"

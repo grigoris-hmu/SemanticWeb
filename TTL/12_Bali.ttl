@@ -1,0 +1,47 @@
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#SampleID_12
+:SampleID_12 rdf:type owl:NamedIndividual ,
+                   :Sample ;
+          :analysisTools "SPSS Version 26" ;
+          :basicUnit "εργαζόμενοι" ;
+          :collectionMethod "τυχαίο τρόπο μέσω του Facebook" ;
+          :methodOfAnalysis "ANOVA, T-Test, Chi-Square, Pearson Correlation" ;
+          :methodOfRecording "ερωτηματολόγιο" ;
+          :recordingTools "ερωτηματολόγιο" ;
+          :sampleCollectionReference "2021-01-15 - 2021-03-15" ;
+          :sampleDescription "Έλληνες εργαζόμενοι" ;
+          :sampleSize "143" ;
+          :sampleTimeReference "περίοδο της πανδημίας" ;
+          :statesOfReference "Ελλάδα" .
+:SurveyID_12 rdf:type owl:NamedIndividual ,
+                   :Survey ;
+          :hasSample :SampleID_12 ;
+          :sampleProd "Πρωτογενής και δευτερογενής" ;
+          :spaceAnalysis "Μη Ιστορική" ;
+          :strategy "Quantitative" ;
+          :studyAssumptions "Ναι" ;
+          :studyQuestions "Ναι" ;
+          :target "παρουσίαση και ανάλυση του ζητήματος της εναρμόνισης μεταξύ της επαγγελματικής και της προσωπικής ζωής των εργαζομένων" ;
+          :timeAnalysis "Μη Ιστορική" ;
+          :workAssumptions "Ναι" .
+:WriterID_12 rdf:type owl:NamedIndividual ,
+                   :Writer ;
+          :firstName "Βασιλική-Χριστίνα" ;
+          :gender "Γυναίκα" ;
+          :surName "Μπαλή" .
+:ThesisID_12 rdf:type owl:NamedIndividual ,
+                   :MasterThesis ;
+          :hasSurvey :SurveyID_12 ;
+          :hasWriter :WriterID_12 ;
+          :abstract "The term "Work-life balance", i.e. the absence of conflict between the professional and personal life of an employee, is significantly influenced by factors related to both work and family status. The term is mainly used to describe the situation in the relationship / balance between a person's responsibilities in professional life (public) and private life (family) and, therefore, it is impossible to have the same meaning for everyone. The purpose of this paper is to present and analyze the issue of “Work-life balance” of employees, especially during the financial crisis." ;
+          :alternativeHeadline "THE WORK-LIFE BALANCE OF EMPLOYEES DURING THE FINANCIAL CRISIS" ;
+          :dateOfSupport "2021-04-19"^^xsd:date ;
+          :department "Σχολή Επιστημών Διοίκησης" ;
+          :institution "Πανεπιστήμιο Αιγαίου" ;
+          :language "Ελληνικά" ;
+          :libraryLink "http://hdl.handle.net/11610/22133" ;
+          :nameOfSupervisor "ΑΝΔΡΕΑΣ ΚΟΥΤΟΥΠΗΣ" ;
+          :numberOfPages "114" ;
+          :program "ΜΕΤΑΠΤΥΧΙΑΚΟ ΠΡΟΓΡΑΜΜΑ ΣΠΟΥΔΩΝ ΣΤΗ ΔΙΟΙΚΗΣΗ ΕΠΙΧΕΙΡΗΣΕΩΝ (ΜΒΑ)" ;
+          :title "Η ΕΝΑΡΜΟΝΙΣΗ ΠΡΟΣΩΠΙΚΗΣ ΚΑΙ ΕΠΑΓΓΕΛΜΑΤΙΚΗΣ ΖΩΗΣ ΤΩΝ ΕΡΓΑΖΟΜΕΝΩΝ ΣΕ ΠΕΡΙΟΔΟ ΚΡΙΣΗΣ" ;
+          :typeOfDissertation "MasterThesis" .

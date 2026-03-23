@@ -1,0 +1,47 @@
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#SampleID_27
+:SampleID_27 rdf:type owl:NamedIndividual ,
+                   :Sample ;
+          :basicUnit "ιδιοκτήτες, managers, στελέχη τμήματος εσωτερικού ελέγχου" ;
+          :collectionMethod "Ποιοτική μέθοδος" ;
+          :geographicalUnit "ξενοδοχειακές μονάδες" ;
+          :methodOfAnalysis "Ποιοτική ανάλυση" ;
+          :methodOfRecording "ημιδομημένες συνεντεύξεις" ;
+          :recordingTools "Οδηγός Συνεντεύξεων, Skype, μαγνητόφωνο" ;
+          :sampleCollectionReference "2020" ;
+          :sampleDescription "ιδιοκτήτες και στελέχη δύο μεγάλων ξενοδοχειακών επιχειρήσεων (Aldemar και Σύνθεσις Α.Ε.)" ;
+          :sampleSize "2" ;
+          :sampleTimeReference "2019-2020" ;
+          :spatialCoverage "Κρήτη, Πελοπόννησο, Ρόδο, Κω" ;
+          :statesOfReference "Ελλάδα" .
+:SurveyID_27 rdf:type owl:NamedIndividual ,
+                   :Survey ;
+          :hasSample :SampleID_27 ;
+          :sampleProd "Primary" ;
+          :spaceAnalysis "Μη Ιστορική" ;
+          :strategy "Qualitative" ;
+          :studyQuestions "Yes" ;
+          :target "να μελετηθεί κατά πόσο ο εσωτερικός έλεγχος συμβάλει στη διαχείριση κινδύνων και αν οι ξενοδοχειακές μονάδες εφαρμόζουν τον έλεγχο βάσει κινδύνου." ;
+          :timeAnalysis "Μη Ιστορική" .
+:WriterID_27 rdf:type owl:NamedIndividual ,
+                   :Writer ;
+          :firstName "Γεωργία – Αντογόνη" ;
+          :gender "Γυναίκα" ;
+          :surName "Τσιφετάκη" .
+:ThesisID_27 rdf:type owl:NamedIndividual ,
+                   :BachelorsThesis ;
+          :hasSurvey :SurveyID_27 ;
+          :hasWriter :WriterID_27 ;
+          :abstract "Στόχος της παρούσας εργασίας είναι να εξεταστεί το πως αντιλαμβάνονται τον κίνδυνο οι ιδιοκτήτες δύο μεγάλων ξενοδοχειακών επιχειρήσεων της χώρας, καθώς και ο τρόπος που εφαρμόζεται ο εσωτερικός έλεγχος και η διαχείριση κινδύνων στις ξενοδοχειακές τους μονάδες." ;
+          :alternativeHeadline "EXECUTIVE MBA" ;
+          :dateOfSupport "2021-03-28"^^xsd:date ;
+          :department "Τμήμα Διοίκησης Επιχειρήσεων" ;
+          :institution "Πανεπιστήμιο Αιγαίου" ;
+          :keyWords "εσωτερικός έλεγχος, διαχείριση κινδύνου, ξενοδοχειακές μονάδες, COSO" ;
+          :language "Ελληνικά" ;
+          :libraryLink "http://hdl.handle.net/11610/22108" ;
+          :nameOfSupervisor "ΒΑΔΑΣΗ ΧΡΙΣΤΙΝΑ" ;
+          :numberOfPages "58" ;
+          :program "ΠΡΟΓΡΑΜΜΑ ΜΕΤΑΠΤΥΧΙΑΚΩΝ ΣΠΟΥΔΩΝ ΣΤΗ ΔΙΟΙΚΗΣΗ ΕΠΙΧΕΙΡΗΣΕΩΝ ΓΙΑ ΣΤΕΛΕΧΗ – EXECUTIVE MBA" ;
+          :title "Ο ΕΣΩΤΕΡΙΚΟΣ ΕΛΕΓΧΟΣ ΚΑΙ Η ΔΙΑΧΕΙΡΙΣΗ ΚΙΝΔΥΝΟΥ ΣΤΙΣ ΞΕΝΟΔΟΧΕΙΑΚΕΣ ΜΟΝΑΔΕΣ" ;
+          :typeOfDissertation "BachelorsThesis" .

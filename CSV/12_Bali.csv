@@ -1,0 +1,42 @@
+﻿strategy,Quantitative
+sampleProd,Πρωτογενής και δευτερογενής
+timeAnalysis,Μη Ιστορική
+spaceAnalysis,Μη Ιστορική
+abstract,"The term ""Work-life balance"", i.e. the absence of conflict between the professional and personal life of an employee, is significantly influenced by factors related to both work and family status. The term is mainly used to describe the situation in the relationship / balance between a person's responsibilities in professional life (public) and private life (family) and, therefore, it is impossible to have the same meaning for everyone. The purpose of this paper is to present and analyze the issue of “Work-life balance” of employees, especially during the financial crisis."
+studyQuestions,Ναι
+workAssumptions,Ναι
+studyAssumptions,Ναι
+sampleTimeReference,περίοδο της πανδημίας
+sampleCollectionReference,2021-01-15 - 2021-03-15
+statesOfReference,Ελλάδα
+spatialCoverage,N/A
+geographicalUnit,N/A
+population,Έλληνες εργαζόμενοι
+basicUnit,εργαζόμενοι
+sampleSize,143
+collectionMethod,τυχαίο τρόπο μέσω του Facebook
+methodOfRecording,ερωτηματολόγιο
+methodOfAnalysis,"ANOVA, T-Test, Chi-Square, Pearson Correlation"
+recordingTools,ερωτηματολόγιο
+analysisTools,SPSS Version 26
+firstName,Βασιλική-Χριστίνα
+surName,Μπαλή
+gender,Γυναίκα
+fathersName,N/A
+title,Η ΕΝΑΡΜΟΝΙΣΗ ΠΡΟΣΩΠΙΚΗΣ ΚΑΙ ΕΠΑΓΓΕΛΜΑΤΙΚΗΣ ΖΩΗΣ ΤΩΝ ΕΡΓΑΖΟΜΕΝΩΝ ΣΕ ΠΕΡΙΟΔΟ ΚΡΙΣΗΣ
+nameOfSupervisor,ΑΝΔΡΕΑΣ ΚΟΥΤΟΥΠΗΣ
+dateOfSupport,2021-04-19
+numberOfPages,114
+language,Ελληνικά
+typeOfDissertation,MasterThesis
+keyWords,N/A
+altTitle,THE WORK-LIFE BALANCE OF EMPLOYEES DURING THE FINANCIAL CRISIS
+nameOfCom1,ΜΙΧΑΛΗΣ ΜΠΕΚΙΑΡΗΣ
+nameOfCom2,ΑΝΔΡΕΑΣ ΑΝΔΡΙΚΟΠΟΥΛΟΣ
+otherNotes,N/A
+institution,Πανεπιστήμιο Αιγαίου
+department,Σχολή Επιστημών Διοίκησης
+program,ΜΕΤΑΠΤΥΧΙΑΚΟ ΠΡΟΓΡΑΜΜΑ ΣΠΟΥΔΩΝ ΣΤΗ ΔΙΟΙΚΗΣΗ ΕΠΙΧΕΙΡΗΣΕΩΝ (ΜΒΑ)
+libraryLink,http://hdl.handle.net/11610/22133
+target,παρουσίαση και ανάλυση του ζητήματος της εναρμόνισης μεταξύ της επαγγελματικής και της προσωπικής ζωής των εργαζομένων
+sampleDescription,Έλληνες εργαζόμενοι

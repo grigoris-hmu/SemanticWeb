@@ -1,0 +1,39 @@
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#SampleID_22
+:SampleID_22 rdf:type owl:NamedIndividual ,
+                   :Sample ;
+          :methodOfAnalysis "Ποιοτική ανάλυση" ;
+          :methodOfRecording "Βιβλιογραφική ανασκόπηση" ;
+          :sampleCollectionReference "2015" ;
+          :sampleTimeReference "2015" ;
+          :spatialCoverage "Ελλάδα" ;
+          :statesOfReference "Ελλάδα, Ε.Ε." .
+:SurveyID_22 rdf:type owl:NamedIndividual ,
+                   :Survey ;
+          :hasSample :SampleID_22 ;
+          :sampleProd "Secondary" ;
+          :spaceAnalysis "Μη Ιστορική" ;
+          :strategy "Qualitative" ;
+          :target "«εξέταση του θέματος των Συμπράξεων Ιδιωτικού και Δημόσιου Τομέα (ΣΔΙΤ) δίνοντας έμφαση στην Ελλάδα»" ;
+          :timeAnalysis "Ιστορική" .
+:WriterID_22 rdf:type owl:NamedIndividual ,
+                   :Writer ;
+          :firstName "Ευάγγελος" ;
+          :gender "Άνδρας" ;
+          :surName "Μιχαλάκης" .
+:ThesisID_22 rdf:type owl:NamedIndividual ,
+                   :BachelorsThesis ;
+          :hasSurvey :SurveyID_22 ;
+          :hasWriter :WriterID_22 ;
+          :abstract "Στην παρούσα διπλωματική εργασία εξετάζουμε το θέμα των Συμπράξεων Ιδιωτικού και Δημόσιου Τομέα (ΣΔΙΤ) δίνοντας έμφαση στην Ελλάδα. Αρχικά, γίνεται μια πρώτη ανάλυση και δίνεται ένας ορισμός των ΣΔΙΤ όπως αυτός καταγράφεται από το αρμόδιο Υπουργείο Οικονομίας καθώς επίσης αναφέρονται και συνοπτικά οι κατηγορίες των ΣΔΙΤ αλλά και η διαδικασία για ενταχθεί ένα έργο και να χαρακτηριστεί ως Σύμπραξη." ;
+          :alternativeHeadline "PRIVATE-PUBLIC PARTNERSHIPS (PPPS) WITH EMPHASIS ON GREECE" ;
+          :dateOfSupport "2015-11-01"^^xsd:date ;
+          :institution "Πανεπιστήμιο Αιγαίου" ;
+          :keyWords "Συμπράξεις Ιδιωτικού και Δημόσιου Τομέα, ΣΔΙΤ, Ελλάδα" ;
+          :language "Ελληνικά" ;
+          :libraryLink "http://hdl.handle.net/11610/22113" ;
+          :nameOfSupervisor "ΖΟΥΝΤΑ ΣΤΕΛΛΑ" ;
+          :numberOfPages "73" ;
+          :program "MBA ΧΙΟΣ" ;
+          :title "«ΟΙ ΣΥΜΠΡΑΞΕΙΣ ΔΗΜΟΣΙΟΥ ΙΔΙΩΤΙΚΟΥ ΤΟΜΕΑ (ΣΔΙΤ) Η ΠΕΡΙΠΤΩΣΗ ΤΗΣ ΕΛΛΑΔΑΣ»" ;
+          :typeOfDissertation "BachelorsThesis" .

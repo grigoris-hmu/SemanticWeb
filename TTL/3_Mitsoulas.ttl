@@ -1,0 +1,42 @@
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#SampleID_3
+:SampleID_3 rdf:type owl:NamedIndividual ,
+                   :Sample ;
+          :analysisTools "SAP Forecasting and Replenishment" ;
+          :basicUnit "διαδικασίες παραγγελιοδοσίας και logistics" ;
+          :methodOfAnalysis "μελέτη περίπτωσης" ;
+          :methodOfRecording "βιβλιογραφική έρευνα, πρακτικά συναντήσεων, πρακτικά εκπαιδεύσεων, manual παρουσίασης, προσωπική καθημερινή ενασχόληση" ;
+          :sampleCollectionReference "2019-2020" ;
+          :sampleDescription "ΑΒ Βασιλόπουλος" ;
+          :sampleTimeReference "2019-2021" ;
+          :spatialCoverage "Ελλάδα" ;
+          :statesOfReference "Ελλάδα" .
+:SurveyID_3 rdf:type owl:NamedIndividual ,
+                   :Survey ;
+          :hasSample :SampleID_3 ;
+          :sampleProd "Primary and Secondary" ;
+          :spaceAnalysis "Μη Ιστορική" ;
+          :strategy "Qualitative" ;
+          :target "η παρουσίαση ενός νέου τρόπου παραγγελιοδοσίας που στηρίζεται στην αυτοματοποίηση της ζήτησης μέσω του SAPFnR" ;
+          :timeAnalysis "Μη Ιστορική" .
+:WriterID_3 rdf:type owl:NamedIndividual ,
+                   :Writer ;
+          :firstName "Ανδρέας" ;
+          :gender "Άνδρας" ;
+          :surName "Μήτσουλας" .
+:ThesisID_3 rdf:type owl:NamedIndividual ,
+                   :MasterThesis ;
+          :hasSurvey :SurveyID_3 ;
+          :hasWriter :WriterID_3 ;
+          :abstract "Ο κύριος σκοπός της παρούσας διπλωματικής εργασίας είναι η παρουσίαση ενός νέου τρόπου παραγγελιοδοσίας που στηρίζεται στην αυτοματοποίηση της ζήτησης μέσω του SAPFnR η οποία αντικαθιστά τον παραδοσιακό τρόπο που παραγγελιοδοσίας που χρησιμοποιείται έως και σήμερα κατά κύριο λόγο στο Ελληνικό λιανεμπόριο." ;
+          :alternativeHeadline "Automation of stock demand through SAP Forecasting and Replenishment" ;
+          :dateOfSupport "2020-11-06"^^xsd:date ;
+          :department "Τμήμα Διοίκησης Επιχειρήσεων" ;
+          :institution "Πανεπιστήμιο Αιγαίου" ;
+          :language "Ελληνικά" ;
+          :libraryLink "http://hdl.handle.net/11610/22102" ;
+          :nameOfSupervisor "Κακούρης Ανδρέας" ;
+          :numberOfPages "74" ;
+          :program "Πρόγραμμα Μεταπτυχιακών Σπουδών στη Διοίκηση Επιχειρήσεων για Στελέχη - Executive MBA" ;
+          :title "Αυτοματοποίηση ζήτησης αποθεμάτων μέσω του SAP Forecasting and Replenishment" ;
+          :typeOfDissertation "MasterThesis" .

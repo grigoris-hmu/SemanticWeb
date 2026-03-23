@@ -1,0 +1,49 @@
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#SampleID_6
+:SampleID_6 rdf:type owl:NamedIndividual ,
+                   :Sample ;
+          :basicUnit "Άτομα" ;
+          :collectionMethod "Δειγματοληψία χιονοστιβάδας (snowball sampling)" ;
+          :geographicalUnit "Σκουριές, Ιερισσός, Μεγάλη Παναγιά" ;
+          :methodOfAnalysis "Ποιοτική ανάλυση περιεχομένου" ;
+          :methodOfRecording "Ημιδομημένες συνεντεύξεις" ;
+          :recordingTools "Οδηγός συνέντευξης" ;
+          :sampleCollectionReference "Νοέμβριος – Δεκέμβριος 2022" ;
+          :sampleDescription "9 δρώντα υποκείμενα επί των γεγονότων στις Σκουριές (επιστήμονες, πολιτειακοί παράγοντες, εργαζόμενοι, κάτοικοι, μέλη κινήματος)" ;
+          :sampleSize "9" ;
+          :sampleTimeReference "2006 - 2022" ;
+          :spatialCoverage "Βορειοανατολική Χαλκιδική" ;
+          :statesOfReference "Ελλάδα" .
+:SurveyID_6 rdf:type owl:NamedIndividual ,
+                   :Survey ;
+          :hasSample :SampleID_6 ;
+          :sampleProd "Πρωτογενή" ;
+          :spaceAnalysis "Μη ιστορική" ;
+          :strategy "Qualitative" ;
+          :studyAssumptions "- Τα χαρακτηριστικά μίας βιομηχανικής επένδυσης η οποία δύναται να προωθήσει το οικονομικό επίπεδο των πολιτών, πρέπει να διέπονται από την οπτική της τοπικής ή της εθνικής αναπτυξιακής πολιτικής. - Η συλλογική οικονομική και κοινωνική ανάπτυξη που μπορεί να προκύψει από την επιλογή μίας επένδυσης, προϋποθέτει και την προστασία του περιβάλλοντος της επιλεχθείσας περιοχής." ;
+          :studyQuestions "Ναι" ;
+          :target "Η κοινωνιολογική αιτιολόγηση των συγκρούσεων στην Χαλκιδική" ;
+          :timeAnalysis "Μη ιστορική" ;
+          :workAssumptions "Ναι" .
+:WriterID_6 rdf:type owl:NamedIndividual ,
+                   :Writer ;
+          :firstName "Νικόλαος" ;
+          :gender "Άνδρας" ;
+          :surName "Αλεξανδρίδης" .
+:ThesisID_6 rdf:type owl:NamedIndividual ,
+                   :MasterThesis ;
+          :hasSurvey :SurveyID_6 ;
+          :hasWriter :WriterID_6 ;
+          :abstract "Η παρούσα έρευνα έχει ως επιδίωξη την κοινωνιολογική αιτιολόγηση των συγκρούσεων στην Χαλκιδική, μέσα από την ανάλυση των θεωρητικών θέσεων για την οικονομικό-κοινωνική ανάπτυξη στην συγκεκριμένη περιοχή που εκφράζουν οι συμμετέχοντες, ως σχετιζόμενα με την επένδυση υποκείμενα που έδρασαν και πήραν θέση αρνητική ή θετική στην επένδυση." ;
+          :alternativeHeadline "The Case in Skouries, Halkidiki: Environmental crime or Social and Economic development" ;
+          :dateOfSupport "2023-02-11"^^xsd:date ;
+          :department "Τμήμα Κοινωνιολογίας" ;
+          :institution "Πανεπιστήμιο Αιγαίου" ;
+          :keyWords "Σκουριές, Χαλκιδική, περιβαλλοντικό έγκλημα, κοινωνική ανάπτυξη, οικονομική ανάπτυξη, κοινωνικό κίνημα" ;
+          :language "Ελληνικά" ;
+          :libraryLink "http://hdl.handle.net/11610/27005" ;
+          :nameOfSupervisor "ΓΕΩΡΓΟΥΛΑΣ ΣΤΡΑΤΟΣ" ;
+          :numberOfPages "173" ;
+          :program "«ΕΡΕΥΝΑ ΓΙΑ ΤΗΝ ΤΟΠΙΚΗ ΚΟΙΝΩΝΙΚΗ ΑΝΑΠΤΥΞΗ ΚΑΙ ΣΥΝΟΧΗ»" ;
+          :title "Η Περίπτωση στις Σκουριές Χαλκιδικής: Περιβαλλοντικό έγκλημα ή Κοινωνική και Οικονομική ανάπτυξη" ;
+          :typeOfDissertation "MasterThesis" .

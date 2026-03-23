@@ -1,0 +1,43 @@
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#SampleID_26
+:SampleID_26 rdf:type owl:NamedIndividual ,
+                   :Sample ;
+          :basicUnit "Περιφέρειες, Νομοί" ;
+          :geographicalUnit "Νησιά, Περιφερειακές ενότητες" ;
+          :methodOfAnalysis "Ποσοτική ανάλυση, συγκριτική ανάλυση" ;
+          :methodOfRecording "Επεξεργασία στατιστικών στοιχείων" ;
+          :sampleDescription "Περιφέρεια Βορείου Αιγαίου" ;
+          :sampleTimeReference "2000-2020" ;
+          :spatialCoverage "Περιφέρεια Βορείου Αιγαίου" ;
+          :statesOfReference "Ελλάδα" .
+:SurveyID_26 rdf:type owl:NamedIndividual ,
+                   :Survey ;
+          :hasSample :SampleID_26 ;
+          :sampleProd "Secondary" ;
+          :spaceAnalysis "Μη Ιστορική" ;
+          :strategy "Mixed" ;
+          :target "να αναλυθεί ο ρόλος της νησιωτικότητας στη χάραξη της περιφερειακής πολιτικής και να παρουσιαστεί το χρηματοδοτικό πλαίσιο που υλοποιείται στην περιφέρεια Βορείου Αιγαίου" ;
+          :timeAnalysis "Ιστορική" ;
+          :workAssumptions "οι νησιωτικές περιφέρειες έχουν δομικά μειονεκτήματα εξαιτίας των φυσικών χαρακτηριστικών τους, που δυσκολεύουν τους τομείς της οικονομίας και της ανάπτυξής τους" .
+:WriterID_26 rdf:type owl:NamedIndividual ,
+                   :Writer ;
+          :firstName "Γεώργιος" ;
+          :gender "Άνδρας" ;
+          :surName "Στείρος" .
+:ThesisID_26 rdf:type owl:NamedIndividual ,
+                   :BachelorsThesis ;
+          :hasSurvey :SurveyID_26 ;
+          :hasWriter :WriterID_26 ;
+          :abstract "Η παρούσα εργασία πραγματεύεται την ασκούμενη περιφερειακή πολιτική στις νησιωτικές περιφέρειες και δίνει έμφαση στον παράγοντα της νησιωτικότητας και στον βαθμό που αυτός μπορεί να επηρεάσει τη χάραξη της πολιτικής περιφερειακής ανάπτυξης, δηλαδή την οικονομική ανάπτυξη και την αύξηση του βιοτικού επιπέδου της ζωής των ανθρώπων που ζουν σε νησιώτικες περιφέρειες. Ως μελέτη περίπτωσης επιλέγεται η περιφέρεια Βορείου Αιγαίου." ;
+          :alternativeHeadline "BachelorsThesis_Steiros" ;
+          :dateOfSupport "2020-01-01"^^xsd:date ;
+          :department "Τμήμα Διοίκησης Επιχειρήσεων" ;
+          :institution "Πανεπιστήμιο Αιγαίου" ;
+          :keyWords "νησιωτικότητα, περιφερειακή πολιτική, Περιφέρεια Βορείου Αιγαίου, οικονομική ανάπτυξη" ;
+          :language "Ελληνική" ;
+          :libraryLink "http://hdl.handle.net/11610/22116" ;
+          :nameOfSupervisor "ΧΡΙΣΤΟΦΑΚΗΣ ΕΜΜΑΝΟΥΗΛ" ;
+          :numberOfPages "65" ;
+          :program "ΠΡΟΓΡΑΜΜΑ ΜΕΤΑΠΤΥΧΙΑΚΩΝ ΣΠΟΥΔΩΝ ΣΤΗ ΔΙΟΙΚΗΣΗ ΕΠΙΧΕΙΡΗΣΕΩΝ - MBA" ;
+          :title "«Ο παράγοντας νησιωτικότητα ως ιδιαιτερότητα και ως πρόκληση στη χάραξη περιφερειακής πολιτικής: Μελέτη περίπτωσης της Περιφέρειας Βορείου Αιγαίου»" ;
+          :typeOfDissertation "BachelorsThesis" .

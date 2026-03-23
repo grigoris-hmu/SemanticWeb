@@ -1,0 +1,44 @@
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#SampleID_14
+:SampleID_14 rdf:type owl:NamedIndividual ,
+                   :Sample ;
+          :basicUnit "Εκθέσεις γνωμοδότησης" ;
+          :collectionMethod "Σκόπιμη επιλογή εκθέσεων μεγάλων ελεγκτικών εταιρειών" ;
+          :methodOfAnalysis "Ποιοτική ανάλυση και συγκριτική παρουσίαση" ;
+          :methodOfRecording "Επισκόπηση και χρήση πληροφοριών και στοιχείων από δημοσιευμένες εκθέσεις και οικονομικές καταστάσεις" ;
+          :recordingTools "Εκθέσεις μεγάλων ελεγκτικών εταιριών (RSM, Grant Thornton, KPMG), Νόμος 4548/2018" ;
+          :sampleCollectionReference "2020" ;
+          :sampleDescription "Εκθέσεις μεγάλων ελεγκτικών εταιριών (RSM GREECE, Grant Thornton, KPMG) για συναλλαγές εταιρειών (ATTICA BANK, TRASTOR, Optima Bank, ΕΛΠΕ)." ;
+          :sampleSize "4" ;
+          :sampleTimeReference "2016-2020" ;
+          :statesOfReference "ΕΛΛΑΔΑ" .
+:SurveyID_14 rdf:type owl:NamedIndividual ,
+                   :Survey ;
+          :hasSample :SampleID_14 ;
+          :sampleProd "Secondary" ;
+          :spaceAnalysis "Μη Ιστορική" ;
+          :strategy "Qualitative" ;
+          :target "Αντικείμενο αυτής της διπλωματικής εργασίας είναι οι αλλαγές που επιφέρει ο νέος Νόμος 4548/2018 στις συναλλαγές της Ανώνυμης Εταιρίας με συνδεδεμένα μέρη." ;
+          :timeAnalysis "Μη Ιστορική" .
+:WriterID_14 rdf:type owl:NamedIndividual ,
+                   :Writer ;
+          :firstName "Άννα" ;
+          :gender "Γυναίκα" ;
+          :surName "Ηλιοπούλου" .
+:ThesisID_14 rdf:type owl:NamedIndividual ,
+                   :MasterThesis ;
+          :hasSurvey :SurveyID_14 ;
+          :hasWriter :WriterID_14 ;
+          :abstract "Η Ανώνυμη Εταιρία επίκεντρο της σύγχρονης οικονομικής ζωής απασχολεί τον επιχειρηματικό, τον οικονομικό και τον κλάδο του Εμπορικού Δικαίου, καθώς η ανάπτυξη της επέρχεται παράλληλα με την οικονομική ανάπτυξη. Αντικείμενο αυτής της διπλωματικής εργασίας είναι οι αλλαγές που επιφέρει ο νέος Νόμος 4548/2018 στις συναλλαγές της Ανώνυμης Εταιρίας με συνδεδεμένα μέρη. Υπό αυτό το πρίσμα, παρουσιάζεται κατ΄ αρχάς το θεωρητικό πλαίσιο του Νόμου που αφορά τις συναλλαγές με συνδεδεμένα μέρη και εν συνεχεία γίνεται προσπάθεια ανάδειξης και αποτύπωσης του θέματος μέσα από σχετικές εκθέσεις μεγάλων ελεγκτικών εταιριών βάσει του άρθρου 101 του Ν. 4548/2018 που έχουν καταρτιστεί στο πλαίσιο των συναλλαγών εταιριών με συνδεδεμένα τους μέρη." ;
+          :alternativeHeadline "MasterThesis_Iliopoulou" ;
+          :dateOfSupport "2020-11-13"^^xsd:date ;
+          :department "Τμήμα Διοίκησης Επιχειρήσεων" ;
+          :institution "Πανεπιστήμιο Αιγαίου" ;
+          :keyWords "Ανώνυμη Εταιρία, Συναλλαγές με συνδεδεμένα μέρη, Νόμος 4548/2018, άρθρο 101, ελεγκτικές εταιρίες" ;
+          :language "Ελληνικά" ;
+          :libraryLink "http://hdl.handle.net/11610/22124" ;
+          :nameOfSupervisor "Στέφανος Χαρακτινιώτης" ;
+          :numberOfPages "57" ;
+          :program "ΠΡΟΓΡΑΜΜΑ ΜΕΤΑΠΤΥΧΙΑΚΩΝ ΣΠΟΥΔΩΝ ΣΤΗ ΔΙΟΙΗΚΗΣΗ ΕΠΙΧΕΙΡΗΣΕΩΝ (ΜΒΑ)" ;
+          :title "ΟΙ ΣΥΝΑΛΛΑΓΕΣ ΜΕ ΤΑ ΣΥΝΔΕΔΕΜΕΝΑ ΜΕΡΗ ΥΠΟ ΤΟ ΠΡΙΣΜΑ ΤΟΥ ΝΕΟΥ ΝΟΜΟΥ 4548/2018" ;
+          :typeOfDissertation "MasterThesis" .

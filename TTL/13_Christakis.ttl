@@ -1,0 +1,43 @@
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#SampleID_13
+:SampleID_13 rdf:type owl:NamedIndividual ,
+                   :Sample ;
+          :analysisTools "Excel, MATLAB" ;
+          :basicUnit "Daily and weekly closing prices of shipping indices (BDI, BPI, BCI, BSI, BHSI, BDTI, BCTI) and commodity indices/prices (GOLD, AlUMINA, IRON ORE, BRENT, NG, WTI, LPG, SOYBEANS, Wheat, COT)" ;
+          :geographicalUnit "Commodity and Freight markets" ;
+          :methodOfAnalysis "Dynamic Conditional Correlation (DCC) GARCH model" ;
+          :methodOfRecording "Database extraction from Thomson Reuters Eikon" ;
+          :sampleDescription "Econometric analysis of shipping indices and commodity price returns, Daily and weekly data from 2000 to 2019" ;
+          :sampleTimeReference "2000 to 2019" ;
+          :spatialCoverage "Global" ;
+          :statesOfReference "Global" .
+:SurveyID_13 rdf:type owl:NamedIndividual ,
+                   :Survey ;
+          :hasSample :SampleID_13 ;
+          :sampleProd "Secondary" ;
+          :spaceAnalysis "Μη Ιστορική" ;
+          :strategy "Quantitative" ;
+          :studyQuestions "Presence of clear questions" ;
+          :target "The purpose of this research is to study how freight markets and commodities interact and what kind of correlation is there between them and it aims also to examine volatility spillovers between commodities’ prices and freight rates." ;
+          :timeAnalysis "Μη Ιστορική" .
+:WriterID_13 rdf:type owl:NamedIndividual ,
+                   :Writer ;
+          :firstName "Γεώργιος" ;
+          :gender "Άνδρας" ;
+          :surName "Χριστάκης" .
+:ThesisID_13 rdf:type owl:NamedIndividual ,
+                   :MasterThesis ;
+          :hasSurvey :SurveyID_13 ;
+          :hasWriter :WriterID_13 ;
+          :abstract "This research investigates the correlations between freight rates and commodities' markets during the last decade. We employ the Dynamic Conditional Correlation (DCC) model to examine dynamics in the correlation of returns between shipping indices and commodities markets such as agricultural products, oil and energy indices. Empirical findings indicate significant correlation dynamics among commodities' price returns and freight rates during both the pre-crisis and the crisis period, while there is significant evidence that their interdependence differs when we capture shipping indices correlation with the global commodities' index. This research extends the volatility spillovers literature and results are useful for industry practitioners, traders and portfolio managers." ;
+          :alternativeHeadline "Dynamic correlations between freight markets and commodities market" ;
+          :dateOfSupport "2020-04-01"^^xsd:date ;
+          :institution "Πανεπιστήμιο Αιγαίου" ;
+          :keyWords "Shipping, Freights, Volatility, prices, colleration, Commodities, dcc model, GARCH" ;
+          :language "English" ;
+          :libraryLink "http://hdl.handle.net/11610/22123" ;
+          :nameOfSupervisor "Andreas Andrikopoulos" ;
+          :numberOfPages "81" ;
+          :program "MBA Χίος" ;
+          :title "Δυναμικές συσχετίσεις μεταξύ των ναυλαγορών και της αγοράς των εμπορευμάτων" ;
+          :typeOfDissertation "MasterThesis" .

@@ -1,0 +1,42 @@
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#SampleID_23
+:SampleID_23 rdf:type owl:NamedIndividual ,
+                   :Sample ;
+          :basicUnit "άρθρα και επιστημονικά συγγράμματα" ;
+          :collectionMethod "συστηματική αναζήτηση σε βάσεις δεδομένων" ;
+          :methodOfAnalysis "Ποιοτική ανάλυση βιβλιογραφίας" ;
+          :methodOfRecording "Βιβλιογραφική ανασκόπηση" ;
+          :sampleCollectionReference "2020" ;
+          :sampleDescription "Θεωρητική επισκόπηση" ;
+          :sampleTimeReference "1950-2020" ;
+          :statesOfReference "διεθνή και την ελληνική βιβλιογραφία" .
+:SurveyID_23 rdf:type owl:NamedIndividual ,
+                   :Survey ;
+          :hasSample :SampleID_23 ;
+          :sampleProd "Δευτερογενή" ;
+          :spaceAnalysis "Μη Ιστορική" ;
+          :strategy "Qualitative" ;
+          :target "διερεύνηση της εφαρμογής και των παραμέτρων υλοποίησης της Εταιρικής Κοινωνικής Ευθύνης μέσα στο σύγχρονο επιχειρηματικό περιβάλλον" ;
+          :timeAnalysis "Μη Ιστορική" .
+:WriterID_23 rdf:type owl:NamedIndividual ,
+                   :Writer ;
+          :firstName "Κωνσταντίνα" ;
+          :gender "Γυναίκα" ;
+          :surName "Μουστακίδου" .
+:ThesisID_23 rdf:type owl:NamedIndividual ,
+                   :BachelorsThesis ;
+          :hasSurvey :SurveyID_23 ;
+          :hasWriter :WriterID_23 ;
+          :abstract "Σκοπός της παρούσας εργασίας είναι η διερεύνηση της εφαρμογής και των παραμέτρων υλοποίησης της Εταιρικής Κοινωνικής Ευθύνης μέσα στο σύγχρονο επιχειρηματικό περιβάλλον. Για τον σκοπό αυτό πραγματοποιήθηκε μία βιβλιογραφική ανασκόπηση ερευνών που καταδεικνύουν την συμβολή της εταιρικής κοινωνικής ευθύνης στη λειτουργία των εταιρειών, παρουσιάζονται διάφορα επιστημονικά ρεύματα που ασχολήθηκαν με την έννοια της αειφόρου ανάπτυξης ενώ αναπτύσσεται και η έννοια του Πράσινου Μάρκετινγκ το οποίο συνδέεται άμεσα με την αειφόρο ανάπτυξη και την Εταιρική Κοινωνική ευθύνη." ;
+          :alternativeHeadline "BachelorsThesis_Moustakidou" ;
+          :dateOfSupport "2020-10-27"^^xsd:date ;
+          :department "Σχολή Επιστημών Διοίκησης" ;
+          :institution "Πανεπιστήμιο Αιγαίου" ;
+          :keyWords "Εταιρική Κοινωνική Ευθύνη, Εταιρική Διακυβέρνηση, Πράσινο Μάρκετινγκ" ;
+          :language "Ελληνική" ;
+          :libraryLink "http://hdl.handle.net/11610/22129" ;
+          :nameOfSupervisor "Ανδρικόπουλο Ανδρέα" ;
+          :numberOfPages "35" ;
+          :program "ΜΕΤΑΠΤΥΧΙΑΚΟ ΠΡΟΓΡΑΜΜΑ ΣΤΗ ΔΙΟΙΚΗΣΗ ΕΠΙΧΕΙΡΗΣΕΩΝ-MBA" ;
+          :title "Η Εταιρική Κοινωνική Ευθύνη : Μια Θεωρητική Επισκόπηση" ;
+          :typeOfDissertation "BachelorsThesis" .

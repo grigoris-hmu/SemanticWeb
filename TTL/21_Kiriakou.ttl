@@ -1,0 +1,44 @@
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#SampleID_21
+:SampleID_21 rdf:type owl:NamedIndividual ,
+                   :Sample ;
+          :basicUnit "Εταιρείες, Τράπεζες" ;
+          :collectionMethod "Σκόπιμη δειγματοληψία" ;
+          :geographicalUnit "Χώρα" ;
+          :methodOfAnalysis "Συγκριτική ανάλυση, Ανάλυση SWOT" ;
+          :methodOfRecording "Βιβλιογραφική επισκόπηση, Μελέτη περίπτωσης" ;
+          :sampleCollectionReference "2019" ;
+          :sampleDescription "Μελέτη διαφημιστικού προϊόντος στον τραπεζικό τομέα, 5 διαφημιστικοί όμιλοι, 4 τράπεζες" ;
+          :sampleSize "9" ;
+          :sampleTimeReference "2007-2019" ;
+          :spatialCoverage "Παγκόσμια, Ινδία" ;
+          :statesOfReference "Ινδία, Ευρώπη, ΗΠΑ" .
+:SurveyID_21 rdf:type owl:NamedIndividual ,
+                   :Survey ;
+          :hasSample :SampleID_21 ;
+          :sampleProd "Δευτερογενής" ;
+          :spaceAnalysis "Μη Ιστορική" ;
+          :strategy "Qualitative" ;
+          :target "να κάνει μια κλαδική ανάλυση του διαφημιστικού κλάδου παγκοσμίως μέσω της χρηματοοικονομικής ανάλυσης των μεγαλύτερων εταιριών" ;
+          :timeAnalysis "Μη Ιστορική" .
+:WriterID_21 rdf:type owl:NamedIndividual ,
+                   :Writer ;
+          :fathersName "Κ." ;
+          :firstName "Δημήτριος" ;
+          :gender "Άνδρας" ;
+          :surName "Κυριακού" .
+:ThesisID_21 rdf:type owl:NamedIndividual ,
+                   :DoctoralDissertation ;
+          :hasSurvey :SurveyID_21 ;
+          :hasWriter :WriterID_21 ;
+          :alternativeHeadline "DoctoralDissertation_Kiriakou" ;
+          :dateOfSupport "2019-12-01"^^xsd:date ;
+          :department "Τμήμα Μηχανικών Οικονομίας & Διοίκησης" ;
+          :institution "Πανεπιστήμιο Αιγαίου" ;
+          :keyWords "Διαφήμιση, Διαφημιστικές εταιρείες, Τράπεζες, Ψηφιακή διαφήμιση" ;
+          :language "Ελληνικά" ;
+          :libraryLink "http://hdl.handle.net/11610/21175" ;
+          :nameOfSupervisor "ΚΟΥΤΟΥΠΗΣ ΑΝΤΡΕΑΣ" ;
+          :numberOfPages "87" ;
+          :title "ΣΥΓΚΡΙΤΙΚΗ ΑΝΑΛΥΣΗ ΔΙΑΦΗΜΙΣΤΙΚΩΝ ΕΤΑΙΡΕΙΩΝ" ;
+          :typeOfDissertation "DoctoralDissertation" .

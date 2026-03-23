@@ -1,0 +1,42 @@
+﻿strategy,Quantitative
+sampleProd,Primary
+timeAnalysis,Μη Ιστορική
+spaceAnalysis,Μη Ιστορική
+abstract,"Στόχος της παρούσας έρευνας ήταν να διερευνηθεί η σχέση των πολλαπλών τύπων νοημοσύνης και της αντίληψης του χώρου με τη στάση και την επίδοση των μαθητών στο μάθημα της Γεωγραφίας. Το δείγμα της έρευνας μας απαρτιζόταν από 600 μαθητές της Στ΄ τάξης Δημοτικού, ηλικίας 11-13 ετών που προέρχονταν από 22 διαφορετικά σχολεία της ελληνικής επικράτειας, κατανεμημένοι σε 33 διαφορετικές τάξεις."
+studyQuestions,Presence of clear questions
+workAssumptions,Presence of guiding assumptions
+studyAssumptions,Υπάρχει σχέση ανάμέσα στο φύλο και τη χωρική αντίληψη και την επίδοση στο μάθημα της γεωγραφίας
+sampleTimeReference,2014-2015
+sampleCollectionReference,After 2013-11-08
+statesOfReference,ΕΛΛΑΔΑ
+spatialCoverage,ΕΛΛΗΝΙΚΗ ΕΠΙΚΡΑΤΕΙΑ
+geographicalUnit,N/A
+population,μαθητές της Στ΄ τάξης Δημοτικού
+basicUnit,Individuals
+sampleSize,600
+collectionMethod,τυχαία στρωματοποιημένη δειγματοληψία
+methodOfRecording,Survey
+methodOfAnalysis,"Kruskal-Wallis, Mann-Whitney, Spearman ρ, Kolmogorov-Smirnov"
+recordingTools,"Τεστ Αντίληψης Χώρου (ΤΑΧ), Κλίμακα μέτρησης πολλαπλών τύπων νοημοσύνης, Φύλλο με δραστηριότητες της Γεωγραφίας, Ερωτηματολόγιο"
+analysisTools,SPSS-21
+firstName,Άννα-Αικατερίνη
+surName,Λυκούρη
+gender,Γυναίκα
+fathersName,N/A
+title,Η Σχέση των πολλαπλών τύπων νοημοσύνης και της αντίληψης του χώρου με τη στάση και την επίδοση των μαθητών του Δημοτικού στο μάθημα της Γεωγραφίας
+nameOfSupervisor,Αικατερίνη Κλωνάρη
+dateOfSupport,2018-06-29
+numberOfPages,372
+language,ΕΛΛΗΝΙΚΑ
+typeOfDissertation,DoctoralDissertation
+keyWords,N/A
+altTitle,THE RELATION OF MULTIPLE INTELLIGENCES AND SPATIAL PERCERTION WITH PERFORMANCE AND ATTITUDE OF STUDENTS IN THE SUBJECT OF GEOGRAPHY
+nameOfCom1,Σουλακέλλης Νικόλαος
+nameOfCom2,Φλουρής Γεώργιος
+otherNotes,N/A
+institution,Πανεπιστήμιο Αιγαίου
+department,Σχολή Κοινωνικών Επιστημών Τμήμα Γεωγραφίας
+program,N/A
+libraryLink,http://hdl.handle.net/11610/20454
+target,διερεύνηση της σχέσης των πολλαπλών τύπων νοημοσύνης και της αντίληψης του χώρου με τη στάση και την επίδοση των μαθητών του δημοτικού στο μάθημα της γεωγραφίας
+sampleDescription,"600 μαθητές της Στ΄ τάξης Δημοτικού, ηλικίας 11-13 ετών από 22 διαφορετικά σχολεία και 33 εκπαιδευτικοί"

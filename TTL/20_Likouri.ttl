@@ -1,0 +1,47 @@
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#SampleID_20
+:SampleID_20 rdf:type owl:NamedIndividual ,
+                   :Sample ;
+          :analysisTools "SPSS-21" ;
+          :basicUnit "Individuals" ;
+          :collectionMethod "τυχαία στρωματοποιημένη δειγματοληψία" ;
+          :methodOfAnalysis "Kruskal-Wallis, Mann-Whitney, Spearman ρ, Kolmogorov-Smirnov" ;
+          :methodOfRecording "Survey" ;
+          :recordingTools "Τεστ Αντίληψης Χώρου (ΤΑΧ), Κλίμακα μέτρησης πολλαπλών τύπων νοημοσύνης, Φύλλο με δραστηριότητες της Γεωγραφίας, Ερωτηματολόγιο" ;
+          :sampleCollectionReference "After 2013-11-08" ;
+          :sampleDescription "600 μαθητές της Στ΄ τάξης Δημοτικού, ηλικίας 11-13 ετών από 22 διαφορετικά σχολεία και 33 εκπαιδευτικοί" ;
+          :sampleSize "600" ;
+          :sampleTimeReference "2014-2015" ;
+          :spatialCoverage "ΕΛΛΗΝΙΚΗ ΕΠΙΚΡΑΤΕΙΑ" ;
+          :statesOfReference "ΕΛΛΑΔΑ" .
+:SurveyID_20 rdf:type owl:NamedIndividual ,
+                   :Survey ;
+          :hasSample :SampleID_20 ;
+          :sampleProd "Primary" ;
+          :spaceAnalysis "Μη Ιστορική" ;
+          :strategy "Quantitative" ;
+          :studyAssumptions "Υπάρχει σχέση ανάμέσα στο φύλο και τη χωρική αντίληψη και την επίδοση στο μάθημα της γεωγραφίας" ;
+          :studyQuestions "Presence of clear questions" ;
+          :target "διερεύνηση της σχέσης των πολλαπλών τύπων νοημοσύνης και της αντίληψης του χώρου με τη στάση και την επίδοση των μαθητών του δημοτικού στο μάθημα της γεωγραφίας" ;
+          :timeAnalysis "Μη Ιστορική" ;
+          :workAssumptions "Presence of guiding assumptions" .
+:WriterID_20 rdf:type owl:NamedIndividual ,
+                   :Writer ;
+          :firstName "Άννα-Αικατερίνη" ;
+          :gender "Γυναίκα" ;
+          :surName "Λυκούρη" .
+:ThesisID_20 rdf:type owl:NamedIndividual ,
+                   :DoctoralDissertation ;
+          :hasSurvey :SurveyID_20 ;
+          :hasWriter :WriterID_20 ;
+          :abstract "Στόχος της παρούσας έρευνας ήταν να διερευνηθεί η σχέση των πολλαπλών τύπων νοημοσύνης και της αντίληψης του χώρου με τη στάση και την επίδοση των μαθητών στο μάθημα της Γεωγραφίας. Το δείγμα της έρευνας μας απαρτιζόταν από 600 μαθητές της Στ΄ τάξης Δημοτικού, ηλικίας 11-13 ετών που προέρχονταν από 22 διαφορετικά σχολεία της ελληνικής επικράτειας, κατανεμημένοι σε 33 διαφορετικές τάξεις." ;
+          :alternativeHeadline "THE RELATION OF MULTIPLE INTELLIGENCES AND SPATIAL PERCERTION WITH PERFORMANCE AND ATTITUDE OF STUDENTS IN THE SUBJECT OF GEOGRAPHY" ;
+          :dateOfSupport "2018-06-29"^^xsd:date ;
+          :department "Σχολή Κοινωνικών Επιστημών Τμήμα Γεωγραφίας" ;
+          :institution "Πανεπιστήμιο Αιγαίου" ;
+          :language "ΕΛΛΗΝΙΚΑ" ;
+          :libraryLink "http://hdl.handle.net/11610/20454" ;
+          :nameOfSupervisor "Αικατερίνη Κλωνάρη" ;
+          :numberOfPages "372" ;
+          :title "Η Σχέση των πολλαπλών τύπων νοημοσύνης και της αντίληψης του χώρου με τη στάση και την επίδοση των μαθητών του Δημοτικού στο μάθημα της Γεωγραφίας" ;
+          :typeOfDissertation "DoctoralDissertation" .

@@ -1,0 +1,46 @@
+
+###  http://www.semanticweb.org/team1/ontologies/semantic-web-project#SampleID_25
+:SampleID_25 rdf:type owl:NamedIndividual ,
+                   :Sample ;
+          :basicUnit "στελέχη επιχειρήσεων" ;
+          :collectionMethod "σειρά διαθεσιμότητας" ;
+          :methodOfAnalysis "Ποιοτική έρευνα" ;
+          :methodOfRecording "Συνεντεύξεις (μέσω Skype & Teams)" ;
+          :recordingTools "Ερωτηματολόγιο συνεντεύξεων" ;
+          :sampleCollectionReference "2020-11-19 έως 2020-12-02" ;
+          :sampleDescription "στελέχη επιχειρήσεων από το βιομηχανικό αλλά και από τον τραπεζικό κλάδο" ;
+          :sampleSize "3" ;
+          :sampleTimeReference "2020" ;
+          :spatialCoverage "Ελλάδα" ;
+          :statesOfReference "Ελλάδα" .
+:SurveyID_25 rdf:type owl:NamedIndividual ,
+                   :Survey ;
+          :hasSample :SampleID_25 ;
+          :sampleProd "Primary" ;
+          :spaceAnalysis "Μη Ιστορική" ;
+          :strategy "Qualitative" ;
+          :studyQuestions "Yes" ;
+          :target "να εξετάσει μέσα από την έρευνα πως η διοίκηση της απόδοσης εταιριών επηρεάστηκε μετά την εμφάνιση του κορονοϊού" ;
+          :timeAnalysis "Μη Ιστορική" .
+:WriterID_25 rdf:type owl:NamedIndividual ,
+                   :Writer ;
+          :firstName "Αικατερίνη" ;
+          :gender "Γυναίκα" ;
+          :surName "Σίμου" .
+:ThesisID_25 rdf:type owl:NamedIndividual ,
+                   :BachelorsThesis ;
+          :hasSurvey :SurveyID_25 ;
+          :hasWriter :WriterID_25 ;
+          :abstract "Η παρούσα διπλωματική εργασία επικεντρώνεται στο πως η διοίκηση της απόδοσης επηρεάστηκε στην εποχή όπου η πανδημική κρίση του κορονοϊού (Covid-19) έκανε την εμφάνισή της, μέσα από τη μελέτη διαστάσεων του performance management και συγκεκριμένα της αξιολόγησης, της παρακίνησης και της τεχνολογίας." ;
+          :alternativeHeadline "BachelorsThesis_Simou" ;
+          :dateOfSupport "2021-03-19"^^xsd:date ;
+          :department "Τμήμα Διοίκησης Επιχειρήσεων" ;
+          :institution "Πανεπιστήμιο Αιγαίου" ;
+          :keyWords "διαχείριση της απόδοσης, performance management, Covid-19, αξιολόγηση, παρακίνηση, τεχνολογία" ;
+          :language "Ελληνική" ;
+          :libraryLink "http://hdl.handle.net/11610/22134" ;
+          :nameOfSupervisor "Κίνιας Ιωάννης" ;
+          :numberOfPages "85" ;
+          :program "Μεταπτυχιακό Πρόγραμμα Σπουδών ΜΒΑ" ;
+          :title "Διαχείριση της απόδοσης (performance management) κατά τη διάρκεια της πανδημικής κρίσης του Covid-19" ;
+          :typeOfDissertation "BachelorsThesis" .
